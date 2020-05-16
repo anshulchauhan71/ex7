@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html class="indexpage">
+<head>
+	
+	<title>Addmission24</title>
+   <% include ../include/head.ejs %>
+	<script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+
+</head>    
+
+ 
+  <body id="page-usertop">
+      <% include ../include/user-header.ejs %>
+     
+      
+      <div class="single-channel-page" id="content-wrapper">
+              <section class="userdashbord">
+            <div class="container">
+                    <div class="ads_heads">
+                        <div class="row rowdashboard">
+                        <div class="col-sm-8">
+                           
+    <h1 class="wizard-title">Your Leads or Messages
+
+</h1>
+
+</div>  </div>  
+                        <%if(resultmsg2.length > 0){ %><table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Full Name</th>
+      <th>Email Id</th>
+      <th>Mobile No </th>
+      <th>Message </th>
+    </tr>
+  </thead>
+  <tbody>
+         <%resultmsg2.forEach((resultmsg,index)=>{ %>
+     
+    <tr>
+      <th scope="row"><%=index+1%></th>
+      <td><%=resultmsg.user_name%></td>
+      <td><%=resultmsg.user_email?resultmsg.user_email:'No Email'%></td>
+      <td><%=resultmsg.user_mobile%></td>
+      <td><%=resultmsg.user_message%></td>
+    </tr>
+   <%});%>
+  </tbody>
+</table><%}else { %>
+                   <div id="section-classifieds" class="section-classifieds">
+		<div class="container-list">
+			
+			<div id="classifiedsList" >
+				<div class="nodatafound">
+                    <div class="nodataimg text-center">
+                    <img src="/images/nodata.png">
+                    </div>
+                <p  class="alrt0">Sorry, you have no Message.
+
+
+                    </p>
+                  
+             </div>
+   
+			</div>		
+				</div>
+	</div>     
+             <%}%>           
+                    
+                </div>
+                </div>
+
+                  </section>
+               </div>
+       
+ <% include ../include/user-footer.ejs %>
+
+    
+
+				
+								</body>
+								</html>
+

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html class="indexpage">
+<head>
+	
+	<title>newsfooterom</title>
+   <% include include/head.ejs %>
+	
+</head>    
+<body>
+    
+      <% include include/header.ejs %>
+      <% include include/menu.ejs %>
+    
+    
+    
+    
+ 
+    
+    
+     
+    <section class="nd_bolysec">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 col-sm-9">
+        <div class="nd_technonews">
+          <div class="row">
+            <div class="col-sm-7 col-12">
+    
+                 <%bignewsR.forEach((bignews)=>{  %>
+              <div class="nd_texcnor"><% var stringtitle = bignews.news_title; var replacesting = stringtitle.replace(/\s/g,"-") %>
+                <div class="bd_snewst-new"><a href="/post/<%= bignews.news_category%>/<%= bignews.id%>/<%= replacesting %>">
+           
+                    <div class="col-fimg">
+                      <div class="bd-nesingtf"><img class="lazy" src="/images/post/placeholder.png?width=800&height=500" data-src="/images/post/<%= bignews.news_image%>?width=800&height=500" ></div>
+                    </div>
+                    <div class="col-fcontent">
+                      <h1 class="nd_iheading"><% var newTitle = new String(bignews.news_title) 
+                            if(newTitle.length > 120 ) {  var Slicetext = newTitle.slice(0,120);
+                          %> <%=Slicetext+'...'%>  <%} else {%> <%= bignews.news_title%> <%}%></h1>
+                          <div class="Newdesp"><% var newDesp = new String(bignews.news_des) 
+                            if(newTitle.length > 120 ) {  var SliceDes = newDesp.slice(0,120);
+                          %> <%=SliceDes+'...'%>  <%} else {%> <%- bignews.news_des%> <%}%></div></div>
+                
+                      </a><p class="comt-timnegm"><span class="cmt-iconn"><i class="fa fa-clock-o" aria-hidden="true"></i></span><span class="no_cmnt"> 4Hrs
+                        </span></p>
+                </div>
+              </div>
+                     <% })%>
+            </div>
+            <div class="col-sm-5 col-12 pd_g">
+              <div class="bg-fbk-new">
+         
+         
+                
+
+<div class="tab-content">  
+<div class="tab-paa" id="tab1">
+       
+                
+                 <%smallnewsi.forEach((smallnews)=>{  %>
+    <% var stringtitle = smallnews.news_title; var replacesting = stringtitle.replace(/\s/g,"-") %>
+                <div class="nd_texcnorsnew2"><a href="/post/<%= smallnews.news_category%>/<%= smallnews.id%>/<%= replacesting %>">
+                  <div class="bd_snewst-new2">
+                    <div class="row">
+                      <div class="col-sm-3 col-5  pr-0">
+                        <div class="bd-nesing"><img class="lazy" src="/images/post/placeholder.png?width=300&height=250" data-src="/images/post/<%= smallnews.news_image%>?width=300&height=250" ></div>
+                      </div>
+                      <div class="col-sm-9 col-8">
+                       <p class="fcategory"><%= smallnews.news_category%></p>
+                        <p class="ftitles"><% var newTitle = new String(smallnews.news_title) 
+                            if(newTitle.length > 120 ) {  var Slicetext = newTitle.slice(0,120);
+                          %> <%=Slicetext+'...'%>  <%} else {%> <%= smallnews.news_title%> <%}%></p>
+                        
+                     
+                      </div>
+                    </div>
+                  </div>
+                  </a></div>
+                  <% })%>
+                  </div>
+                  
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+        
+        
+        
+        
+        
+         
+        
+      </div>
+    <div class="col-md-3 col-sm-3">
+        
+      
+              <div class="adsregister">
+                  <a href="/sign-up?business=register" >
+                  <img class="lazy" src="/images/post/placeholder.png?width=328&height=566" data-src="images/addbanner.jpg">
+         
+                  </a>
+                
+              </div>
+              
+            
+      
+       
+        
+           
+        
+       
+         
+        
+        
+       
+        
+        
+        
+        
+      </div></div>
+        <div class="row"><h2 class="head_line12 col-md-12"> Products </h2></div>
+  
+  <div class="website_box2">
+    <div class="deals_produscts2">
+      <div id="tabs5" class="owl-carousel owlnavshop  owl-theme">
+          <%psproduct.forEach((homeitem)=>{ %>
+        <div class="item">
+          <div class="img">
+            <div class="image"><a href="<%= homeitem.url %>" rel="nofollow" target="_blank"><img  class="lazy" src="/images/post/placeholder.png?width=500&height=280" <%if(homeitem.logo === "undefined"){%><%}else{%>data-src="/images/post/<%= homeitem.logo %>?width=500&height=380" <%}%>></a></div>
+          </div>
+          <a href="<%= homeitem.url %>" rel="nofollow" target="_blank"><div class="product_name"> <%= homeitem.title %></div>
+          <div class="price">
+           <%if(homeitem.offerprice){%><div class="main_price">Rs. <%= homeitem.offerprice %></div><%}%>
+            <div class="price_after_dis">Rs <%= homeitem.price %></div>
+            <div class="percentage"><%= homeitem.offer %>% Off</div>
+          </div>
+          </a>
+          <div class="storenameshop"><%= homeitem.store %></div>
+        </div>
+      <%})%>  
+      </div>
+    </div>
+  
+       </div>
+     
+      
+      <div class="adbkimg">
+        
+        <div class="bg-link-wshite">
+         
+             <div class="row"><h3 class="head_line85 col-md-12">Popular Posts
+               
+</h3>   <%populerP.forEach((bignews)=>{  %>
+           <div class="col-lg-3 col-md-3 col-6 pp-7">
+           
+     <% var stringtitle = bignews.news_title; var replacesting = stringtitle.replace(/\s/g,"-") %>
+                <div class="bd_snewst-new bd_minh">
+                    
+                    <a href="/post/<%= bignews.news_category%>/<%= bignews.id%>/<%= replacesting %>">
+                  
+                      <div class="bd-cpbox"><img class="lazy" src="/images/post/placeholder.png?width=500&height=280" data-src="/images/post/<%= bignews.news_image%>?width=500&height=300"  >
+                        
+                         <div class="Categorytag pdb1" data-cat="<%= bignews.news_category%>"></div>
+                        </div>
+                  
+                   
+                      <div class="bd-cpboxC23"><% var newTitle = new String(bignews.news_title) 
+                            if(newTitle.length > 70 ) {  var Slicetext = newTitle.slice(0,70);
+                          %> <%=Slicetext+'...'%>  <%} else {%> <%= bignews.news_title%> <%}%></div>
+                          
+               
+                      </a>
+                     <% if(bignews.user) {  var strinuser = bignews.user; var replaceuser = strinuser.replace(/\s/g,"-") %>
+                    <%}%>
+                     <div class="authorcp">
+                    <a href="#" class="author-width"></a> <div class="a-cpname"> <% if(bignews.user==null) { %>by trendsxp team <%} else{ %><a href="/authors/<%= bignews.postBy%>/<%= replaceuser %>">By <%= bignews.user %></a> <%}%>   </div>
+                    </div>
+                   
+                </div>
+              </div>     
+                  
+        <% })%>
+       </div>
+       </div>
+      
+    </div>
+      </div>
+</section>
+    
+   <% include include/footer.ejs %>
+    
+    
+    
+				</body>
+								</html>
+

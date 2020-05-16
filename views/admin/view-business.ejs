@@ -1,0 +1,131 @@
+<% include include/header.ejs%>
+<% include include/sidebar.ejs%>
+
+<div class="content-wrapper">
+   
+    <section class="content-header">
+      <h1>
+    View  News
+       
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">View News</a></li>
+      
+      </ol>
+    </section>
+    <section class="content">
+      <div class="row"> 
+      <div class="col-xs-12">
+          <div class="box">
+             
+              <!-- /.box-header -->
+              <div class="box-boddd">
+                  <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                    
+                      <div class="row">
+                          <div class="col-sm-12">
+                            <div class="boxx">
+                              
+                                <!-- /.box-header -->
+                                <div class="box-body table-responsive no-padding">
+                                  <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                                      
+                                     
+                                      
+                                             
+                                              
+                                              <table id="example2" class="table table-hover" role="grid" aria-describedby="example2_info">
+                                    <thead>
+                                    
+                                        <th>Sr no</th>
+                                        <th>Date</th>
+                                        <th>Category</th>
+                                        <th>Title</th>
+                                        <th>Action</th>
+                                        <th>Status</th>
+                                        
+                                                        </thead>
+                                    <tbody>
+                                        <% newslist.forEach((businessitem,index=0) => { %>
+                                  <tr role="row" class="odd">
+                                      <td class="sorting_1"><% var listno = 1;   %> <%= index+listno %></td>
+                                      
+                                     
+                                      <td>
+                                          
+                                        
+                                           <% let date_ob = new Date(businessitem.time);
+  
+         let date = date_ob.getDate();
+         let day = date_ob.getDay();
+var month = new Array();
+  month[0] = "Jan";
+  month[1] = "Feb";
+  month[2] = "Mar";
+  month[3] = "Apr";
+  month[4] = "May";
+  month[5] = "Jun";
+  month[6] = "Jul";
+  month[7] = "Aug";
+  month[8] = "Sep";
+  month[9] = "Oct";
+  month[10] = "Nov";
+  month[11] = "Dec";
+         
+           var n = month[date_ob.getMonth()];
+
+let year = date_ob.getFullYear(); 
+
+ %> <%= date + ' ' + n + ', ' + year     %>
+                                      <td><%= businessitem.ads_category %></td>
+                                      <td><% var titilelenth= new String(businessitem.ads_title) 
+                                          
+                                          
+                                          %>
+                                      
+                                      <%if(titilelenth.length > 40){ 
+                                               var Stringslice = titilelenth.slice(0,40);
+                                                 
+                                              var resultilte = Stringslice + '....';
+                                              %><%=resultilte %><%}else {%><%= businessitem.ads_title%> <%}%>
+                                      </td>
+                                 
+                                      <td>
+                                            <a href="/adminxp/business-edit/<%= businessitem.id %>"  rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                            <a href="/adminxp/business-delete/<%= businessitem.id %>" class="btn btn-sm btn-danger" onClick="if(!confirm('Do you want to delete?')){return false;}">Delete</a>
+                                       
+                                        </td>
+                                        <td>
+                                           <%if(businessitem.status=='1'){ %>
+                                            <a href="/adminxp/business-status/<%= businessitem.id %>/1" class="btn btn-sm btn-info">Active</a>
+                                            <%}else{%>
+                                            
+                                             <a href="/adminxp/business-status/<%= businessitem.id %>/0" class="btn btn-sm btn-danger">Deactive</a>
+                                            <%}%>
+                                        </td>
+                                    </tr>
+                                <% }) %>
+                                </tbody>
+                                   
+                                  </table></div></div></div>
+                                </div>
+                                <!-- /.box-body -->
+                              </div>
+                          </div>
+                   
+                  </div>
+              </div>
+              <!-- /.box-body -->
+        
+          
+      <!-- /.col -->
+  </div>
+</div>
+          
+            </section>
+
+    </div>
+
+
+<% include include/footer.ejs%>

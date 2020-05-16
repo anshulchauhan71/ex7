@@ -1,0 +1,330 @@
+<div class="desktop-header">
+
+    <div class="desktop-header-wrapper">
+        <div>
+            <a class="active" aria-current="true" href="/"><img class="logo" src="/images/logo2.png" alt="trendsxp Logo"></a>
+          
+        </div>
+       
+        <div class="desktop-menu">
+          <div class="header-search">  <a href="javascript:void(0)"  class="language_0"> ENG <i class="fa fa-angle-down"></i></a>
+            <div class="sitesrch">
+                 <div class="autocomplete" >
+                <input type="text" placeholder="Search for anything" id="mastersearch" autocomplete="off"><span class="searchicon"><i class="fa fa-search"></i></span></div>
+            </div>
+            </div>
+           <div class="header-nav">
+               <ul> 
+                
+              <li> <a href="<% if(req.session.loggedin){ %>/user/post-article<%} else{%>/sign-up?business=post<%}%>"   class="bussiness-list"> Write a post </a></li>
+           
+            
+                 
+                   
+              <% if(req.session.loggedin){ %>   <%} else {%> <li><a href="/sign-in"  class="logins">   Login | Sign Up  </a></li> <%}%>
+                   <% if(req.session.loggedin){ %><li> 
+                   <div class="user_loginprofile"><div class="imaguser_l">
+                  
+                  
+                  <img src="<%- req.session.profilepic ? '/user/profile/'+req.session.profilepic:'/images/user_profile.png'%>">
+                  
+                  </div> <div class="userloginname"> <%  
+                       
+                        var userNme =req.session.Username;
+                       if(userNme.length > 10){ var SliceName = userNme.slice(0,10)%> <%=SliceName+'..'%> <%}else{%><%=req.session.Username%><%}%><i class="fa fa-caret-down"></i></div>
+                   <ul class="userlogin-nav navbar-nav">
+             
+                   
+                                      
+            <li class="nav-item">
+               <a class="nav-link" href="/user/profile">
+               
+              My Profile
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="/user/dashboard">
+           
+               Dashboard
+               </a>
+            </li>
+                   
+            <li class="nav-item">
+               <a class="nav-link" href="/user/article">
+               
+              Post Article 
+               </a>
+            </li>
+              <li class="nav-item">
+               <a class="nav-link" href="/user/business">
+              
+               Bussiness 
+               </a>
+            </li>
+              
+            <li class="nav-item">
+               <a class="nav-link" href="/user/designs">
+               
+               Projects
+               </a>
+            </li>
+
+            <li class="nav-item">
+               <a class="nav-link" href="/user/share">
+               
+                Profile Link
+               </a>
+            </li>   <li class="nav-item">
+               <a class="nav-link" href="/user/logout">
+               
+               <svg width="15" height="16" viewBox="0 0 16 17" xmlns="http://www.w3.org/2000/svg"><g stroke="#888294" stroke-width="1.4" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><path d="M10.966 3.308a6.843 6.843 0 1 1-6.209 0M7.857 1.031v8.344"></path></g></svg> 
+ Logout
+               </a>
+            </li>
+                       </ul></div></li><%} else {%><li> <a href="<% if(req.session.loggedin){ %>/for-business<%} else{%>/sign-up?business=register<%}%>"   class="join">  For Business </a></li><%}%>
+                   
+                
+               
+               </ul>
+        </div>
+        </div>
+       
+    </div>
+</div>
+
+<div class="mobile_header">
+<div class="mobile_icons">
+
+    <div class="baricon"></div>
+    <div class="logomobile"><a class="active" aria-current="true" href="/"><img class="logo" src="/images/logo2.png" alt="trendsxp Logo"></a></div>
+    <div class="MobileBusiness">
+        
+          <% if(req.session.loggedin){ %>  <a href="/user/message" class="chkMessage"><img src="/images/mail.png"></a> <%} else{%>   <a href="/sign-up?business=register">Post Business <span>Free</span></a><%}%>       
+      </div>
+    <div class="Accountmobile">
+        <% if(req.session.loggedin){ %> <div class="userCklogin"> <img src="<%- req.session.profilepic ? '/user/profile/'+req.session.profilepic:'/images/user_profile.png'%>"></div> 
+        
+        
+        <div class="chkLogleftbar">     <div class="sidebar_left">
+          <ul class="sidebar navbar-nav">
+             <li class="useracount"><div class="user_profile"><div class="imaguser">
+                  
+                  
+                  <% if(req.session.profilepic) { %> <img src="/user/profile/<%=req.session.profilepic%>"> <% } else { %><img src="/images/user_profile.png"><%}%>
+                  
+                  </div> <div class="userprofilename"><%= req.session.Username%><div class="edidprofile"><%= req.session.email%>
+</div><div class="add_profile"><a href="/user/profile"><i class="fa fa-user-o" aria-hidden="true"></i>
+  Edit Profile</a></div></div></div>
+                  
+                  
+                                          </li>
+            <li class="nav-item">
+               <a class="nav-link" href="/user/dashboard">
+               <img src="/images/home.png">
+               <span> Dashboard</span>
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="/user/article">
+                <img src="/images/writing.png">
+               <span> Articles/Blog </span>
+               </a>
+            </li>
+              <li class="nav-item">
+               <a class="nav-link" href="/user/business">
+               <img src="/images/megaphone.png">
+               <span> Business  </span>
+               </a>
+            </li>
+              
+            <li class="nav-item">
+               <a class="nav-link" href="/user/designs">
+               <img src="/images/sell-product.png">
+               <span> Projects</span>
+               </a>
+            </li>
+
+         <li class="nav-item">
+               <a class="nav-link" href="/user/pricing">
+               <img src="/images/india.png">
+               <span>Pricing </span>
+               </a>
+            </li> 
+ <li class="nav-item">
+               <a class="nav-link" href="/user/message">
+               <img src="/images/mail.png">
+               <span>Message </span>
+               </a>
+            </li> 
+            <li class="nav-item">
+               <a class="nav-link" href="/user/share">
+               <img src="/images/share.png">
+               <span> Profile Link</span>
+               </a>
+            </li>   <li class="nav-item">
+               <a class="nav-link" href="/user/followers">
+               <img src="/images/like.png">
+               <span>Followers</span>
+               </a>
+            </li> <li class="nav-item">
+               <a class="nav-link" href="/user/logout">
+              <i class="fa fa-sign-out" aria-hidden="true"></i>
+               <span>Logout</span>
+               </a>
+            </li> 
+                </ul></div></div>
+        
+        <%} else {%>   <div class="LoginShows">
+             <svg id="v2-icon-avatar" viewBox="0 0 32 32">
+      <title>avatar</title>
+      <path d="M16.133 1.8c-5.794-0.003-11.007 3.517-13.17 8.892s-0.839 11.525 3.343 15.535c0.087 0.147 0.217 0.263 0.373 0.333 4.713 4.216 11.648 4.804 17.004 1.441s7.838-9.866 6.087-15.942c-1.751-6.077-7.313-10.261-13.637-10.258zM8.133 25.52c0.8-2.327 2.954-3.918 5.413-4h5.253c2.456 0.084 4.605 1.675 5.4 4-4.624 3.89-11.376 3.89-16 0h-0.067zM25.533 24.187c-1.23-2.618-3.841-4.309-6.733-4.36h-5.293c-2.896 0.050-5.51 1.748-6.733 4.373-4.435-5.008-4.127-12.623 0.698-17.256s12.446-4.633 17.271 0c4.825 4.633 5.133 12.249 0.698 17.256l0.093-0.013zM16.16 7.693c-3.069 0-5.561 2.482-5.573 5.551s2.46 5.571 5.529 5.595c3.069 0.024 5.581-2.437 5.617-5.506 0.018-1.49-0.561-2.924-1.609-3.984s-2.475-1.656-3.965-1.656zM16.16 17.107c-1.559-0-2.963-0.943-3.554-2.386s-0.249-3.1 0.863-4.193c1.112-1.093 2.775-1.405 4.207-0.789s2.351 2.036 2.324 3.595c-0.036 2.095-1.745 3.774-3.84 3.773z"></path>
+    </svg></div><%}%>
+                 
+       </div>
+    
+    <div class="LoginSignUpmob">
+        <div class="signU0"><a href="/sign-up">Sign Up</a></div>
+        <div class="msgMMl">Already a member of thelivro? </div>
+         <div class="LoginU0"><a href="/sign-in">Log In</a></div>
+    </div> <div class="MenuOverlay2"></div>
+    </div>
+    
+<!--
+    <div class="menumobilelist">
+    
+               <ul> 
+                   <li><a href="#" class="Mobilehom">Home</a> </li>
+              <li> <a href="<% if(req.session.loggedin){ %>/user/post-article<%} else{%>/sign-up?business=post<%}%>"   class="bussiness-list"> Write post </a></li>
+           
+            
+                 
+                   
+              <% if(req.session.loggedin){ %>  <li><a href="/user/dashboard"  class="logins">   Account  </a></li> <%} else {%> <li><a href="/sign-in"  class="logins">   Account  </a></li> <%}%>
+                    
+                   <li> <a href="<% if(req.session.loggedin){ %>/for-business<%} else{%>/sign-up?business=register<%}%>"   class="join">  For Business </a></li>
+                   
+                
+               
+               </ul>
+     
+    </div>
+    
+-->
+    
+    <div class="SearchMobile">  <div class="autocomplete" >
+        <label>
+    <input type="text" class="BoxInputSrchM" id="HomeSearchall" placeholder="Search by Location or Category">
+        </label>
+    </div>
+    </div>
+</div>
+<div class="MobileSidebar">
+    <div class="SideMobileclose">&times;</div>
+<div class="TopLogin">
+       <% if(req.session.loggedin){ %> 
+    
+    <div class="topLoginImage2">
+                  
+                  
+                  <img src="<%- req.session.profilepic ? '/user/profile/'+req.session.profilepic:'/images/user_profile.png'%>">
+                  
+                  </div> <div class="TopLoginSide2"> <%=req.session.Username%> </div><%} else{%><a href="/sign-in">
+        <div class="topLoginImage"></div>
+    <div id="login-register" class="TopLoginSide">Login/Register <i class="fa fa-caret-down"></i></div>
+    </a><%}%>
+                 
+     
+    
+    
+    
+
+    </div>
+     <div class="desktop-menu menuHside">
+            <ul class="bm">
+                <li><a  href="/">Home</a></li>
+                <li class="dropdownMob" ><a  href="#" >Articles <i class="fa fa-angle-down"></i></a>
+                
+                <div class="megamenu">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-menud">
+                      <ul class="wstliststy06 clearfix">
+                       
+                          
+                         
+ 
+     
+                          <li><a href="/article/architecture">architecture</a></li>
+                          <li><a href="/article/decor"> decor</a></li>
+                          <li><a href="/article/agriculture">agriculture</a></li>
+                          <li><a href="/article/technology"> technology</a></li>
+                          <li><a href="/article/garden"> garden</a></li>
+                          <li><a href="/article/art"> art</a></li>
+                          <li><a href="/article/business"> business</a></li>
+                          <li><a href="/article/travel"> travel</a></li>
+                          
+                          
+               
+                      </ul>
+                    </div>
+                    <div class="col-lg-6 col-md-6 lefthalf">
+                      <ul class="wstliststy06 clearfix">
+                          <li><a href="/article/food"> food</a></li>
+                         
+                          <li><a href="/article/health">  health</a></li>
+                          <li><a href="/article/outdoors">  outdoors</a></li>
+                          <li><a href="/article/home">  home</a></li>
+                          <li><a href="/article/entertainment">  entertainment</a></li>
+                          <li><a href="/article/wellness">  wellness</a></li>
+                          <li><a href="/article/furniture">  furniture</a></li>
+                          <li><a href="/article/education">   education</a></li>
+                   
+ 
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                </li>
+                <li><a  href="/directory">Professionals</a></li>
+             
+                <li><a  href="/cost-compare">Cost Compare</a></li>
+               
+<!--                <li><a  href="/project-calculators">Project Calculators</a></li>-->
+                <li class="dropdownMob"><a  href="#" >Idea & Designs <i class="fa fa-angle-down"></i></a>
+                 <div class="megamenu width5">
+                     <ul class="wstliststy06">
+                          <li><a href="/designs/bedroom">Bedroom</a></li>
+                   <li><a href="/designs/cladding-designs">Cladding Designs</a></li>
+                   <li><a href="/designs/dining-room">Dining Room</a></li>
+                   <li><a href="/designs/outdoor">Outdoor </a></li>
+                   <li><a href="/designs/office">Office Designs</a></li>
+                   <li><a href="/designs/door-design">Door Design</a></li>
+                   <li><a href="/designs/home">Home Designs</a></li>
+                   <li><a href="/designs/kitchen-designs">Kitchen Designs</a></li>
+                   <li><a href="/designs/bathroom-designs">Bathroom Designs</a></li>
+                   <li><a href="/designs/living-room">Living Room</a></li>
+                   <li><a href="/designs/tile-designs">Tile Designs</a></li>
+                   <li><a href="/designs/window-design">Window Design</a></li>
+                   <li><a href="/designs/railing-designs">Railing Designs</a></li>
+                     
+                     </ul>
+                       </div>
+                </li>
+                <li><a  href="/shop">Shop</a></li>
+                <li><a  href="/website">Website</a></li>
+              
+                 <li><a  href="/farming">agriculture & gardening</a></li>
+            </ul>
+            
+            
+            
+        </div>
+    
+   
+      
+</div>
+ <div class="MenuOverlay"></div>
+
+
+

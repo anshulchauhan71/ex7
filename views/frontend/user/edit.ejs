@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html class="indexpage">
+<head>
+	
+	<title></title>
+   <% include ../include/head.ejs %>
+	<script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+
+</head>    
+
+ 
+  <body id="page-usertop">
+      <% include ../include/user-header.ejs %>
+          <div class="single-channel-page" id="content-wrapper">
+              <section class="userdashbordd">
+            <div class="container">
+                    
+                      <div id="changepassword" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    
+      </div>
+      <div class="modal-body">
+        <div class="login-main-left" >
+                    
+                     <form action="" method="post" id="changePq">
+                       <div class="form-group">
+                           <label>Current Password </label>
+                           <input type="password" class="form-control" name="current_password" placeholder="Current Password">
+                           <span class="message_errer" id="current_password"></span>
+                        </div>
+                        <div class="form-group">
+                           <label>New password</label>
+                           <input type="password" class="form-control"  name="new_password" placeholder="New Password">
+                            <span class="message_errer" id="new_password"></span>
+                        </div>
+                        <span class="p_errr message_errer"></span>
+                       
+                        <div class="mt-4">
+                           <div class="row">
+                              <div class="col-12">
+                                 
+                                 <button type="submit"   class="btn btn-outline-primary btn-block btn-lg btnlogin" id="changeP">Submit</button>
+                              </div>
+                           </div>
+                        </div>
+                     </form>
+                   
+                  </div>
+        </div>
+      </div>
+                          </div>
+           
+      </div>
+                         <div id="imageupload" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    
+      </div>
+      <div class="modal-body">
+        <div class="login-main-left" >
+                    
+                     <form action="" method="post" id="profile_photos" enctype="multipart/form-data">
+                       <div class="form-group">
+                           <label>Upload Profile Photo </label>
+                           <input type="file" class="form-control" name="user_profile" id="file_upload">
+                           <span class="message_errer" id="user_profile"></span>
+                        </div>
+                       
+                        <span class=" message_errer" id="Profile_err"></span>
+                       
+                        <div class="mt-4">
+                           <div class="row">
+                              <div class="col-12">
+                                 
+                                 <button type="submit"   class="btn btn-outline-primary btn-block btn-lg btnlogin" id="changeP">Submit</button>
+                              </div>
+                           </div>
+                        </div>
+                     </form>
+                   
+                  </div>
+        </div>
+      </div>
+                          </div>
+           
+      </div>
+                  
+                      <script>
+                      $("#profile_photos").submit(function(event){
+                          
+                       event.preventDefault();                       
+                       
+                          var formData = new FormData(this);
+                          $.ajax({
+                              type:'POST',
+                              url:'/user/profile_photo',                              
+                              contentType: false,
+                              processData: false,
+                              data:formData,
+                              success:function(profile_msg){
+                              
+                                  if(profile_msg.errors){
+                                    
+                                      $(profile_msg.errors).each(function(index,profileerros){
+                                         
+                                          $('#'+profileerros.param).html(profileerros.msg);
+                                          
+                                      })
+                                      
+                                  }
+                                  else if(profile_msg.Profile_err){
+                                        $("#Profile_err").html(profile_msg.Profile_err)
+                                      
+                                          
+                                      }
+                                  else{
+                                      
+                                      $("#imageupload").modal("hide");
+                                    
+                                    location.reload();
+                                                       swal({
+ 
+  text: profile_msg.Profile_result,
+  icon: "success",
+}); 
+                                      
+                                  }
+                              
+                          }
+                          })
+                      })
+       
+                          $("#changePq").submit(function(event){
+                              
+                            
+                            event.preventDefault();
+                           
+                              $.ajax({
+                                  
+                                  type:'POST',
+                                  url:'/user/chagePssword',
+                                  data: $("#changePq").serialize(),
+                                  
+                                   success:function(loginsubmit){
+                                      
+                                      if(loginsubmit.errors){
+                                         
+                                          $(loginsubmit.errors).each(function(index,errormsg){
+                                              
+                                              $('#'+errormsg.param).html(errormsg.msg);
+                                              
+                                              
+                                          })
+                                      }
+//                                       Password Reset Successful!
+                                      else{
+                                       $("#changepassword").modal('hide');
+                                          $(".p_errr").html(loginsubmit.errchagep_msg);
+                                          $("#current_password,#new_password").html("   ");
+                                      
+                                          swal({
+ 
+  text: loginsubmit.chagep_msg,
+  icon: "success",
+});
+
+                                      }
+                                      
+                                  }
+                                  
+                              })
+                              
+                              
+                          })
+                      </script>
+            <% Userdata.forEach((Userdata)=>{  %>
+                     <div class="oxxx">
+                          
+                         <form action="/user/edit/<%= req.session.userId %>"  method="post">
+                           
+                        <div class="row ">
+                          <div class="col-lg-8  rowfm">  <div class=" row part_0"> <div class="col-md-12">
+                                <h5  class="details_titles">Public Info</h5>
+                            </div>
+                              <div class="col-lg-6">
+                              
+                              <div class="form-group">
+                                 <label for="e1">Your Name</label>
+                                 <input type="text" name="username" value="<%= Userdata.name %>" placeholder="Ex. John"  class="form-control">
+                                
+                              </div>
+                              
+                              
+                           </div>
+                           <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label for="e2">Profile Title </label>
+                                <input type="text" name="profiletitle"  value="<%= Userdata.profile_title %>" placeholder="Ex. Sales Executive"  class="form-control">
+                                  
+                               
+                              </div>
+                           </div>
+                           
+                               <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label for="e3">About Me</label>
+                               
+                                  <textarea class="form-control" name="aboutme"><%= Userdata.aboutme %></textarea>
+                              </div>
+                           
+                           </div>
+                            <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label for="e3">My Website</label>
+                                  <input type="text" name="website" value="<%= Userdata.website %>" placeholder="www.google.com"  class="form-control">
+                               
+                              </div>
+                           
+                           </div> 
+                            
+                         
+                           <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label >Email </label>
+                                  <input type="text" placeholder="Email Id" name="emailid"  value="<%= Userdata.email %>"class="form-control"  readonly>
+                                  <a href="#" class="emailedit">Edit</a>
+                              </div>
+                           </div>
+                           <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label >Mobile </label>
+                                  <input type="text" placeholder="Mobile No" name="mobileno" value="<%= Userdata.phone %>"  class="form-control" >
+                              </div>
+                           </div>
+                            
+                           <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label for="e6">Gender</label>
+                                 <select id="e9" class="form-control" name="gender" >
+                                    <option value=''>Select</option>
+                                    <option <% if(Userdata.gender == 'male') {%>selected <%}%> value="male" >Male</option>
+                                    <option <% if(Userdata.gender == 'female') {%>selected <%}%> value="female" >Female</option>
+                                  
+                                 </select>
+                                
+                              </div>
+                           </div>
+                           
+                         
+
+                           <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label for="e9">Location</label>
+                                      <input type="text" placeholder="Ex. Toronto" name="location"  class="form-control">
+                              </div> 
+                              </div> 
+                              </div> 
+                              
+                            <div class=" row part_0">
+                            <div class="col-md-12">
+                                <h5  class="details_titles">Social Info</h5>
+                            </div>
+                            <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label >Facebook </label>
+                                  <input type="text" placeholder="www.Facebook.com" name="facebook"  class="form-control">
+                              </div>
+                           </div>
+                           <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label >Instagram </label>
+                                  <input type="text" placeholder="www.Instagram.com" name="instagram"  class="form-control">
+                              </div>
+                           </div>
+                            
+                           <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label for="e6">Linkedin</label>
+                             <input type="text" placeholder="www.Linkedin.com" name="linkedin"  class="form-control">
+                              </div>
+                           </div>  <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label for="e6">Twitter</label>
+                             <input type="text" placeholder="www.Twitter.com" name="twitter"  class="form-control">
+                              </div>
+                           </div>
+                           </div>
+                     </div> <div class="col-lg-4 md23l">
+                                  
+                          <div class="add_bussness">
+                              <p class="add_01">Profile picture </p>
+ <p class="profile_instruction">Add pictures (10MB max in jpeg, png or gif)</p>
+                                  <div class="avatar-upload">
+        <div class="avatar-edit">
+          
+            <label  class="chageprofile" data-toggle="modal" data-target="#imageupload"  >Upload profile</label>
+        </div>
+        <div class="avatar-preview">
+             
+            <div id="imagePreview" >
+                
+                 <img id="user_photoframe" src="<%- Userdata.image ? '/user/profile/'+Userdata.image : '/images/profile.jpg'%>"   >
+              
+            </div>
+        </div>
+    </div>  
+                                    <div class="chagepassword mt-4">
+                                  
+                                      <a href="javascript:void(0)" data-toggle="modal" data-target="#changepassword"  > Change Password</a>
+                                  </div>
+                                    <div class="deactivate">
+                                  
+                                      <a href="#" >Deactivate  Account  </a>
+                                  </div>
+                                
+                              </div>  
+                              
+                              
+                              
+                            </div>
+                        </div>  <div class="osahan-area butnc col-md-8">
+                        <button class="btn btn-outline-primary" type="submit">Update Profile </button>
+                     </div>
+                         </form>
+                      </div>
+                     <%})%>
+                    
+                    
+                  </div>
+                
+                
+                  </section>
+               </div>
+          
+   </div>
+
+    
+ <% include ../include/user-footer.ejs %>
+
+
+								</body>
+								</html>
+

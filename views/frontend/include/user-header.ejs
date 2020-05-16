@@ -1,0 +1,69 @@
+<%include ../include/header.ejs %>
+
+      <div id="wrapper">
+          <div class="sidebar_left">
+          <ul class="sidebar navbar-nav">
+             <li class="useracount"><div class="user_profile"><div class="imaguser">
+                  
+                  
+                  <% if(req.session.profilepic) { %> <img src="/user/profile/<%=req.session.profilepic%>"> <% } else { %><img src="/images/user_profile.png"><%}%>
+                  
+                  </div> <div class="userprofilename"><%= req.session.Username%><div class="edidprofile"><%= req.session.email%>
+</div><div class="add_profile"><a href="/user/profile"><i class="fa fa-user-o" aria-hidden="true"></i>
+  Edit Profile</a></div></div></div>
+                  
+                  
+                                          </li>
+            <li class="nav-item">
+               <a class="nav-link" href="/user/dashboard">
+               <img src="/images/home.png">
+               <span> Dashboard</span>
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="/user/article">
+                <img src="/images/writing.png">
+               <span> Articles/Blog </span>
+               </a>
+            </li>
+              <li class="nav-item">
+               <a class="nav-link" href="/user/business">
+               <img src="/images/megaphone.png">
+               <span> Business  </span>
+               </a>
+            </li>
+              
+            <li class="nav-item">
+               <a class="nav-link" href="/user/designs">
+               <img src="/images/sell-product.png">
+               <span> Projects</span>
+               </a>
+            </li>
+
+         <li class="nav-item">
+               <a class="nav-link" href="/user/pricing">
+               <img src="/images/india.png">
+               <span>Pricing </span>
+               </a>
+            </li> 
+ <li class="nav-item">
+               <a class="nav-link" href="/user/message">
+               <img src="/images/mail.png">
+               <span>Message </span>
+               </a>
+            </li> 
+            <li class="nav-item">
+               <a class="nav-link" href="/user/share">
+               <img src="/images/share.png">
+               <span> Profile Link</span>
+               </a>
+            </li>
+<!--
+              <li class="nav-item">
+               <a class="nav-link" href="/user/followers">
+               <img src="/images/like.png">
+               <span>Followers</span>
+               </a>
+            </li> 
+-->
+                </ul></div>

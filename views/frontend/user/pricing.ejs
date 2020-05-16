@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html class="indexpage">
+<head>
+	
+	<title>Addmission24</title>
+   <% include ../include/head.ejs %>
+	
+</head>    
+
+    
+
+    
+  <body id="page-usertop">
+      <% include ../include/user-header.ejs %>
+        <div class="single-channel-page" id="content-wrapper">
+              <section class="userdashbord">
+            <div class="container">
+                    <div class="ads_heads">
+                        <div class="row rowdashboard">
+                        <div class="col-sm-8">
+                        
+    <h1 class="wizard-title">Your Prices
+</h1>
+
+</div> <div class="col-md-4">
+                        <div class="main-title">
+                           <div class="btn-group float-right right-action">
+                               <% if(GetuserProduct.length > 0 ) { %> 
+                                <a class="nav-link addnew" href="/user/post-pricing">
+                   <i class="fa fa-plus"></i>
+               <span>Add New Pricing </span>
+               </a>
+                        <%} else {  %>  <%}%>   
+                           </div>
+                       
+                        </div>
+                     </div> </div>  
+                   <div id="section-classifieds" class="section-classifieds">
+		<div class="container-list">
+        
+			<% if(GetuserProduct.length > 0 ) { %>
+            <div class="row">
+                    
+                
+                <% GetuserProduct.forEach((Getuseritem)=>{ %>
+                    
+                         
+                         <div class="mrg-s col-md-10 PricingCompair">  <div class="PricingCompairList">
+            <div class="pricecard card pl-2">
+   <div class="dTable">
+      <div class="brandLogo">
+          <%if(Getuseritem.ads_logo){%>
+          <img src="/images/post/<%=Getuseritem.ads_logo %>?width=500&height=350" title="logo">
+          <%}else{%> <img src="/images/post/placeholder2.jpg?width=500&height=350" title="logo"><%}%>
+       </div>
+      <div class="idvPlanD">
+         <div>    <%=Getuseritem.company %><span class="display-b"><%=Getuseritem.ads_category %></span></div>
+         <span class="plan-details"><%=Getuseritem.services=='undefined'?'':Getuseritem.services %></span>
+      </div>
+      <div class="btngrp">
+         <div class="btnelemnt">
+             <%if(Getuseritem.hourly !==''){ %><div class=" quoteBuybutton"><span class="buynowT">Charges</span><span class="rupees-f16">₹ <%=Getuseritem.hourly %></span>Per Hour</div><%}%>
+             <%if(Getuseritem.sqft !==''){ %> <div class=" quoteBuybutton"><span class="buynowT">Charges</span><span class="rupees-f16">₹ <%=Getuseritem.sqft %></span>Per sqft</div><%}%>
+            <%if(Getuseritem.perday !==''){ %> <div class=" quoteBuybutton"><span class="buynowT">Charges</span><span class="rupees-f16">₹ <%=Getuseritem.perday %></span>Per day</div><%}%>
+          
+          </div>
+         <div class="btnelemnt bikebtnview">
+             <%if(Getuseritem.hourly==''){ %> <button class="inactive quoteBuybutton" disabled><span class="buynowT">Charges</span>
+             <span class="rupees-f16">NA</span>Per/Hour</button><%}else{%><%}%>
+             <%if(Getuseritem.sqft==''){ %> <button class="inactive quoteBuybutton" disabled><span class="buynowT">Charges</span>
+             <span class="rupees-f16">NA</span>Per/sqft</button><%}else{%><%}%>
+             <%if(Getuseritem.perday==''){ %> <button class="inactive quoteBuybutton" disabled><span class="buynowT">Charges</span><span class="rupees-f16">NA</span>Per/day</button><%}else{%><%}%>
+            
+            </div>
+      </div>
+   </div>
+   <div class="prevpolicy ">
+     <div class="actions_from">
+					<div class="video-card-image">
+						<a href="/user/pricing-edit/<%=Getuseritem.id %>" class="edit_p0">
+							<i class="fa fa-pencil" aria-hidden="true"></i>
+						</a>
+						<a href="/user/pricingdelete/<%=Getuseritem.id %>" class="timeicon" onclick="return confirm('Do you really want to delete?');">
+							<i class="fa fa-trash" aria-hidden="true"></i>
+						</a>
+					</div>
+				</div>
+   </div>
+   </div>
+   </div>
+	
+	</div>
+                         
+                       
+                    <%})%>
+                     
+                  </div>
+			
+	
+            
+            <% } else { %>
+			<div id="classifiedsList" >
+				<div class="nodatafound">
+                    <div class="nodataimg text-center">
+                    <img src="/images/nodata.png">
+                    </div>
+                <p  class="alrt0">You have not added any Pricing yet.
+
+
+                    </p>
+                    <p class="slstct_9">Let go of what you don't use anymore
+
+                    </p>
+                
+                <ul class="nodtafound">
+             
+          
+            <li class="nav-item">
+               <a class="nav-link" href="/user/post-pricing">
+                   <i class="fa fa-plus"></i>
+               <span>Add New Pricing</span>
+               </a>
+            </li>
+              
+           
+                </ul></div>
+   
+			</div>
+            
+            <%} %>
+			</div>
+	</div>     
+                        
+                     </div>
+                  </div>
+                
+                  </section>
+               </div>
+            
+ </div> <% include ../include/user-footer.ejs %>
+
+   			
+								</body>
+								</html>
+

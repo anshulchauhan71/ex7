@@ -1,0 +1,73 @@
+<% include include/header.ejs%>
+<% include include/sidebar.ejs%>
+
+<div class="content-wrapper">
+   
+    <section class="content-header">
+      <h1>
+     Category 
+       
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Edit Business</a></li>
+      
+      </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+        
+          <div class="col-md-2">
+              </div>
+          <div class="col-md-7">
+                <div class="box box-primary">
+                        <div class="box-header with-border">
+                          <h3 class="box-title">Edit Business</h3>
+                        </div>
+                        <% if(message) { %>
+
+                          <p class="text-danger text-center"><%= message %></p>
+                          <%}%>
+                       <% businessitem.forEach((businessitem)=> {  %>
+                        <form class="add-player-form" action="" method="post" >
+                          <div class="box-body">
+                             <div class="form-group">
+                                <label for="exampleInputEmail1">business title</label>
+                                <input type="text" class="form-control" value="<%= businessitem.ads_title%>"  >
+                              </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Meta title</label>
+                                <input type="text" class="form-control" name="metatitle" value="<%= businessitem.metatitle%>"  >
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleInputEmail1">Meta keyword</label>
+                                <input type="text" class="form-control" name="metakeyword" value="<%= businessitem.metakeyword%>"  >
+                              </div>
+                            
+                            <div class="form-group">
+                              <label for="exampleInputFile">Meta Description</label>
+                               <textarea  class="form-control" name="metadescription"><%= businessitem.metadescription%></textarea>
+                            </div>
+                         
+                          
+                          </div>
+                          <!-- /.box-body -->
+            
+                          <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                          </div>
+                        </form>
+<% })%>
+                      </div>
+            </div>
+            </div>
+            
+            </section>
+
+    </div>
+    <script>
+            CKEDITOR.replace( 'editor1' );
+    </script>
+
+
+<% include include/footer.ejs%>

@@ -1,0 +1,59 @@
+<% include include/header.ejs%>
+<% include include/sidebar.ejs%>
+
+<div class="content-wrapper">
+   
+    <section class="content-header">
+      <h1>
+     Category 
+       
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Tag Category</a></li>
+      
+      </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+        
+          <div class="col-md-3">
+              </div>
+          <div class="col-md-4">
+                <div class="box box-primary">
+                        <div class="box-header with-border">
+                          <h3 class="box-title">Tag Category</h3>
+                        </div>
+                      
+<% if(message !='') {%>
+                        <p class="text-center text-danger"><%= message %></p>
+                        <%}%>
+                        <form class="add-player-form" action="" method="post"  >
+                          <div class="box-body">
+                               
+                            <div class="form-group ">
+                              <label for="exampleInputEmail1">Tag Name</label>
+                              <input type="text" class="form-control" name="tag_name"   value="<%= taglist.tag_name %>" id="exampleInputEmail1" placeholder="Enter Tag Name" >
+                            </div>
+                           
+                        
+                         
+                          </div>
+                          <!-- /.box-body -->
+            
+                          <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                          </div>
+                        </form>
+
+                      </div>
+            </div>
+           
+            </div>
+        
+            </section>
+
+    </div>
+
+
+<% include include/footer.ejs%>

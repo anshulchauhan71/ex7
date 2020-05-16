@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title></title>
+       
+      <% include include/head.ejs %>
+   </head>
+   <body>
+      <% include include/header.ejs %>  
+          <% include include/menu.ejs %>
+    
+      <section class="List-section">
+        
+         <div class="containerList">   
+             
+      <div class="topDesignHeads2">
+          <div class="listFss"><%if(Dcategory){    var replaceDcategory = Dcategory.replace(/-/g," ");
+  %><%=replaceDcategory%> <%}else{%>Interior design ideas,  Trends & Ideas <%}%></div>
+          <div class="listFss1"> Browse from latest Home Photos, Ideas & Inspiration</div></div>
+            <div class="clearfix"></div>
+              
+            
+               <div class="designLists12 mt-3">
+               <div class="row">
+                   <div class="col-md-3"><div class="list-sidebar">
+                       <div class="rowside1">
+                        <h4 class="slide-list1">
+                      Filters (<%=Designsitem.length%>)
+
+                           <span class="slide-slide">
+                           <i class="fa fa-angle-down" aria-hidden="true"></i>
+                           </span>
+                        </h4>
+                        
+                        
+                     
+                       
+                        
+                   <div class="inlb-bk"><a href="/designs/bedroom" class="<%= Dcategory=='bedroom'?'active':''%>"> Bedroom</a></div>
+                    <div class="inlb-bk"><a href="/designs/cladding-designs" class="<%= Dcategory=='cladding-designs'?'active':''%>">Cladding Designs</a></div>
+                    <div class="inlb-bk"><a href="/designs/dining-room" class="<%= Dcategory=='dining-room'?'active':''%>">Dining Room</a></div>
+                    <div class="inlb-bk"><a href="/designs/outdoor" class="<%= Dcategory=='outdoor'?'active':''%>">Outdoor </a></div>
+                    <div class="inlb-bk"><a href="/designs/office" class="<%= Dcategory=='office'?'active':''%>">Office Designs</a></div>
+                    <div class="inlb-bk"><a href="/designs/door-design" class="<%= Dcategory=='door-design'?'active':''%>">Door Design</a></div>
+                    <div class="inlb-bk"><a href="/designs/home" class="<%= Dcategory=='home'?'active':''%>">Home Designs</a></div>
+                    <div class="inlb-bk"><a href="/designs/kitchen-designs" class="<%= Dcategory=='kitchen-designs'?'active':''%>">Kitchen Designs</a></div>
+                    <div class="inlb-bk"><a href="/designs/bathroom-designs" class="<%= Dcategory=='bathroom-designs'?'active':''%>">Bathroom Designs</a></div>
+                    <div class="inlb-bk"><a href="/designs/living-room" class="<%= Dcategory=='living-room'?'active':''%>">Living Room</a></div>
+                    <div class="inlb-bk"><a href="/designs/tile-designs" class="<%= Dcategory=='tile-designs'?'active':''%>">Tile Designs</a></div>
+                    <div class="inlb-bk"><a href="/designs/window-design" class="<%= Dcategory=='window-design'?'active':''%>">Window Design</a></div>
+                    <div class="inlb-bk"><a href="/designs/railing-designs" class="<%= Dcategory=='railing-designs'?'active':''%>">Railing Designs</a></div>
+                       </div>
+                       
+                       </div></div>
+                     <div class="col-md-9">
+                   <%if(Designsitem.length > 0) { %>
+                   
+               <div class="row">
+            	<%Designsitem.forEach((Designsitemw)=>{  %>
+      <div class="col-md-4 bbList">
+      <div class="ad_designL">
+
+
+<figure class=" img_figer img_scam">        
+     <% var stringtitle = Designsitemw.ads_title; var replacesting = stringtitle.replace(/\s/g,"-");
+    
+    %>
+     <a href="/designs/<%= Designsitemw.id%>/<%= replacesting %>">
+<img  class="lazy" src="/images/placeholder.png" data-src="/images/post/<%= Designsitemw.ads_logo%>?width=800" alt="<%= Designsitemw.news_category%>"  >
+    </a>
+</figure>  <a href="/designs/<%= Designsitemw.id%>/<%= replacesting %>">
+         <div class="PostBYdesignL"><div class="designCompy_imgL"><img class="lazy" src="/images/post/ads_logo-1585122024762.jpeg?width=50&amp;height=50" data-src="/images/post/ads_logo-1585122024762.jpeg?width=40&amp;height=40" alt="Sophisticated Chaos"></div><div class="designCompy_contentL"><h4><%= Designsitemw.shopname%></h4> <div class="design_categoryL"><%= Designsitemw.ads_category%></div></div></div>
+         
+          
+          </a>
+
+</div>
+                 
+                 </div> 
+                        <%})%>
+                         
+
+            </div><%}else{ %><div class="Noresultfound">Sorry no result found.</div><%}%>
+               
+             </div>
+             </div>
+             </div>
+         </div>
+      </section>
+       <% include include/footer.ejs %>
+   </body>
+</html>

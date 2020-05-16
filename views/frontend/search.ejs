@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title><%= Dcategory%></title>
+       
+      <% include include/head.ejs %>
+   </head>
+   <body>
+      <% include include/header.ejs %>  
+          <% include include/menu.ejs %>
+    
+      <section class="List-section">
+          
+         <div class="containerList"> 
+             <div class="HeadingTexts1">    
+<!--
+           <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= Dcategory%></li>
+  </ol>
+</nav>
+-->
+                   </div> 
+             
+             <div class="clearfix"></div>
+            <div class="row">
+            <div class="col-md-12 pdright-0 Getdatarowsrch">   
+                     <div class="FormDe45">   <h1 class="title_listed srchreulttitles"> Search results for <%= Dcategory%></h1>
+              
+                   <div class="searchBusinessL2">
+                 
+                                  <form method="post" id="GetListing" action="/professional-search">
+            <div class="row">
+                     <div class="col-md-5 col-5 col-formSrch">
+                          <div class="autocomplete" >
+                             <input type="text" class="form-control srchCC" id="locationgets" name="locationSrch"  <%if(locationR){ %>
+                                    value="<%=locationR%>"<%}%> list="location-datalist" placeholder="City Or Pincode" autocomplete="off">
+                         </div>
+                     </div>
+                
+                     <div class="col-md-5 p-0 col-5 col-formSrch">
+                         <select class="form-control srchCC" name="categorySrch"  id="categorygets"  autocomplete="off" required>
+                             <option value="">What are you looking for?</option>
+                               <% var replaceDcategory = Dcategory.replace(/-/g," ");
+    var replacesting2 = replaceDcategory.replace(/and/g,"&"); %>
+        
+                              <%CatfillterPa.forEach((categoriesri)=> { 
+                                 
+ 
+  
+                                 %>
+                            <option value="<%=categoriesri.category_name%>"><%=categoriesri.category_name%></option>
+                                <%})%>
+                         </select>
+                     
+                     </div>
+                <div class="col-md-2 p-0 col-2">
+                    
+                    <button class="btn srchBBn2 desktopfind" type="submit">Search</button>
+                    <button class="btn srchBBn2 mobilefind " type="submit">Find</button>
+                     </div>
+                  </div></form>
+      
+                     </div>
+                        </div>
+             <div class="ShowAresult">  
+                                
+                  <div class="mrg-mn " >
+                      <% if(DcategorylistR.length > 0) { %>
+                     <%DcategorylistR.forEach((Litems,index)=>{ %>
+                       <%var ViewTile =  Litems.ads_title;
+                                    var replacesting = ViewTile.replace(/\s/g,"-")  %>
+                     <div class="DBlist" id="datagetid_<%= Litems.id%>"> 
+                         <input type="hidden" value="<%= Litems.id%>" id="atagetid_de<%=index+1%>">
+                          
+                              <div class="DBimg">   <a href="/directory/details/<%= Litems.id%>/<%= replacesting%>" class="flexsz">
+                                
+                               <img class="lazy"  src="/images/post/placeholder.png?width=500&height=250"  data-src="/images/post/<%= Litems.image_path%>?width=500&height=250"> 
+                                     </a>
+                                  <div class="postedByO"><span>Posted by</span><%= Litems.ads_contactname%></div>
+                                   <div class="postedlogoO"><img class="lazy"  src="/images/post/placeholder.png?width=30&height=30"  data-src="/images/post/<%= Litems.ads_logo%>?width=40&height=40"></div>
+                                  <div class="ImgSrcrating"><div class="startrating">
+                                    <div class="ratings" id="ratings<%= Litems.id%>">
+                                    </div>
+                                    <span  class="rating_count"  id="count<%= Litems.id%>"></span>
+                                 </div></div>
+                              </div>
+                 
+                           <div class="dataContent col-md-12" >
+                           <div class="AlinkL">
+                            
+                              
+                              <a href="/directory/details/<%= Litems.id%>/<%= replacesting%>" >
+                                 
+                                 <div class="page_ListH">
+                                     
+                                     
+                                     <%= Litems.ads_title%></div>
+<!--
+                                   <div class="page_ListHCate">
+                                   
+                                       
+                                     
+                                     <%= Litems.ads_category%></div>
+-->
+                              </a>
+                            
+                               </div>  <div class="page_ListL mapListing"> 
+                                       <%= Litems.ads_city%>
+                                    </div><a href="/directory/<%= Litems.id%>/<%= replacesting%>">
+                                 
+                                
+                               
+                              </a>
+                            
+                      
+                             
+                               
+                                 <% var htmlText=Litems.ads_des;
+                                    var noHTML = /(<([^>]+)>)/ig; 
+                                    var clean = htmlText.replace(noHTML, '');
+                               
+                               
+                               
+                                    %>
+                              <div class="page_ListD">  <% if(clean.length > 60) { 
+                                          
+                                         var sliceText = clean.slice(0,60);
+                                         %>
+                                  <%= sliceText +"...."%> <a href="/directory/<%= Litems.id%>/<%= replacesting%>"><span class="ReadMOreA">Read more</span></a><%} else { %><%=clean%><%}%>
+                                 </div>
+                               
+                                                    
+                       <div class="col-md-12 RSide2">
+                             
+                                   <div class="DBlistE"> <% var Servicephone=Litems.ads_mobile;     %>
+                                       <a href="#" class="viewPhoneM"> <%  var Servicephones = Servicephone.slice(0,3); %> <%= Servicephones +"xxx-xxxx"%>  <span>show</span></a>
+                                 <a href="javascript:void(0);"  class="DB-packlist contactnow" data-id="<%= Litems.id%>">Send Message</a>   
+                                  </div>
+                               </div>
+                            </div>
+                           
+                                    </div>
+                     <%})%>
+                       
+                      <%} else { %>
+                      <div class="Noresults"><div class="sorryMsg text-center skdl">Sorry, we don't have any results for <%= Dcategory%>
+                                   </div>
+                          
+</div>
+                      <%}%>
+           
+
+                      
+                      <div class="paginationhome">
+                      
+                      <% if (count > 1) { %>
+<ul class="pagination">
+  <% if (currentPage > 1) { %>
+    <li><a href="<%if(locationR){ %><%='/directory/'+locationR+'/'+Dcategory%><%}%>?page=<%= (currentPage+1)%><%if(pincode){ %><%='&pincode=' +pincode%><%}%>"><i class="fa fa-angle-left"></i></a></li>
+  <% } %>
+  <% var i = 1;
+  if (currentPage > 5) {
+  i = +currentPage - 4;
+  } %>
+  <% if (i !== 1) { %>
+  	<li class="disabled"><a href="#">...</a></li>
+  <% } %>
+  <% for (i; i<=count; i++) { %>
+    <% if (currentPage == i) { %>
+    	<li class="active"><span><%= i %> <span class="sr-only">(current)</span></span></li>
+    <% } else { %>
+    	<li><a href="<%if(locationR){ %><%='/directory/'+locationR+'/'+Dcategory%><%}%>?page=<%= i %><%if(pincode){ %><%='&pincode=' +pincode%><%}%>"><%= i %></a></li>
+    <% } %>
+    <% if (i == (+currentPage + 4)) { %>
+    	<li class="disabled"><a href="#">...</a></li>
+    <% break; } %>
+  <% } %>
+  <% if (currentPage != count) { %>
+  	<li><a href="<%if(locationR){ %><%='/directory/'+locationR+'/'+Dcategory%><%}%>?page=<%= count %><%if(pincode){ %><%='&pincode=' +pincode%><%}%>">Last <i class="fa fa-angle-right"></i></a></li>
+  <% } %>
+</ul>
+<% } %>
+       </div>
+                  </div>
+               </div></div>
+            </div>
+         </div>
+      </section>
+       
+<!--
+       <div class="loaddivs">
+       <div class="loader-form show">
+       </div>
+       </div>
+-->
+       <div id="enqueryM" class="modal fade " role="dialog" aria-modal="true">
+  <div class="modal-dialog sharebbQ">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="Req_autoapi">
+          <div class="PostBYdesign pt-0">
+                                    <div class="designCompy_img">
+                                        <img class="contactlogo" src="/images/placeholder.png">
+                                    </div>
+                                    <div class="designCompy_content">
+                                        <div class="nameCC2 ajaxsidesh "> <span class="titleAajx"></span></div>
+                                        <p class="mb-0 locationAajx" ></p>
+                                      
+                                    </div>
+                                </div>
+</div><button type="button" class="closeQQ" data-dismiss="modal">×</button>
+    
+      </div>
+      <div class="modal-body">
+          <div class="detailsSm6">Fill out the form below to request information from <span class="titleAajx"></span></div>
+      <form action="" method="post" id="messageForm" >
+       
+                       <div class="form-group rele">
+                          <input type="hidden" name="user_id" value="" class="userId">
+                          <input type="hidden" name="post_id" value="" >
+                           <input type="text" class="form-control ppe-l0Q" name="user_name" placeholder="Full Name">
+                              <span class="errormsgd" id="user_name"></span>
+                        </div>
+                       
+                        <div class="form-group rele">
+                       
+                           <input type="text" class="form-control ppe-l0Q" name="user_email" placeholder="Email Address(optional)">
+                            <span class="errormsgd" id="user_email"></span>
+                        </div>
+                           <div class="form-group rele">
+                         
+                           <input type="text" class="form-control ppe-l0Q" name="user_mobile" placeholder="Mobile Number">
+                                 <span class="errormsgd" id="user_mobile"></span> 
+                        </div>
+                        <div class="form-group rele">
+                          
+                            <textarea class="form-control ppe-l0Q" name="user_message" placeholder="Message"></textarea>     
+                       <span class="errormsgd" id="user_message"></span>
+                        </div>
+                        <div class="mt-4">
+                           <div class="row">
+                              <div class="col-12">
+                                 <button type="submit" class="btn btnlogin">Submit</button>
+                              </div>
+                           </div>
+                        </div>
+          <div class="col-md-12">
+           <div id="fmailmsg"></div>
+           <div id="sucessmsg"></div>
+          </div>
+                     </form>
+         </div>
+  </div>
+
+  </div>
+</div>
+          <% include include/footer.ejs %>
+                    <script src="/js/search.js"></script>
+
+   </body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html class="indexpage">
+<head>
+	
+	<title></title>
+   <% include ../include/head.ejs %>
+    
+    <script src=http://cdn.ckeditor.com/4.14.0/basic/ckeditor.js></script>
+
+
+</head>    
+
+ 
+  <body id="page-usertop">
+      <% include ../include/user-header.ejs %>
+          <div class="single-channel-page" id="content-wrapper">
+          
+              <section class="userdashbordA">
+            <div class="container">
+                <div class="row">
+                        <div class="col-sm-12">
+    <h1 class="wizard-title">Post a free Article</h1>
+  
+</div> </div>
+                    <div class="row">
+                  <div class="col-lg-12">
+                    
+                         <form action="" enctype="multipart/form-data" method="post">
+                             <%= message%>
+                        <div class="row">
+                      
+                <% dataR.forEach((dataR)=> {  %>
+                        
+                            <div class="col-lg-12">
+                              <div class="form-group">
+                                 <label for="e1">Title (The Unique Idea, 20-25 words)</label>
+                                 <input type="text" name="title1" placeholder="Contrary to popular belief, Lorem Ipsum (2019) is not." class="form-control" value="<%= dataR.news_title %>">
+                                   <% errors.forEach((error)=>{ %>
+                                <% if(error.param == 'title1'){ %>
+                               
+                               <p class="errmsg text-danger"><%= error.msg %></p>
+                               <p class="errmsg text-danger"><%= error.ignore_whitespace %></p>
+                               
+                               <%} %>
+                               <% })  %>
+                              </div>
+                              
+                              
+                           </div>  
+                         
+                               <div class="col-lg-12">
+                              <div class="form-group">
+                                 <label for="e3">Category</label>
+                                 <select id="category" class="form-control" name="category">
+                                     <option value="">Select</option>
+                                     <% articleResult.forEach((articleResult)=>{  %> <option value="<%= articleResult.category_name%>" <%= articleResult.category_name==dataR.news_category? 'selected':'' %>  ><%= articleResult.category_name%> </option><%})%>
+                                     
+                                 </select>
+                                   <% errors.forEach((error)=>{  %>
+                                  
+                                  <% if(error.param == 'category') { %>
+                                  <p class="errmsg text-danger"> <%= error.msg %> </p>
+                                  
+                                  <% } %>
+                                  <% }); %>
+                              </div>
+                           
+                           </div>
+                            
+                         
+                           <div class="col-lg-12">
+                              <div class="form-group">
+                                 <label for="e4">Publisher Name</label>
+                                  <input type="text" placeholder="" name="author" id="e1" class="form-control" value="<%= dataR.user %>">
+                              </div>
+                           </div>
+                           <div class="col-lg-12">
+                              <div class="form-group">
+                                 <label>Publisher Image(Optional)</label>
+                                 
+                                  
+                                      <div class="comapny_logo_pre">
+                                      <div class="comapny_logo_img">
+                                          <%if(dataR.author_image == '0') { %>
+                                          
+                                          
+                                          <img src="/images/profile.jpg" alt="<%= dataR.author_name %>" id="image_feature"> 
+                                          <%} else {%>
+                                           <img src="/user/article/<%= dataR.author_image %>" alt="<%= dataR.author_name %>" id="image_feature">
+                                          <%  }%>
+                                          </div> <div class="custom-file">
+                                             <input type="file" name="author_image" id="customFile1" class="form-control" style="display:none;">
+                                      <input type="hidden" name="publisher_image" value="<%= dataR.author_image %>">
+    <label class="custom-file-label" for="customFile1"><i class="fa fa-camera" aria-hidden="true"></i>            Publisher Image</label>
+  </div></div>
+                
+                              </div>
+                           </div>
+                           <div class="col-lg-12">
+                              <div class="form-group">
+                                 <label for="e6">Keyword</label>
+                                 <input type="text" placeholder="For Seo" id="e7" name="keyword" class="form-control" value="<%= dataR.Keyword %>">
+                              </div>
+                           </div>
+                    
+                      
+
+                           <div class="col-lg-12">
+                              <div class="form-group">
+                                 <label for="e9">Language</label>
+                                 <select id="e9" class="form-control" name="language">
+                                    <option>English</option>
+                                    <option>HIndi</option>
+                                  
+                                 </select>
+                              </div>
+                           </div> <div class="col-lg-12">
+                                  <div class="form-group">
+                                 
+                                 <label for="e1">Featured image</label>
+                                  <div class="comapny_logo_pre">
+                                      <div class="comapny_logo_img"> <img src="/user/resize/<%= dataR.news_image %>" alt="" id="image_feature">  </div> <div class="custom-file">
+                                         
+    <input type="file" class="custom-file-input" id="customFile" name="ads_logo" >
+                                      <input type="hidden" name="news_image" value="<%= dataR.news_image %>">
+    <label class="custom-file-label" for="customFile"><i class="fa fa-cloud-upload" aria-hidden="true"></i>             Upload Featured Image </label>
+  </div></div>
+                                  
+                           
+                              </div>   
+                            </div>
+                                 
+                               <div class="col-lg-12">
+                              <div class="form-group">
+                                 <label for="e2">Description(Your Own clever words)</label>
+                              
+                                    <section id="editor">
+                            <textarea id="edit" name="description"  ><%= dataR.news_des %></textarea>
+ <% errors.forEach((error)=>{  %>
+                                  
+                                  <% if(error.param == 'description') { %>
+                                  <p class="errmsg text-danger"> <%= error.msg %> </p>
+                                  
+                                  <% } %>
+                                  <% }); %>
+</section>  
+  <script>
+    CKEDITOR.replace("edit")
+  </script>
+           
+                   </div>
+                           </div>
+                    
+                         </div><div class="osahan-area butnc col-md-8">
+                        <button class="btn btn-outline-primary" type="submit">Submit </button>
+                     </div> <%})%>
+                         </form>
+                 
+                     
+                  </div>
+                       
+               </div>
+                  </div>
+                
+                  </section>
+               </div> </div>
+    
+     <% include ../include/user-footer.ejs %>
+
+           <script>
+              
+          
+              
+            
+                  $(document).ready(function(){  
+                       
+                      
+                        $("#insertImage-1").click(function(){
+              $(".image_p").addClass('fr-active');
+              
+              
+          });
+             
+             
+        $('#filemedia').change(function(e){
+            var fileName = e.target.files[0].name;
+              
+         $("#filename_is").html(fileName);
+        });
+           
+                  
+                  $("#customFile").change(function(e){
+                       var reader = new FileReader();
+
+        $("#image_feature").attr('src',input.files);
+    });
+                  });
+              
+             
+          </script>
+						</body>
+								</html>
+

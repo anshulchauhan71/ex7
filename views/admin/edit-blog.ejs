@@ -1,0 +1,78 @@
+<% include include/header.ejs%>
+<% include include/sidebar.ejs%>
+
+<div class="content-wrapper">
+   
+    <section class="content-header">
+      <h1>
+     Category 
+       
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Add Blog</a></li>
+      
+      </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+        
+          <div class="col-md-2">
+              </div>
+          <div class="col-md-7">
+                <div class="box box-primary">
+                        <div class="box-header with-border">
+                          <h3 class="box-title">Add Blog</h3>
+                        </div>
+                        <% if(message) { %>
+
+                          <p class="text-danger text-center"><%= message %></p>
+                          <%}%>
+                        <form class="add-player-form" action="" method="post" enctype="multipart/form-data" >
+                          <div class="box-body">
+                            <div class="form-group">
+                              <label for="exampleInputEmail1">Blog Title</label>
+                              <input type="text" class="form-control" name="btitle"  value="<%= blogitem.b_title%>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Blog Sub Title</label>
+                                <input type="text" class="form-control" name="stitle" value="<%= blogitem.s_title%>"  required>
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleInputEmail1">Author Name</label>
+                                <input type="text" class="form-control" name="bauthor" value="<%= blogitem.b_author%>"  required>
+                              </div>
+                            
+                            <div class="form-group">
+                              <label for="exampleInputFile">Blog Image</label>
+                              <input type="file" name="image" id="exampleInputFile" class="form-control" >
+                                <img src="/images/<%= blogitem.b_image %>" width="50px">
+                            
+                            </div>
+                         
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Description</label>
+                               
+                                <textarea  class="form-control" name="bdes" id="editor1"><%= blogitem.b_des%></textarea>
+                              </div>
+                          </div>
+                          <!-- /.box-body -->
+            
+                          <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                          </div>
+                        </form>
+
+                      </div>
+            </div>
+            </div>
+            
+            </section>
+
+    </div>
+    <script>
+            CKEDITOR.replace( 'editor1' );
+    </script>
+
+
+<% include include/footer.ejs%>

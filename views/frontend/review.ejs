@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Reviews</title>
+      <% include include/head.ejs %>
+         
+    
+   </head>
+   <body>
+      <% include include/header.ejs %>
+        <% include include/menu.ejs %>
+      <section class="mid_pricelst">
+         <div class="list_pric">
+            <div class="container max_acount">
+               <div class="mid_acount_part">
+                  <div class="br_acount pt-2">
+                     <div class="row max_acountrow">
+                        <div class="col-md-12 pmot">
+                            <div id="checkAlert"></div>
+      
+                           <form method="post"  id="reviewSSubmit">
+                              <div class="revies_hwas">
+                                 <%DataResult.forEach((DataResultI,index)=>{ %>
+                                 <h1 class="reviw_heading">Write a review for  <%= DataResultI.ads_title%></h1>
+                                 <%})%>
+                                 <div class="add_review">
+                                    <div class="review_rate row">
+                                       <div class="col-md-4">
+                                        <span class="rat_serv">Rate Our Service <sup>*</sup></span></div>
+                                       <div class="col-md-8">
+                                          <div id="full-stars-example">
+                                             <div id="full-stars-example-two">
+                                                <div class="rating-group">
+                                                   <input disabled checked class="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio">
+                                                   <label aria-label="1 star" class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                                   <input class="rating__input" name="rating3" id="rating3-1" value="1" type="radio">
+                                                   <label aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                                   <input class="rating__input" name="rating3" id="rating3-2" value="2" type="radio">
+                                                   <label aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                                   <input class="rating__input" name="rating3" id="rating3-3" value="3" type="radio">
+                                                   <label aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                                   <input class="rating__input" name="rating3" id="rating3-4" value="4" type="radio">
+                                                   <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                                   <input class="rating__input" name="rating3" id="rating3-5" value="5" type="radio">
+                                                    <span  id="rating3" class="errosMsg"></span>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="row mt-4 mt-44">
+                                    <div class="col-md-4 "><span class="rat_serv">Your Reviewer <sup>*</sup></span></div>
+                                     <input type="hidden" name="userId" value="<%= req.session.userId %>">
+                                    <div class="col-md-6">
+                                       <div class="form_rev">
+                                          <input placeholder="Please enter reviewer name" type="text" size="60" name="reviewName" maxlength="50" class="form-control psswrdcng">
+                                       </div>
+                                       <p class="conditionrev">Maximum 50 Characters</p>
+                                            <span  id="reviewName" class="errosMsg"></span>
+
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="col-md-4"><span class="rat_serv">Review <sup>*</sup></span></div>
+                                    <div class="col-md-6">
+                                       <div class="form_rev"><textarea placeholder="Please wite your review" name="review" cols="60" rows="5" class="form-control psswrdcng"></textarea></div>
+                                       <p class="conditionrev">Maximum 250 Characters</p>
+                                        <span  id="review" class="errosMsg"></span>
+                                    </div>
+                                 </div>
+                                 <div class="text-center">
+                                     <%if(req.session.loggedin) {   %>
+                                    <input type="submit" id="edit-submit" name="op" value="Submit" class="btn btn-edit_btn">
+                                     <%} else {%><input type="button" id="edit-submit" name="op" value=" Login & Submit" class="btn btn-edit_btn"> <%}%>
+                                 </div>
+                              </div>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+       
+      <% include include/footer.ejs %>
+          
+       <script>
+            <%if(req.session.loggedin) {   %>
+           $(document).ready(function(){  
+           $("#reviewSSubmit").submit(function(event) { 
+                     event.preventDefault();
+
+               $.ajax({
+                                  
+
+                   type:"POST",
+                   url:"/business/" + <%= req.params.id %> + "/reviews",
+                   data: $('#reviewSSubmit').serialize(),
+                   success:function(registersubmit){
+                       
+                       if(registersubmit.errors){
+                        $.each(registersubmit.errors,function(errormsg,error){
+
+                         $('#'+error.param).text(error.msg);
+
+                                   
+                           })
+                       }
+                        else if(registersubmit.CheckStatus){
+                            
+                            $("#checkAlert").html('<div class="alert alert-danger" role="alert">'+registersubmit.CheckStatus+'<a href="'+registersubmit.SiteUrl+'">Back</a></div>')
+                                
+                                
+                                }
+                       else {
+                        
+                           swal({
+ 
+  text: registersubmit.success,
+  icon: "success",
+}); 
+
+                           window.location=registersubmit.SiteUrl;
+
+     
+                        
+                       }
+                   }
+
+               })
+           })
+                                      })
+           <%} else { %>$(document).ready(function(){  
+           $("#edit-submit").click(function() { 
+            $("#login_api").modal("show");
+
+
+           
+           });
+           });   <%}%>
+       </script>
+   </body>
+</html>

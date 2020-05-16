@@ -1,0 +1,269 @@
+<% include include/header.ejs%>
+<% include include/sidebar.ejs%>
+
+<div class="content-wrapper">
+   
+    <section class="content-header">
+      <h1>
+     Add News 
+       
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">  Add News </a></li>
+      
+      </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+        
+          <div class="col-md-1">
+              </div>
+          <div class="col-md-10">
+                <div class="box box-primary">
+                        <div class="box-header with-border">
+                          <h3 class="box-title"> Edit News </h3>
+                        </div>
+                        
+                    
+
+                        <form class="add-player-form" action="" method="post" enctype="multipart/form-data" >
+                          <div class="box-body">
+                            <div class="form-group col-md-6">
+                              <label  >News Title</label>
+                              <input type="text" class="form-control" name="newstitle" value="<%= newsedit.news_title %>" required >
+                            </div> <div class="form-group col-md-6">
+                              <label  >News SubTitle</label>
+                              <input type="text" class="form-control" name="subtitle" value="<%= newsedit.news_subtitle %>"  >
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label  >Select Category</label>
+                                <select class="form-control" name="category"><option>Select</option><%  categorylist.forEach((category) => {  %> <option value="<%= category.category_name  %>" <%= newsedit.news_category==category.category_name?'selected':'' %> >  <%= category.category_name  %></option> <%});%></select>
+                              </div>
+                              <div class="form-group col-md-6">
+                                <label  >Select State</label>
+                                <select class="form-control" name="state" id="stateid">
+                                  <option>Select</option> <% cityshow.forEach((cityitem) => { %>
+                                     <option value="<%= cityitem.state %>" <%= newsedit.news_state==cityitem.state?'selected':'' %>> <%= cityitem.state %></option> <%}); %></select>
+                              </div>
+
+                              <div class="form-group col-md-6">
+                                <label  >Select City</label>
+                                <select class="form-control" name="city" id="cityid" >
+                                  <option>Select</option>
+                                   <%cityshow2.forEach((cityitem)=> { %>
+                                    <option value="<%= cityitem.city %>" <%= newsedit.news_city==cityitem.city?'selected':''  %>><%= cityitem.city %></option> <% }); %></select>
+                              </div>
+                              <script>
+
+                                  $("select[name='state']").change(function(){
+                                    var state_v = $("select[name='state']").val();
+                                  $.ajax({
+                                  
+                                    type:'GET',
+                                  
+                                    url:'/adminxp/getcityupdate/'+state_v,
+                                    success:function(resultstate){
+                                      $("select[name='city']").html(resultstate.newhtml);
+                                  
+                                    }
+                                   
+                                  })
+                                  });
+                                        </script>
+                              <div class="form-group col-md-6">
+                                <label  >Publisher</label>
+                                <input type="text" class="form-control" name="publisher" value="<%= newsedit.news_publisher %>"   >
+                              </div>
+                            
+                            <div class="form-group col-md-6">
+                              <label for="exampleInputFile">Publisher Image</label>
+                              <input type="file" name="pimage" id="exampleInputFile"   class="form-control" >
+                                
+                                <%if(newsedit.news_publisher_image){ %>
+                                 <img src="/post/<%= newsedit.news_publisher_image %>" width="30px">
+                            <%} %>
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="exampleInputFile">News Image</label>
+                              <input type="file" name="nimage" id="exampleInputFile"    class="form-control" >
+                              <input type="hidden" name="updateimage" id="exampleInputFile"  value="<%= newsedit.news_image %>"  class="form-control" >
+                              <img src="/post/<%= newsedit.news_image %>" width="30px">
+                            
+                            </div> <div class="form-group col-md-6">
+                              <label for="exampleInputFile">Video Link</label>
+                              <input type="text" name="video" value="<%= newsedit.news_video %>"  id="exampleInputFile" class="form-control" >
+            
+                            
+                            </div>
+                         <div class="form-group col-md-6">
+                          <label for="exampleInputFile">Tags </label>
+                          <input type="text" name="tag" id="exampleInputFile" value="<%= newsedit.news_tags %>" class="form-control" >
+        
+                              </div>
+                              <div class="form-group col-md-6">
+                                <label  style="display:block">Show on homepage</label>
+                               <label>
+                                <input type="radio" name="homepage" value="1" <%= newsedit.homepage=='1'?'checked':'' %>> Yes </label>
+                                <label>
+                                  <input type="radio" name="homepage" value="0" <%= newsedit.homepage=='0'?'checked':'' %>> No </label>
+                              </div>
+                                <div class="clearfix"></div>
+                               <div class="form-group col-md-4 " >
+                                <label  style="display:block">Top News</label>
+                               <label>
+                                <input type="radio" name="top_news" value="1" <%= newsedit.top_news=='1'?'checked':'' %>> Yes </label>
+                                <label>
+                                  <input type="radio" name="top_news" value="0" <%= newsedit.top_news=='0'?'checked':'' %>> No </label>
+                              </div> <div class="form-group col-md-4 " >
+                                <label  style="display:block">Latest News</label>
+                               <label>
+                                <input type="radio" name="latest_news" value="1" <%= newsedit.latest_news=='1'?'checked':'' %>> Yes </label>
+                                <label>
+                                  <input type="radio" name="latest_news" value="0" <%= newsedit.latest_news=='0'?'checked':'' %>> No </label>
+                              </div> <div class="form-group col-md-4 " >
+                                <label  style="display:block">Big  News</label>
+                               <label>
+                                <input type="radio" name="big_news" value="1" <%= newsedit.big_news=='1'?'checked':'' %> > Yes </label>
+                                <label>
+                                  <input type="radio" name="big_news" value="0" <%= newsedit.big_news=='0'?'checked':'' %>> No </label>
+                              </div> 
+                              <div class="clearfix"></div>
+                              <div class="form-group col-md-4">
+                              <label for="exampleInputFile">Meta Title</label>
+                              <input type="text" name="meta_title" value="<%= newsedit.metatitle %>" id="exampleInputFile" class="form-control" >
+            
+                            
+                            </div><div class="form-group col-md-4">
+                              <label for="exampleInputFile">Meta Keywords</label>
+                              <input type="text" name="meta_keywords"  value="<%= newsedit.metakeyword%>" id="exampleInputFile" class="form-control" >
+            
+                            
+                            </div><div class="form-group col-md-4">
+                              <label for="exampleInputFile">Meta Description</label>
+                            <textarea name="meta_desc" class="form-control"> <%= newsedit.metadescription %> </textarea>
+                            
+                            </div><div class="col-md-12">
+                              <div class="form-group col-md-4" style="padding:0;">
+                                  <button class="btn btn-info" type="button" id="mediaupload"  data-toggle="modal" data-target="#myModal"><i class="fa fa-camera" aria-hidden="true"></i>
+ Add Media</button>    
+            
+                            
+                            </div>
+                            </div>
+
+                              <div class="form-group col-md-12">
+                                <label  >Short  Description</label>
+                               
+                                <textarea  class="form-control" name="short" id="editor2"><%= newsedit.news_shortdes %></textarea>
+                              </div>
+                            <div class="form-group col-md-12">
+                                <label  >Full Description</label>
+                               
+                                <textarea  class="form-control" name="long" id="editor1"><%= newsedit.news_des %> </textarea>
+                              </div>
+                          </div>
+                          <!-- /.box-body -->
+            
+                          <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                          </div>
+                        </form>
+
+                      </div>
+            </div>
+            </div>
+            
+            </section>
+
+    </div><div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Upload Media</h4>
+      </div>
+      <div class="modal-body">
+        <p>Upload Photo</p>
+          <div style="display:flex">
+              <form method="post" enctype="multipart/form-data" id="submitmedia"><div class="medialink" style="    width: 414px;
+    display: flex;
+    border: 1px solid #dddddd;
+    padding: 4px;"><label style="display: block;
+    padding: 4px 8px;
+    width: 100%;"><input type="file" class="form-control" id="filemedia" name="mediafile" style="display:none"><span class="mediafilw"> <i class="fa fa-camera" aria-hidden="true"></i> <span id="filename_is">Upload Media</span></span></label><button class="btn btnsubmit" type="submit">Submit</button></div></form>
+          
+          
+          </div>
+          <div  id="imgSrc"></div>
+          <div  class="imagelinkpath"></div>
+          <script>
+              
+              
+              $(function() {
+    // Multiple images preview in browser
+    var imagesPreview = function(input, placeToInsertImagePreview) {
+
+        if (input.files) {
+            var filesAmount = input.files.length;
+
+            for (i = 0; i < filesAmount; i++) {
+                var reader = new FileReader();
+
+                reader.onload = function(event) {
+                    $($.parseHTML('<img class="thumbnail" width="90px" height="70px" style="display:inline-block;margin: 4px;">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                }
+
+                reader.readAsDataURL(input.files[i]);
+            }
+        }
+
+    };
+
+    $("#filemedia").change(function(){
+        imagesPreview(this, '#imgSrc');
+    });
+});
+            $("#submitmedia").submit(function(event){
+                   event.preventDefault();    
+              
+              var Dataform  = new FormData(this);
+              $.ajax({
+                     type:'POST',
+                  url:'/user/mediaUpload',
+                  contentType:false,
+                  processData:false,
+                  data:Dataform,
+                  success:function(response){
+                      var Imagedata = '<img src='+response.filepathname+'>';
+                     
+                      
+                      $(".imagelinkpath").append(response.filepathname);
+                      
+                      
+                  }
+                  
+              })
+                                 
+                                 })      
+              
+          
+              
+             
+          </script>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+          
+    </div>
+
+  </div>
+</div>
+    <script>
+            CKEDITOR.replace( 'editor1' );
+            CKEDITOR.replace( 'editor2' );
+    </script>
+<% include include/footer.ejs %>

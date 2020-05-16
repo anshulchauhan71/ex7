@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html class="indexpage">
+<head>
+	
+	<title>Addmission24</title>
+   <% include ../include/head.ejs %>
+	<script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+
+</head>    
+
+ 
+  <body id="page-usertop">
+      <% include ../include/user-header.ejs %>
+          <div class="single-channel-page" id="content-wrapper">
+          
+            <div class="single-channel-nav">
+               <nav class="navbar navbar-expand-lg navbar-light">
+                  <a class="channel-brand" href="#">Jammuna Parasad <span title="" data-placement="top" data-toggle="tooltip" data-original-title="Verified"><i class="fa fa-check-circle text-success"></i></span></a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                     <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                           <a class="nav-link" href="#">Videos <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="#">Playlist</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="#">Channels</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="#">Discussion</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           Donate
+                           </a>
+                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="#">Action</a>
+                              <a class="dropdown-item" href="#">Another action</a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="#">Something else here</a>
+                           </div>
+                        </li>
+                     </ul>
+                
+                  </div>
+               </nav>
+            </div>
+              <section class="userdashbord">
+            <div class="container">
+                    <div class="row">
+                  <div class="col-lg-9">
+                      
+                      <h3 class="submittile"><span>Your  Articles</span></h3>
+                     <div class="osahan-form">
+                         
+                         
+                             <div class="col-xl-3 col-sm-6 mb-3">
+                        <div class="video-card">
+                       <div class="video-card-image">
+                              
+                              <a href="#"><img class="img-fluid" src="https://askbootstrap.com/preview/vidoe-v1-3/theme-seven/img/v3.png" alt=""></a>
+                              
+                           </div>
+                           <div class="video-card-body">
+                              <div class="video-title">
+                                 <a href="#">There are many variations of passages of Lorem</a>
+                              </div>
+                              <div class="video-page text-success">
+                                 Education  <a title="" data-placement="top" data-toggle="tooltip" href="#" data-original-title="Verified"><i class="fa fa-check-circle text-success"></i></a>
+                              </div>
+                              <div class="video-view">
+                                 1.8M views &nbsp;<i class="fa fa-calendar-alt"></i> 11 Months ago
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                        </div>
+                     
+                     <hr>
+                    
+                  </div>
+                        <div class="col-lg-3">
+                        
+                        <div class="preview_part">
+                            
+                            <div class="previewbtnlist"><button class="laptopbtn"><i class="fa fa-laptop" aria-hidden="true"></i>
+ Desktop</button><button class="laptopbtn"><i class="fa fa-mobile" aria-hidden="true"></i>
+ Mobile</button></div>
+                            <div class="outer-preview"><div class="earpiece"></div></div>
+                            </div>
+                        </div>
+               </div>
+                  </div>
+                
+                  </section>
+               </div>
+       
+  
+
+    
+
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Datemask dd/mm/yyyy
+    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+    //Datemask2 mm/dd/yyyy
+    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+    //Money Euro
+    $('[data-mask]').inputmask()
+
+    //Date range picker
+    $('#reservation').daterangepicker()
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, locale: { format: 'MM/DD/YYYY hh:mm A' }})
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+      {
+        ranges   : {
+          'Today'       : [moment(), moment()],
+          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        startDate: moment().subtract(29, 'days'),
+        endDate  : moment()
+      },
+      function (start, end) {
+        $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+      }
+    )
+
+    //Date picker
+    $('#datepicker').datepicker({
+      autoclose: true
+    })
+
+    //iCheck for checkbox and radio inputs
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+      checkboxClass: 'icheckbox_minimal-blue',
+      radioClass   : 'iradio_minimal-blue'
+    })
+    //Red color scheme for iCheck
+    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+      checkboxClass: 'icheckbox_minimal-red',
+      radioClass   : 'iradio_minimal-red'
+    })
+    //Flat red color scheme for iCheck
+    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+      checkboxClass: 'icheckbox_flat-green',
+      radioClass   : 'iradio_flat-green'
+    })
+
+    //Colorpicker
+    $('.my-colorpicker1').colorpicker()
+    //color picker with addon
+    $('.my-colorpicker2').colorpicker()
+
+    //Timepicker
+    $('.timepicker').timepicker({
+      showInputs: false
+    })
+  })
+</script>
+					 <% include ../include/user-footer.ejs %>
+
+								</body>
+								</html>
+

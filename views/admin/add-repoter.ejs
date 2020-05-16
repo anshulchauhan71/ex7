@@ -1,0 +1,191 @@
+<% include include/header.ejs%>
+<% include include/sidebar.ejs%>
+
+<div class="content-wrapper">
+   
+    <section class="content-header">
+      <h1 class="text-center">
+            Add Repoter 
+       
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">  Add Repoter </a></li>
+      
+      </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+        
+          <div class="col-md-1">
+              </div>
+          <div class="col-md-10">
+              
+                    <div class="box box-danger">
+                        <div class="box-header">
+                          <h3 class="box-title">Add  Repoter</h3>
+                        </div>
+                        <div class="box-body">
+                          <!-- Date dd/mm/yyyy -->
+                          <div class="form-group col-md-4">
+                            <label>Repoter Name</label>
+            
+                            <div class="formil">
+                            
+                              <input type="text" class="form-control" name="r_name">
+                            </div>
+                            <!-- /.input group -->
+                          </div> <div class="form-group col-md-4">
+                            <label>Repoter Id</label>
+            
+                            <div class="formil">
+                             
+                              <input type="text" class="form-control" name="r_name">
+                            </div>
+                            
+                            <!-- /.input group -->
+                          </div>
+                          <div class="form-group col-md-4">
+                            <label>Repoter Status</label>
+            
+                            <div class="formil">
+                             
+                              <select class="form-control" name="category"><option>Select</option></select>
+                            </div>
+                            <!-- /.input group -->
+                          </div>
+                          <!-- /.form group -->
+            
+                          <!-- Date mm/dd/yyyy -->
+                          <div class="form-group col-md-4">
+                                <label>Joing Date:</label>
+                            <div class="formil"> 
+                             
+                              <input type="text" class="form-control" data-inputmask="'alias': 'mm/dd/yyyy'" data-mask="">
+                            </div>
+                            <!-- /.input group -->
+                          </div> <div class="form-group col-md-4">
+                                <label>Gender:</label>
+                            <div class="formil"> 
+                            
+                              <select class="form-control" name="category"><option>Select</option></select>
+                        
+                            </div>
+                            <!-- /.input group -->
+                          </div><div class="form-group col-md-4">
+                                <label>Education:</label>
+                            <div class="formil"> 
+                             
+                              <select class="form-control" name="category"><option>Select</option></select>
+                        
+                            </div>
+                            <!-- /.input group -->
+                          </div><div class="form-group col-md-4">
+                                <label>Experience:</label>
+                            <div class="formil"> 
+                        
+                              <input type="text" class="form-control" name="r_name">
+                            </div>
+                            <!-- /.input group -->
+                          </div><div class="form-group col-md-4">
+                                <label>Email Id:</label>
+                            <div class="formil"> 
+                             
+                              <input type="text" class="form-control" name="r_name">
+                
+                            </div>
+                            <!-- /.input group -->
+                          </div>
+                          
+                          <div class="form-group col-md-4">
+                                <label>Repoter Photo:</label>
+                            <div class="formil"> 
+                              
+                              <input type="file" class="form-control" name="r_name">
+                
+                            </div>
+                            <!-- /.input group -->
+                          </div>
+                          <div class="form-group col-md-4">
+                                <label>Phone No:</label>
+                            <div class="formil"> 
+                             
+                              <input type="text" class="form-control" name="r_name">
+                
+                            </div>
+                            <!-- /.input group -->
+                          </div><div class="form-group col-md-4">
+                                <label>Salery:</label>
+                            <div class="formil"> 
+                             
+                              <input type="text" class="form-control" name="r_name">
+                
+                            </div>
+                            <!-- /.input group -->
+                          </div>
+                          <div class="form-group col-md-4">
+                                <label>Joing State:</label>
+                
+                                <div class="formil">
+                                
+                                    <select class="form-control" name="category"><option>Select</option></select>
+                                
+                                <!-- /.input group -->
+                              </div>
+                    
+                            </div><div class="form-group col-md-4">
+                                    <label>Address:</label>
+                    
+                                    <div class="formil">
+                                     
+                                        <select class="form-control" name="category"><option>Select</option></select>
+                                    
+                                    <!-- /.input group -->
+                                  </div>
+                        
+                                </div>
+                          <div class="form-group col-md-4">
+                            <label>Joing City:</label>
+            
+                            <div class="formil">
+                            
+                                <select class="form-control" name="category"><option>Select</option></select>
+                        
+                            <!-- /.input group -->
+                          </div>
+                
+                        </div>
+                        <!-- /.box-body -->
+                      </div>
+                      <div class="box-footer text-center">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                          </div>
+                      </div>
+            </div>
+            </div>
+            
+            </section>
+
+    </div>
+    <script>
+            CKEDITOR.replace( 'editor1' );
+            CKEDITOR.replace( 'editor2' );
+    </script>
+    <script>
+
+$("select[name='state']").change(function(){
+  var state_v = $("select[name='state']").val();
+$.ajax({
+
+  type:'GET',
+
+  url:'/admin/getcity/'+state_v,
+  success:function(resultstate){
+    $("select[name='city']").html(resultstate.html);
+
+  }
+ 
+})
+});
+      </script>
+<% include include/footer.ejs %>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html class="indexpage">
+<head>
+	
+	<title></title>
+   <% include ../include/head.ejs %>
+
+</head>    
+
+ 
+  <body id="page-usertop">
+      <% include ../include/user-header.ejs %>
+          <div class="single-channel-page" id="content-wrapper">
+              <section class="userdashbordd">
+            <div class="container">
+                    <div class="ads_heads">
+                         <div class="row"><div class="col-sm-12">
+                         
+                           
+                         
+                        <form method="post" enctype="multipart/form-data" >
+                           
+                            
+                        <div class="post_ads row">
+                              <div class="col-lg-8">
+                           <div class="Bpart_0 row">
+                              <div class="col-lg-12">
+                                 <h3 class="busTitle">Upload Pricing
+                                 </h3>
+                              </div>
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+                                    
+                                    <label for="e1">Category*
+                                    </label> 
+                                    <select id="bcategory" class="form-control" name="category"  >
+                                             <%if(category){ %>  <option value="<%=category%>"><%=category%></option> <%} else{%>
+                                      <option value="">Select</option><%}%>
+                                     <option value="bedroom">Bedroom Services</option>
+                                     <option value="flooring">Flooring Services</option>
+                                     <option value="bathroom">Bathroom Services</option>
+                                     <option value="appliances">Appliances & Repair Services</option>
+                                     <option value="cleaning">Cleaning Services</option>
+                                     <option value="window">Window & Door Installation</option>
+                                     <option value="kitchen">Kitchen</option>
+                                     <option value="painters">Painters & Wallpaper  Services </option>
+                                     <option value="design">Design & Deco Services</option>
+                                     <option value="electrical">Electrical Services</option>
+                                     <option value="landscape">Lawn, Landscape & Garden Services </option>
+                                  
+                                    </select>
+                                    <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='category'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                     <%if(Categoychk !=''){%>
+                                       <span class="err_msg">  <%= Categoychk %></span>
+                                     <%}%>
+                                 </div>
+                              </div>
+                            
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label for="e2">Company  Name
+                                    *</label>
+                                    <input type="text" name="companyname" placeholder="Ex. Rahul Contractor"  class="form-control" value="<%= companyname%>">
+                                    <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='companyname'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                 </div>
+                   <% if(message != '') { %>
+                                 <p class="text-danger"><%= message%></p>
+                                 <% }%>
+
+                              </div>   <div class="col-lg-12">
+                    <label >Services*
+                                    </label>            
+   
+                                   <div class="sericeoffer">
+                                       
+                                       <div id="services">
+                                       
+                                       </div><div class="sericeformd">
+                                   <input type="text" id="serviceAppend" placeholder="Bathroom Remodel,Kitchen Remodel,House Cleaning.." class="form-control">
+                                       <button type="button" id="add_services">+Add</button>
+                                   </div>
+                                       <div id="servicesAerr"></div>
+                                   </div>
+                                      <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='service'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                               </div>
+                              <div class="col-lg-8">
+                                 <div class="form-group">
+                                    <label for="e1">Profile Picture</label>
+                                    <div class="comapny_logo_pre">
+                                       <div class="comapny_logo_img"> <img src="<%if(ads_logo){%>/images/post/<%= ads_logo%><%}else{%>/images/profile.jpg<%}%>" alt="" id="image_publicer">  </div>
+                                        <input type="hidden"  value="<%= ads_logo%>" name="ads_updatelogo">
+                                       <div class="custom-file">
+                                          <input type="file" class="custom-file-input"   id="customFile" onchange="readURL(this);" name="ads_logo" accept="" >
+                                          <label class="custom-file-label" for="customFile"><i class="fa fa-cloud-upload" aria-hidden="true"></i>             Upload Profile Pic </label>
+                                            <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='ads_logo'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                             
+                           </div>
+                           <div class="clearfix"></div>
+                           <div class="Bpart_0 row">
+                              <div class="col-md-12">
+                                 <h3 class="busTitle">Your Charges
+                                 </h3>
+                              </div>
+                              
+                               <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label for="e9"> Hourly Rate (Rs/hr)<br>
+</label>
+                                        <input type="text"   name="hourly" placeholder="20Rs/Hour" class="form-control" value="<%= hourly%>">
+                                 
+                              </div> 
+                              </div>
+                                <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label for="e9"> Perday Rate (Rs/day)<br>
+</label>
+                                        <input type="text"   name="perday" placeholder="500Rs/day" class="form-control" value="<%= perday%>">
+                                 
+                              </div> 
+                              </div>
+                               <div class="col-md-12">
+                               <div class="OrPrice">Or</div>
+                               </div>
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label for="e9">Rate (/Sqft)
+</label>
+                                    <input type="text"   name="sqft" class="form-control" placeholder="500Rs/Sqft"  value="<%= sqft%>">
+                                       <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='ads_price'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                 </div>
+                              </div>  
+                               <div class="col-lg-6"></div>
+                               <div class="col-lg-12">
+                               <%if (imgempty !=='') { %>
+                                 <span class="err_msg"><%= imgempty%></span>
+                                 <% }%>
+                               </div>
+                                <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label for="e9">Offer % (Optinal)
+</label>
+                                    <input type="text"   name="offer" class="form-control" placeholder="10%"  value="<%= offer%>">
+                                       <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='ads_price'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                 </div>
+                              </div>  
+                             
+                              </div>
+                       
+                                      <div class="Bpart_0 row">
+                              <div class="col-lg-12">
+                                  <h3 class="busTitle"><span>Location details</span>
+                                 </h3>
+                              </div>
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label>State*</label>
+                                    <select id="ads_statename" class="form-control" name="ads_state" >
+                                           <%if(ads_state){ %>  <option value="<%=ads_state%>"><%=ads_state%></option> <%} else{%>
+                                     <option value="">Select</option><%}%>
+                                       <% countryads.forEach((countryads)=> { %>
+                                       <option value="<%= countryads.state%>"  data-id="<%= countryads.id%>"><%= countryads.state%></option>
+                                       <%})%>
+                                    </select>
+                                      <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='ads_state'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                 </div>
+                              </div>
+                         
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label for="e3">City*</label>
+                                    <select id="ads_cityname" class="form-control" name="ads_city" >
+                                        <%if(ads_city){ %>  <option value="<%=ads_city%>"><%=ads_city%></option> <%} else{%>
+                                     <option value="">Select</option>
+                                     <%}%>
+                                     </select>
+                                       
+                                       <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='ads_city'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                 </div>
+                              </div>
+                         <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label for="e4">Area Pincode
+ </label>
+                                    <input type="text" placeholder="250001" name="pincode" class="form-control"  value="<%= pincode%>" >
+                                 </div>
+                              </div>
+                           </div>
+                
+                           </div>
+                         
+                        
+                  
+                              <script>
+                      function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.comapny_logo_img img')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+      
+                                  
+        
+              
+              
+          
+              
+             
+          </script>
+                            <div class="col-md-4">
+                           
+<div class="video-details video-box">
+
+<div class="deet">Millions of people ask thelivro for cost estimates every year. We track the estimates they get from local companies, then we share those prices with you.</div>
+</div>
+                      </div>
+                         
+                        </div><div class="osahan-area  butnc col-md-8">
+                        <button class="btn btn-outline-primary" type="submit">Submit </button>
+                     </div>
+                         </form>
+                         
+               </div> </div>
+                  </div>
+                  </div>
+                
+                  </section>
+               </div> </div>
+           <% include ../include/user-footer.ejs %>
+
+
+       		
+								</body>
+								</html>
+

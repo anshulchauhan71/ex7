@@ -1,0 +1,85 @@
+<% include include/header.ejs%>
+<% include include/sidebar.ejs%>
+
+<div class="content-wrapper">
+   
+    <section class="content-header">
+      <h1>
+     Category 
+       
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Add Category</a></li>
+      
+      </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+        
+          <div class="col-md-3">
+              </div>
+          <div class="col-md-6">
+         
+            </div>
+            </div>
+            <div class="row"> <div class="col-sm-1"></div>
+              <div class="col-xs-6">
+                  <div class="box">
+                      <div class="box-header">
+                          <h3 class="box-title">View Category
+                          </h3>
+                      </div>
+                      <!-- /.box-header -->
+                      <div class="box-body">
+                          <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                            
+                              <div class="row">
+                                  <div class="col-sm-12">
+                                      <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                                          <thead>
+                                              <tr role="row">
+                                                  <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending">Category Name</th>
+                                                  <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending">Parent Category </th>
+                                                  <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Category Image</th>
+                                      <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Action</th>
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                            <!-- <%= //getcutomer.paranet_category?getcutomer.paranet_category:'no data found' %> -->
+          <% category2.forEach((getcutomer,index)=>{ %>
+                                              <tr role="row" class="odd">
+                                                  <td class=""><%= getcutomer.category_name %></td>
+                                                  <td class=""><%if(getcutomer.parent_category){%><%= getcutomer.parent_category %><%} else {%> no data found<%}%> </td>
+                                                  <td><img src="/images/<%= getcutomer.category_image %>" width="30px"></td>
+                                                  <td>
+                                                    <a href="/admin/category-edit/<%= getcutomer.id %>" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                                    <a href="/admin/cateory-delete/<%= getcutomer.id %>" class="btn btn-sm btn-danger">Delete</a>
+                                                </td>
+                                              </tr>
+                                            <% }); %>
+                                             
+                                          </tbody>
+                                      
+                                      </table>
+                                  </div>
+                           
+                          </div>
+                      </div>
+                      <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+          
+             
+                  <!-- /.box -->
+              </div>
+              <!-- /.col -->
+          </div>
+                <div class="col-sm-1"></div>
+        </div>
+            </section>
+
+    </div>
+
+
+<% include include/footer.ejs%>

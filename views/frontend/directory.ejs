@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html class="indexpage">
+   <head>
+       <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+	<meta name="description" content="Find the best local restaurants, bars, shops, cafes, hotels, gyms, spas and more, from That’s Beijing, your authoritative guide to what’s happening in Beijing, China.">
+	<meta name="keywords" content="thats Beijing, Beijing, china, dining, nightlife, galleries, arts, guides, restaurants, bars, party, gig, thatsBeijing, thatsmags, thatsonline, directory, listing, venues, community, health">
+	
+      <title>Restaurants, Dentists, Bars, Beauty Salons, Doctors - trendsxp</title>
+      <% include include/head.ejs %>
+    
+   </head>
+   <body>
+      <% include include/header.ejs %>
+          <% include include/menu.ejs %>
+    
+      <div id="content-to-integrate" class="business_D">
+         <div id="block-title" class="container">
+            <div id="section-annonce">
+               <h1>Business directory</h1>
+               <p class="page-presentation">Find the right companies, professionals, and organisations for your project.
+</p>
+           
+               <div class="searchBusinessL  mt-2 mb-0">
+                   <form method="post" id="GetListing" action="/professional-search">
+            <div class="row">
+                     <div class="col-md-5">
+                          <div class="autocomplete" >
+                             <input type="text" class="form-control srchCC" id="locationgets" name="locationSrch" list="location-datalist" placeholder="Search by city or Pin code" autocomplete="off">
+                         </div>
+                     </div>
+                     <div class="col-md-5">
+                         <select class="form-control srchCC" name="categorySrch"  id="categorygets"  autocomplete="off">
+                             <option value="">What are you looking for?</option>
+                              <%categoriesr.forEach((categoriesri)=> { %>
+                            <option value="<%=categoriesri.category_name%>" ><%=categoriesri.category_name%></option>
+                                <%})%>
+                         </select>
+                     
+                     </div>
+                     <div class="col-md-2"><button class="btn srchBBn" type="submit">Search</button>
+                     </div>
+                  </div></form>
+               </div>
+            </div>
+         </div>
+      </div>
+      <section class="topsectionD">
+         <div class="containerDD">
+            <h2 class="head_linenD">Home Services</h2>
+            <div class="rowListD">
+               <div class="AddCAtL">
+                  <a href="/directory/architects">
+                     <img  src="images/arche.jpg" >
+                      <div class="AddCAt"> <span>Architects </span></div>
+                  </a>
+               </div>
+               <div class="AddCAtL">
+                  <a href="/directory/interior-designers-and-decorators">
+                     <img  src="images/homed.jpg" >
+                      <div class="AddCAt"><span> Interior Designers & Decorators</span> </div>
+                  </a>
+               </div>
+               <div class="AddCAtL">
+                  <a href="/directory/kitchen-designers-renovators">
+                     <img  src="images/kitchen.jpg" >
+                      <div class="AddCAt"><span> Kitchen Designers & Renovators</span></div>
+                  </a>
+               </div>
+               <div class="AddCAtL">
+                  <a href="/directory/kitchen-bathroom-fixtures">
+                     <img  src="images/bath.jpg" >
+                      <div class="AddCAt"><span> Kitchen & Bathroom Fixtures</span> </div>
+                  </a>
+               </div>
+               <div class="AddCAtL">
+                  <a href="/directory/tile-stone-and-countertops">
+                     <img  src="images/tile.jpg" >
+                      <div class="AddCAt"> <span> Tile, Stone & Countertops </span> </div>
+                  </a>
+               </div>
+                  <div class="AddCAtL">
+                  <a href="/directory/furniture-and-accessories">
+                     <img  src="images/furniture.jpg" >
+                      <div class="AddCAt"> <span>Furniture & Accessories </span> </div>
+                  </a>
+               </div>  <div class="AddCAtL">
+                  <a href="/directory/painting-wallpaper">
+                     <img  src="images/painters.jpg" >
+                      <div class="AddCAt"> <span> Painters & Wallpaper </span> </div>
+                  </a>
+               </div>  <div class="AddCAtL">
+                  <a href="/directory/tile-stone-and-countertops">
+                     <img  src="images/doors.jpg" >
+                      <div class="AddCAt"> <span> Doors Dealers </span> </div>
+                  </a>
+               </div>  <div class="AddCAtL">
+                  <a href="/directory/carpenters">
+                     <img  src="images/carpentry.jpg" >
+                      <div class="AddCAt"> <span> Carpenters </span> </div>
+                  </a>
+               </div>  <div class="AddCAtL">
+                  <a href="/directory/tile-stone-and-countertops">
+                     <img  src="images/electricians.jpg" >
+                      <div class="AddCAt"> <span> Electricians </span> </div>
+                  </a>
+               </div>
+            </div>
+         </div> <div class="containerDD">
+            <h2 class="head_linenD">Garden & Outdoors
+</h2>
+            <div class="rowListD">
+               <div class="AddCAtL">
+                  <a href="/directory/landscape-architects-and-designers">
+                     <img  src="images/landscaping.jpg" >
+                      <div class="AddCAt"> <span>Landscape Architects & Designers </span></div>
+                  </a>
+               </div>
+               <div class="AddCAtL">
+                  <a href="/directory/lawn-and-gardeners-services">
+                     <img  src="images/lawn.jpg" >
+                      <div class="AddCAt"><span>Lawn & Gardeners Services</span> </div>
+                  </a>
+               </div>
+               <div class="AddCAtL">
+                  <a href="/directory/arborists-and-tree-services">
+                     <img  src="images/trees.jpg" >
+                      <div class="AddCAt"><span> Arborists & Tree Services</span></div>
+                  </a>
+               </div>
+               <div class="AddCAtL">
+                  <a href="/directory/decks-patios-and-outdoor-structures">
+                     <img  src="images/decks.jpg" >
+                      <div class="AddCAt"><span> Decks, Patios & Outdoor Structures</span> </div>
+                  </a>
+               </div>
+               <div class="AddCAtL">
+                  <a href="/directory/landscape-contractors">
+                     <img  src="images/landscaping-contractor.jpg" >
+                      <div class="AddCAt"> <span> Landscape Contractors </span> </div>
+                  </a>
+               </div>
+            </div>
+         </div>
+      </section>
+      <section class="topsectionCat">
+         <div class="containerDD">
+            <h4 class="head_linenD">Browse All Services
+</h4>
+            <div class="AcateList">
+               <div class="columns">
+                  <div class="listings__block">
+                     <div class="listings__header">
+                        <h4>Home Improvement</h4>
+                     </div>
+                     <div class="listings_list">
+                        <ul>
+                           <li><a href="/directory/kitchen-and-bathroom-fixtures">Kitchen & Bathroom Fixtures</a></li>
+                           <li><a href="/directory/window-sales-and-installation">Window Sales & Installation</a></li>
+                           <li><a href="/directory/blacksmiths-and-welders">Blacksmiths & Welders</a></li>
+                           <li><a href="/directory/bedding-and-bath">Bedding & Bath</a></li>
+                           <li><a href="/directory/artists-and-artisans">Artists & Artisans</a></li>
+                           <li><a href="/directory/carpet-and-upholstery-cleaners">Carpet & Upholstery Cleaners</a></li>
+                           <li><a href="/directory/home-automation-and-home-media">Home Automation & Home Media</a></li>
+                           <li><a href="/directory/window-sales-and-installation">Window Sales & Installation</a></li>
+                           
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="columns">
+                  <div class="listings__block">
+                     <div class="listings__header">
+                        <h4>Other</h4>
+                     </div>
+                     <div class="listings_list">
+                        <ul>
+                           <li><a href="/directory/window-sales-and-installation">	Driveways & Paving</a></li>
+                           <li><a href="/directory/glass-mirrors-and-shower-doors">Glass, Mirrors & Shower Doors</a></li>
+                           <li><a href="/directory/flooring-installers">Flooring Installers</a></li>
+                           <li><a href="/directory/hardwood-flooring-suppliers">Hardwood Flooring Suppliers</a></li>
+                           <li><a href="/directory/solar-panel-installation">Solar Panel Installation</a></li>
+                           <li><a href="/directory/lighting">Lighting</a></li>
+                           <li><a href="/directory/plywood-and-boards">Plywood & Boards</a></li>
+                         
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+              
+            </div>
+         </div>
+      </section>
+<% include include/footer.ejs %>
+                    <script src="/js/search.js"></script>
+
+   </body>
+</html>

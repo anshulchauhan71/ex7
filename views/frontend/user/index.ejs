@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html class="indexpage">
+<head>
+	
+	<title></title>
+   <% include ../include/head.ejs %>
+
+
+</head>    
+
+    
+
+    
+  <body id="page-usertop">
+      <% include ../include/user-header.ejs %>
+      
+        <div class="single-channel-page" id="content-wrapper">
+              <section class="userdashbord">
+            <div class="container">
+                    <div class="ads_heads">
+                        <div class="row rowdashboard">
+                        <div class="col-sm-12">
+                            <h1 class="gretting">Welcome Back, You & Yours!
+
+                            </h1>
+  
+  
+  
+</div> </div>  
+                   <div id="section-classifieds" class="section-classifieds">
+		<div class="containers">
+			<div id="filterTabs">
+				<div class="row">
+					<div class="tabsWrapper col-md-12">
+					
+			
+<div class="row" id="myTabContent">
+  <div class="col-md-12" id="business" > 
+      <div class="listBn0" >
+        
+          
+      <% if(Getbusesult.length > 0 ){ %> 
+<div class="row">
+                    
+    
+    
+      
+    <div class="col-md-12">
+        
+<div class="pad-Business">
+<% Getbusesult.forEach((Getbusesult,index)=>{  %>
+    
+    
+    <div class="professionaldesign">
+  
+  <% bussinessMedia.slice(0, 1).forEach((bussinessMedia,index)=>{%>  
+ <div class="business-card-image" <%if(Getbusesult.coverphoto){%>style="background-image:url('/images/post/<%= Getbusesult.coverphoto%>')"<%}else{%>style="background-image:url('/images/post/<%= bussinessMedia.image_path%>')"<%}%>>
+       <%})%>
+
+     <button class="BtnPhotoCount"><%=bussinessMedia.length%> Photos</button> 
+     <button class="BtnCoverphoto" data-toggle="modal" data-target="#imageupload"><i class="fa fa-camera" aria-hidden="true"></i>
+Change Cover Photo</button> 
+    
+     <div class="Oninfo">    <div class="visitphoneno">
+                <%if(Getbusesult.ads_mobile) { %> 
+      <i class="fa fa-phone" aria-hidden="true"></i> (+91)
+ <%=Getbusesult.ads_mobile%>
+               <%}%>
+              </div>
+     
+        
+         <%if(Getbusesult.ads_email) { %> 
+        
+        <div class="pp-mail"><i class="fa fa-envelope-o"></i>
+  <%=Getbusesult.ads_email%></div>
+        <%}%></div>
+
+</div>
+    <div class="sidedeatils">
+    <div class="business-card-logo" >
+        <img src="/images/post/<%= Getbusesult.ads_logo%>?width=155&height=150">
+<!--
+          <button class="BtnCoverlogo" data-toggle="modal" data-target="#imageupload2"><i class="fa fa-camera" aria-hidden="true"></i>
+</button> 
+-->
+        </div>
+          <input type="hidden" value="<%= Getbusesult.id%>" id="atagetid_de">
+     
+    <div class="business-card-details" >
+    <h1 class="pp-head"><%= Getbusesult.ads_title%></h1>
+<div class="startratingD">
+    <div class="ratingsD" id="ratings51"></div>
+    <span class="rating_countD" id="count51">
+          </span>
+        </div>
+       
+    <p class="pp-location">
+
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" width='14px' height='15px'
+	 viewBox="0 0 512 512" >
+<g>
+	
+		<path  fill='#000' d="M256,0C156.748,0,76,80.748,76,180c0,33.534,9.289,66.26,26.869,94.652l142.885,230.257
+			c2.737,4.411,7.559,7.091,12.745,7.091c0.04,0,0.079,0,0.119,0c5.231-0.041,10.063-2.804,12.75-7.292L410.611,272.22
+			C427.221,244.428,436,212.539,436,180C436,80.748,355.252,0,256,0z M384.866,256.818L258.272,468.186l-129.905-209.34
+			C113.734,235.214,105.8,207.95,105.8,180c0-82.71,67.49-150.2,150.2-150.2S406.1,97.29,406.1,180
+			C406.1,207.121,398.689,233.688,384.866,256.818z"/>
+	
+</g>
+
+	<g>
+		<path fill='#000'  d="M256,90c-49.626,0-90,40.374-90,90c0,49.309,39.717,90,90,90c50.903,0,90-41.233,90-90C346,130.374,305.626,90,256,90z
+			 M256,240.2c-33.257,0-60.2-27.033-60.2-60.2c0-33.084,27.116-60.2,60.2-60.2s60.1,27.116,60.1,60.2
+			C316.1,212.683,289.784,240.2,256,240.2z"/>
+	</g>
+
+</svg>
+
+
+ <%= Getbusesult.ads_city%> <%= ","+Getbusesult.ads_country%> </p>
+       
+
+      
+ <div class="ContactNowD">
+      
+     
+         <div class="actions_fromB0"><div class="video-card-B0">
+                          
+                              <a href="/user/busniess-edit/<%= Getbusesult.id  %>" class="edit_pB0">  Edit Now
+</a>
+                             <a href="/user/delete/<%= Getbusesult.id  %>"  class="timeiconB" onclick="return confirm('Do you really want to delete?');"> Delete</a>
+                           </div></div>
+       </div>
+
+
+
+   
+    
+    
+
+    
+    
+ 
+    
+    </div>
+    
+    </div>
+    </div>
+
+
+<!--
+<div class="secnd-slides">  
+    
+     
+                             <img class="img-fluid" src="/images/post/<%=Getbusesult.image_path %>?width=500&height=180" alt="" width="100%">
+    </div>
+-->
+
+    
+    <div class="contentmdB0" ><div class="ContactDinfo pl-0">Category: <span><%=Getbusesult.ads_category %></span></div>
+      <% 
+                              
+                              
+                                  var strxx  = Getbusesult.ads_subcategory;
+                                 var strings = strxx.split(",",5); 
+                             
+    var textprint = "";
+var i;
+                               
+                               if(Getbusesult.ads_subcategory){%>
+                               <div class="page_ListSD2 pl-0 pt-1"><ul><li class="lastMaincat">Services: </li><%for(i =0; i < strings.length;i++){
+                                    textprint +='<li>'+strings[i]+'</li>';
+                                   %> 
+                               <li><%=strings[i]%></li>
+                              
+                               <%}%> </ul>
+                                 </div>
+                               <%}%><div class="ContactDinfo pl-0 pt-1">Contact Info:<span><%=Getbusesult.ads_address %></span></div>
+                
+                 <div class="Descxs"><div class="des0B"> Description
+                     </div>
+             <h4 class="page-BD67"> <% var htmlText=Getbusesult.ads_des;
+                                            var noHTML = /(<([^>]+)>)/ig; 
+                                            var clean = htmlText.replace(noHTML, '');
+                                             
+                                                var desstring = clean;
+         %>  <%=clean%></h4>
+        
+        </div>
+                 
+                 
+                   
+                 </div> 
+   
+  
+
+       
+    
+    
+    </div>
+    </div>
+                     
+                         <% }) %>   
+                  </div>
+			 <%} else { %>
+			<div id="classifiedsList" >
+				<div class="nodatafound">
+                    <div class="nodataimg text-center">
+                    <img src="/images/nodata.png">
+                    </div>
+                <p  class="alrt0">You have not added any Business yet.
+
+
+                    </p>
+                    <p class="slstct_9">Let go of what you don't use anymore
+
+                    </p>
+                
+                <ul class="nodtafound">
+             
+          
+            <li class="nav-item">
+               <a class="nav-link" href="/for-business">
+                   <i class="fa fa-plus"></i>
+               <span>Add New Business</span>
+               </a>
+            </li>
+              
+           
+                </ul></div>
+   
+			</div><% } %>
+    
+    
+    </div>
+    </div>
+  <div class="col-md-4" id="home"> 
+     
+  <div class="listarticles" >
+       <h5 class="nav-linksv">Articles/Blog  (<%=Getuserarticle.length %>) <a class="Addnewpost" href="/user/post-article">
+                   <i class="fa fa-plus"></i>
+               <span>Add New Article </span>
+               </a></h5>
+      <% if(Getuserarticle.length > 0 ) { %>
+            <div class="row">
+                    
+                
+                <% Getuserarticle.forEach((Getuserarticle)=>{ %>
+                
+                
+                
+                <div class="mrg-mnIn col-md-12">
+<div class="pad-slider-listu">
+
+
+
+
+<div class="secnd-slide">  
+    
+     
+                             <img class="img-fluid" src="/images/post/<%=Getuserarticle.news_image %>?width=500&height=300" alt="" width="100%">
+    </div>
+
+    
+    <div class="contentmd">
+    
+     <% var stringtitle =  Getuserarticle.news_title; var replacesting = stringtitle.replace(/\s/g,"-") %>
+          <a href="/post/<%= Getuserarticle.news_category %>/<%= Getuserarticle.id%>/<%= replacesting%>" target="_blank"> <h4 class="b_ads_title0">
+      
+         
+                <%  var String2 = new String(Getuserarticle.news_title)%>
+                                     <%  if(String2.length > 50 ) { 
+                                           
+                                          var resultslice = String2.slice(0,50);
+                                          var resulttext = resultslice + '.....';
+                                         
+                                         %> 
+                                     <%= resulttext%>
+                                     
+                                     <%}  else { %>
+                                     <%= String2 %>
+                                     <%} %>
+            
+        
+        
+</h4>
+        </a>
+  
+ 
+    
+     <h4 class="page-67">  <%  
+                                            var htmlText=Getuserarticle.news_des;
+                                            var noHTML = /(<([^>]+)>)/ig; 
+                                            var clean = htmlText.replace(noHTML, '');
+                                            var desstring = clean;  %>
+                                     <%  if(desstring.length > 50 ) { 
+                                           
+                                          var resultslice = desstring.slice(0,50);
+                                          var resulttext = resultslice + '.....';
+                                         
+                                         %> 
+                                     <%= resulttext%>
+                                     
+                                     <%}  else { %>
+                                     <%= desstring %>
+                                     <%} %> 
+	 </h4>
+      
+        
+    
+    
+   
+    
+    
+    
+    
+
+     <div class="video-view">
+                               <% var d_ate = new Date(Getuserarticle.news_date); 
+                                  
+                                  var day = d_ate.getDay();
+                                  var date = d_ate.getDate();
+                                  var year = d_ate.getFullYear();
+                                  
+                                  var month = new Array();
+                                  month[0] = "Jan";
+                                  month[1] = "Feb";
+                                  month[2] = "Mar";
+                                  month[3] = "Apr";
+                                  month[4] = "May";
+                                  month[5] = "Jun";
+                                  month[6] = "Jul";
+                                  month[7] = "Aug";
+                                  month[8] = "Sep";
+                                  month[9] = "Oct";
+                                  month[10] = "Nov";
+                                  month[11] = "Dec";
+                                     
+                                  var month_p = month[d_ate.getMonth()]
+                                                                  %>
+                                  
+                                    
+                               <i class="fa fa-time"></i> <%= date + ' ' + month_p +' '+ year %>
+                              </div>
+ 
+                    
+                 
+                 
+                 
+                 
+                 
+                    <div class="actions_from"><div class="video-card-image">
+                          
+                              <a href="/user/edit-article/<%=Getuserarticle.id %>" class="edit_p0"> <i class="fa fa-pencil" aria-hidden="true"></i>
+</a>
+                             <a href="/user/articledelete/<%=Getuserarticle.id %>" class="timeicon" onclick="return confirm('Do you really want to delete?');"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                           </div></div>
+                 </div> 
+   
+  
+       
+    
+    
+    </div>
+    </div>
+                
+                
+                    <%})%>
+                     
+                  </div>
+			
+	
+            
+            <% } else { %>
+			<div id="classifiedsList" >
+				<div class="nodatafound">
+                   
+                <p  class="alrt0">You have not added any post yet.
+
+
+                    </p>
+                   
+                <ul class="nodtafound">
+             
+          
+            <li class="nav-item">
+               <a class="nav-link" href="/user/post-article">
+                   <i class="fa fa-plus"></i>
+               <span>Article Stories/Blog </span>
+               </a>
+            </li>
+              
+           
+                </ul>
+                
+                </div>
+   
+			</div>
+            
+            <%} %>
+    
+    </div>
+    </div>
+  <div class="col-md-4" id="products" > <div class="listarticles" ><h5 class="nav-linksv">Your Projects (<%=GetuserProduct.length %>) <a class="Addnewpost" href="/user/post-design">
+                   <i class="fa fa-plus"></i>
+               <span>Add New Projects </span>
+               </a></h5><% if(GetuserProduct.length > 0 ) { %>
+            <div class="row">
+                    
+                
+                <% GetuserProduct.forEach((Getuseritem)=>{ %>
+                    
+                         
+                         <div class="mrg-mnIn col-md-12">
+	<div class="pad-slider-listu">
+		<div class="secnd-slide">
+			<img class="img-fluid" src="/images/post/<%=Getuseritem.ads_logo %>?width=500&height=280" alt="" width="100%">
+			</div>
+			<div class="contentmd">
+				<h4 class="b_ads_title0">
+      
+         
+                <%  var String2 = new String(Getuseritem.ads_title)%>
+                                     <%  if(String2.length > 50 ) { 
+                                           
+                                          var resultslice = String2.slice(0,50);
+                                          var resulttext = resultslice + '.....';
+                                         
+                                         %> 
+                                     <%= resulttext%>
+                                     
+                                     <%}  else { %>
+                                     <%= String2 %>
+                                     <%} %>
+            
+        
+        
+</h4>
+				<h4 class="page-67">    <%  
+                                            var htmlText=Getuseritem.ads_des;
+                                            var noHTML = /(<([^>]+)>)/ig; 
+                                            var clean = htmlText.replace(noHTML, '');
+                                            var desstring = clean;  %>
+                                     <%  if(desstring.length > 50 ) { 
+                                           
+                                          var resultslice = desstring.slice(0,50);
+                                          var resulttext = resultslice + '.....';
+                                         
+                                         %> 
+                                     <%= resulttext%>
+                                     
+                                     <%}  else { %>
+                                     <%= desstring %>
+                                     <%} %> 	 </h4>
+				
+				<div class="video-view">
+					 <% var d_ate = new Date(Getuseritem.time); 
+                                  
+                                  var day = d_ate.getDay();
+                                  var date = d_ate.getDate();
+                                  var year = d_ate.getFullYear();
+                                  
+                                  var month = new Array();
+                                  month[0] = "Jan";
+                                  month[1] = "Feb";
+                                  month[2] = "Mar";
+                                  month[3] = "Apr";
+                                  month[4] = "May";
+                                  month[5] = "Jun";
+                                  month[6] = "Jul";
+                                  month[7] = "Aug";
+                                  month[8] = "Sep";
+                                  month[9] = "Oct";
+                                  month[10] = "Nov";
+                                  month[11] = "Dec";
+                                     
+                                  var month_p = month[d_ate.getMonth()]
+                                                                  %>
+                                  
+                                <%= date + ' ' + month_p +' '+ year %>
+                              
+				</div>
+			
+				<div class="actions_from">
+					<div class="video-card-image">
+						<a href="/user/edit-product/<%=Getuseritem.id %>" class="edit_p0">
+							<i class="fa fa-pencil" aria-hidden="true"></i>
+						</a>
+						<a href="/user/productdelete/<%=Getuseritem.id %>" class="timeicon" onclick="return confirm('Do you really want to delete?');">
+							<i class="fa fa-trash" aria-hidden="true"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+                         
+                       
+                    <%})%>
+                     
+                  </div>
+			
+	
+            
+            <% } else { %>
+			<div id="classifiedsList" >
+				<div class="nodatafound">
+                   
+                <p  class="alrt0">You have not added any product yet.
+
+
+                    </p>
+                  
+                
+                <ul class="nodtafound">
+             
+          
+            <li class="nav-item">
+               <a class="nav-link" href="/user/post-design">
+                   <i class="fa fa-plus"></i>
+               <span>product Stories/Blog </span>
+               </a>
+            </li>
+              
+           
+                </ul></div>
+   
+			</div>
+            
+            <%} %></div></div>
+    
+<div class="col-md-4" id="Pricings" > <div class="listarticles" ><h5 class="nav-linksv">Your Pricings (<%=pricingchkR.length %>) <a class="Addnewpost" href="/user/post-pricing">
+                   <i class="fa fa-plus"></i>
+               <span>Add New Pricing </span>
+               </a></h5><% if(pricingchkR.length > 0 ) { %>
+            <div class="row">
+                    
+                
+                <% pricingchkR.forEach((pricingitem)=>{ %>
+                    
+                         
+                         <div class="mrg-mnIn col-md-12">
+	<div class="pad-slider-listu">
+		<div class="secnd-slide">
+			<img class="img-fluid" src="/images/post/<%=pricingitem.ads_logo %>?width=500&height=280" alt="" width="100%">
+			</div>
+			<div class="contentmd">
+				<h4 class="b_ads_title0">
+      
+          <%=pricingitem.company %>
+               
+        
+        
+</h4>
+				<h4 class="page-67">      <%=pricingitem.ads_category %>	 </h4>
+				
+			
+				<div class="actions_from">
+					<div class="video-card-image">
+						<a href="/user/pricing-edit/<%=pricingitem.id %>" class="edit_p0">
+							<i class="fa fa-pencil" aria-hidden="true"></i>
+						</a>
+						<a href="/user/pricingdelete/<%=pricingitem.id %>" class="timeicon" onclick="return confirm('Do you really want to delete?');">
+							<i class="fa fa-trash" aria-hidden="true"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+                         
+                       
+                    <%})%>
+                     
+                  </div>
+			
+	
+            
+            <% } else { %>
+			<div id="classifiedsList" >
+				<div class="nodatafound">
+                   
+                <p  class="alrt0">You have not added any product yet.
+
+
+                    </p>
+               
+                
+                <ul class="nodtafound">
+             
+          
+            <li class="nav-item">
+               <a class="nav-link" href="/user/post-design">
+                   <i class="fa fa-plus"></i>
+               <span>product Stories/Blog </span>
+               </a>
+            </li>
+              
+           
+                </ul></div>
+   
+			</div>
+            
+            <%} %></div></div>
+  
+
+    
+				</div>
+				</div>
+			</div>
+		
+				</div>
+				</div>
+	</div>     
+                        
+                     </div>
+                  </div>
+                
+                  </section>
+             
+         </div> <div id="imageupload" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    
+      </div>
+      <div class="modal-body">
+        <div class="login-main-left" >
+                    
+                     <form action="" method="post" id="profile_photos" enctype="multipart/form-data">
+                       <div class="form-group">
+                           <label>Upload Cover Photo</label>
+                           <input type="file" class="form-control" name="user_profile" id="file_upload">
+                           <span class="message_errer" id="user_profile" style="position:static"></span>
+                             <span class=" message_errer" id="Profile_err" style="position:static;color:green"></span>
+                      
+                        </div>
+                       
+                       
+                        <div class="mt-3">
+                           <div class="row">
+                              <div class="col-12">
+                                 
+                                 <button type="submit"   class="btn btn-outline-primary btn-block btn-lg btnlogin" id="changeP">Submit</button>
+                              </div>
+                           </div>
+                        </div>
+                     </form>
+                   
+                  </div>
+        </div>
+      </div>
+                          </div>
+           
+      </div> <% include ../include/user-footer.ejs %>
+
+               <script>
+         $("#profile_photos").submit(function(event){
+                          
+                       event.preventDefault();                       
+                       
+                          var formData = new FormData(this);
+                          $.ajax({
+                              type:'POST',
+                              url:'/user/cover_photo',                              
+                              contentType: false,
+                              processData: false,
+                              data:formData,
+                              success:function(profile_msg){
+                              
+                                  if(profile_msg.errors){
+                                    
+                                   
+                                         
+                                          $("#user_profile").html(profile_msg.errors);
+                                    
+                                      
+                                  }
+                              
+                                  else{
+                                      
+                                      $("#imageupload").modal("hide");
+                                    
+                                    location.reload();
+                                                       swal({
+ 
+  text: profile_msg.Profile_result,
+  icon: "success",
+}); 
+                                      
+                                  }
+                              
+                          }
+                          })
+                      })
+    </script>   
+  
+				
+								</body>
+								</html>
+

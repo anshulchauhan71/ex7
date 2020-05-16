@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title></title>
+       
+      <% include include/head.ejs %>
+       
+   </head>
+   <body>
+      <% include include/header.ejs %>  
+          <% include include/menu.ejs %>
+    
+
+    <section class="shopTop">
+    <div class="container shopcontainer">
+	<div class="home-banner">
+
+		<div class="home-banner-right">
+			<div class="slider">
+			<div class="sliderLeft">
+			<div id="myCarousel" class="carousel owl-carousel owl-theme owlnav" data-ride="carousel">
+				
+				<div class="item"><img src="https://shop.intermiles.com/images/banner/banner_Biba1584370649887.jpg" alt="slider"></div>
+				<div class="item"><img src="https://shop.intermiles.com/images/banner/Shop_UK_UAE_1002_2921573709309855.jpg" alt="slider"></div>
+				
+			</div>
+                
+               
+			</div>
+                
+       
+			
+			<div class="clearfix"></div>
+			</div>
+        </div>
+		</div>
+	</div> </section>
+    
+   <section class="topsectis"> <div class="container shopcontainer">
+      <div class="sliderRight">
+                <div class="findShops"><h4>Shop By Category</h4></div>
+                <ul class="ulExpertshop">
+                      <li class="item">
+                  <a href="/shop/furniture">
+                     <img  src="images/shofa.png" >
+                      <div class="AddCAt2ashop"> <span>Furniture </span></div>
+                  </a>
+                </li>
+               <li class="item">
+                  <a href="/shop/outdoor">
+                     <img  src="images/Outdoor.jpg" >
+                      <div class="AddCAt2ashop"><span> Outdoor</span> </div>
+                  </a>
+                </li>
+               <li>
+                  <a href="/shop/lighting">
+                     <img  src="images/light.png" >
+                      <div class="AddCAt2ashop"><span>Lighting</span></div>
+                  </a>
+                </li>
+               <li class="item">
+                  <a href="/shop/home-decor">
+                     <img  src="images/wooden-wall-decor.jpg" >
+                      <div class="AddCAt2ashop"><span> Home decor</span> </div>
+                  </a>
+                </li>
+               <li class="item">
+                  <a href="/shop/kitchen-dining">
+                     <img  src="images/dining.jpg" >
+                      <div class="AddCAt2ashop"> <span>Kitchen & Dining </span> </div>
+                  </a>
+                </li>
+                  <li>
+                  <a href="/shop/bathroom">
+                     <img  src="images/bathroom.jpg" >
+                      <div class="AddCAt2ashop"> <span>Bathroom products </span> </div>
+                  </a>
+               </li>  <li class="item">
+                  <a href="/shop/living">
+                     <img  src="images/living.jpg" >
+                      <div class="AddCAt2ashop"> <span>Living </span> </div>
+                  </a>
+                </li>  <li class="item">
+                  <a href="/directory/bedroom">
+                     <img  src="images/bedroom.jpg" >
+                      <div class="AddCAt2ashop"> <span> Bedroom </span> </div>
+                  </a>
+                </li>  <li class="item">
+                  <a href="/shop/plants">
+                     <img  src="images/Plants.jpg" >
+                      <div class="AddCAt2ashop"> <span> Plants </span> </div>
+                  </a>
+                </li>  <li class="item">
+                  <a href="/shop/seeds">
+                     <img  src="images/seeds.png" >
+                      <div class="AddCAt2ashop"> <span> Seeds </span> </div>
+                  </a>
+                </li><li class="item">
+                  <a href="/shop/soil-fertilizer">
+                     <img  src="images/fertilizer.jpg" >
+                      <div class="AddCAt2ashop"> <span> Soil & Fertilizer </span> </div>
+                  </a>
+                </li><li class="item">
+                  <a href="/shop/pots-planters">
+                     <img  src="images/pots.jpg" >
+                      <div class="AddCAt2ashop"> <span> pots & planters </span> </div>
+                  </a>
+                </li>
+                  
+				</ul>
+                </div>  
+    </div>
+    </section>
+       
+                 
+                   
+  
+       <div class="clearfix"></div><div class="container shopcontainer">
+  <h3>Best Offers on <span>Home Products</span></h3>
+  <div class="website_box2">
+    <div class="deals_produscts2">
+      <div id="tabs" class="owl-carousel owlnavshop  owl-theme">
+          <%homeproducts.forEach((homeitem)=>{ %>
+        <div class="item">
+          <div class="img">
+            <div class="image"><a href="<%= homeitem.url %>" rel="nofollow" target="_blank"><img  class="lazy" src="/images/post/placeholder.png?width=500&height=280" <%if(homeitem.logo === "undefined"){%><%}else{%>data-src="/images/post/<%= homeitem.logo %>?width=500&height=380" <%}%> ></a></div>
+          </div>
+          <a href="<%= homeitem.url %>" rel="nofollow" target="_blank"><div class="product_name"> <%= homeitem.title %></div>
+          <div class="price">
+           <%if(homeitem.offerprice){%><div class="main_price">Rs. <%= homeitem.offerprice %></div><%}%>
+            <div class="price_after_dis">Rs <%= homeitem.price %></div>
+            <div class="percentage"><%= homeitem.offer %>% Off</div>
+          </div>
+          </a>
+          <div class="storenameshop"><%= homeitem.store %></div>
+        </div>
+      <%})%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container shopcontainer">
+  <h3>Best Offers on <span>Lighting & Outdoor</span></h3>
+  <div class="website_box2">
+    <div class="deals_produscts2">
+      <div id="tabs2" class="owl-carousel owlnavshop  owl-theme">
+       <%loproduct.forEach((homeitem)=>{ %>
+        <div class="item">
+          <div class="img">
+            <div class="image"><a href="<%= homeitem.url %>" rel="nofollow" target="_blank"><img  class="lazy" src="/images/post/placeholder.png?width=500&height=280" <%if(homeitem.logo === "undefined"){%><%}else{%>data-src="/images/post/<%= homeitem.logo %>?width=500&height=380" <%}%>> </a></div>
+          </div>
+          <a href="<%= homeitem.url %>" rel="nofollow" target="_blank"><div class="product_name"> <%= homeitem.title %></div>
+          <div class="price">
+           <%if(homeitem.offerprice){%><div class="main_price">Rs. <%= homeitem.offerprice %></div><%}%>
+            <div class="price_after_dis">Rs <%= homeitem.price %></div>
+            <div class="percentage"><%= homeitem.offer %>% Off</div>
+          </div>
+          </a>
+          <div class="storenameshop"><%= homeitem.store %></div>
+        </div>
+      <%})%>   </div>
+    </div>
+  </div>
+</div>
+
+<div class="container shopcontainer">
+  <h3>Best Offers on <span>Kitchen & Bathroom</span></h3>
+  <div class="website_box2">
+    <div class="deals_produscts2">
+      <div id="tabs3" class="owl-carousel owlnavshop  owl-theme">
+        <%kbproduct.forEach((homeitem)=>{ %>
+        <div class="item">
+          <div class="img">
+            <div class="image"><a href="<%= homeitem.url %>" rel="nofollow" target="_blank"><img  class="lazy" src="/images/post/placeholder.png?width=500&height=280"  <%if(homeitem.logo === "undefined"){%><%}else{%>data-src="/images/post/<%= homeitem.logo %>?width=500&height=380" <%}%>></a></div>
+          </div>
+          <a href="<%= homeitem.url %>" rel="nofollow" target="_blank"><div class="product_name"> <%= homeitem.title %></div>
+          <div class="price">
+           <%if(homeitem.offerprice){%><div class="main_price">Rs. <%= homeitem.offerprice %></div><%}%>
+            <div class="price_after_dis">Rs <%= homeitem.price %></div>
+            <div class="percentage"><%= homeitem.offer %>% Off</div>
+          </div>
+          </a>
+          <div class="storenameshop"><%= homeitem.store %></div>
+        </div>
+      <%})%>  
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container shopcontainer">
+  <h3>Best Offers on <span>Living & Bedroom </span></h3>
+  <div class="website_box2">
+    <div class="deals_produscts2">
+      <div id="tabs4" class="owl-carousel owlnavshop  owl-theme">
+          <%lbproduct.forEach((homeitem)=>{ %>
+        <div class="item">
+          <div class="img">
+            <div class="image"><a href="<%= homeitem.url %>" rel="nofollow" target="_blank"><img  class="lazy" src="/images/post/placeholder.png?width=500&height=280" <%if(homeitem.logo === "undefined"){%><%}else{%>data-src="/images/post/<%= homeitem.logo %>?width=500&height=380" <%}%> ></a></div>
+          </div>
+          <a href="<%= homeitem.url %>" rel="nofollow" target="_blank"><div class="product_name"> <%= homeitem.title %></div>
+          <div class="price">
+           <%if(homeitem.offerprice){%><div class="main_price">Rs. <%= homeitem.offerprice %></div><%}%>
+            <div class="price_after_dis">Rs <%= homeitem.price %></div>
+            <div class="percentage"><%= homeitem.offer %>% Off</div>
+          </div>
+          </a>
+          <div class="storenameshop"><%= homeitem.store %></div>
+        </div>
+      <%})%>  
+      </div>
+    </div>
+  </div>
+       </div>
+       
+<div class="container shopcontainer">
+  <h3>Best Offers on <span>Plants & Seeds</span></h3>
+  <div class="website_box2">
+    <div class="deals_produscts2">
+      <div id="tabs5" class="owl-carousel owlnavshop  owl-theme">
+          <%psproduct.forEach((homeitem)=>{ %>
+        <div class="item">
+          <div class="img">
+            <div class="image"><a href="<%= homeitem.url %>" rel="nofollow" target="_blank"><img  class="lazy" src="/images/post/placeholder.png?width=500&height=280" <%if(homeitem.logo === "undefined"){%><%}else{%>data-src="/images/post/<%= homeitem.logo %>?width=500&height=380" <%}%>></a></div>
+          </div>
+          <a href="<%= homeitem.url %>" rel="nofollow" target="_blank"><div class="product_name"> <%= homeitem.title %></div>
+          <div class="price">
+           <%if(homeitem.offerprice){%><div class="main_price">Rs. <%= homeitem.offerprice %></div><%}%>
+            <div class="price_after_dis">Rs <%= homeitem.price %></div>
+            <div class="percentage"><%= homeitem.offer %>% Off</div>
+          </div>
+          </a>
+          <div class="storenameshop"><%= homeitem.store %></div>
+        </div>
+      <%})%>  
+      </div>
+    </div>
+  </div>
+       </div>
+<div class="about_sites">
+  <div class="container shopcontainer">
+    <h2>About thelivro</h2>
+    <p>thelivro is the website that gives you the gratification you are finding on other websites. If you are looking at stuff for your home, garden, etc. We also had machinery with voguish technologies. We design homes and gardens with the help of our best professionals and encountered crew. We bring up the connection between the proprietors to the devices. From bedrooms to the sitting hall, from the kitchen to the bathroom we design everything is a very Magnificent and ultramodern way which will give the worth to your money and joy to your heart.</p>
+    
+  </div>
+</div>
+    
+      <% include include/footer.ejs %>
+   </body>
+</html>

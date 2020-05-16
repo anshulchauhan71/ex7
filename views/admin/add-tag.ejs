@@ -1,0 +1,115 @@
+<% include include/header.ejs%>
+<% include include/sidebar.ejs%>
+
+<div class="content-wrapper">
+   
+    <section class="content-header">
+      <h1>
+     Category 
+       
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Tag Category</a></li>
+      
+      </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+        
+          <div class="col-md-1">
+              </div>
+          <div class="col-md-5">
+                <div class="box box-primary">
+                        <div class="box-header with-border">
+                          <h3 class="box-title">Tag Category</h3>
+                        </div>
+                      
+<% if(message !='') {%>
+                        <p class="text-center text-danger"><%= message %></p>
+                        <%}%>
+                        <form class="add-player-form" action="" method="post"  >
+                          <div class="box-body">
+                               
+                            <div class="form-group ">
+                              <label for="exampleInputEmail1">Tag Name</label>
+                              <input type="text" class="form-control" name="tag_name"   value="<%= taglist.tag_name %>" id="exampleInputEmail1" placeholder="Enter Tag Name" >
+                            </div>
+                           
+                        
+                         
+                          </div>
+                          <!-- /.box-body -->
+            
+                          <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                          </div>
+                        </form>
+
+                      </div>
+            </div>
+              <div class="col-md-4">
+          <div class="box">
+              <div class="box-header">
+                  <h3 class="box-title">View  Tags
+                  </h3>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                  <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                    
+                      <div class="row">
+                          <div class="col-sm-12">
+                              <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                                  <thead>
+                                      <tr role="row">
+                                          <th class="sorting">Sr. No</th>
+                                          <th class="sorting" >Tag Name</th>
+                                          <th class="sorting" >Action</th>
+                                  
+                                     
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                    
+                                   
+                                    
+   <% taglist.forEach((taglist,index)=>{ %>
+                                      <tr role="row" class="odd">
+                                         
+                                          <td class=""><% var incres = 1 %> <%= index+incres  %></td>
+                                          <td class=""><%= taglist.tag_name %></td>
+                                         
+                                          
+                                         
+                                          <td>
+                                            <a href="/admin/edit-tag/<%= taglist.id %>"  rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                            <a href="/admin/delete-tag/<%= taglist.id %>" class="btn btn-sm btn-danger">Delete</a>
+                                        </td>
+                                      </tr>
+                                  <%});%>
+                                     
+                                  </tbody>
+                              
+                              </table>
+                          </div>
+                   
+                  </div>
+              </div>
+              <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+  
+     
+          <!-- /.box -->
+      </div>
+      <!-- /.col -->
+  </div>
+            </div>
+        
+            </section>
+
+    </div>
+
+
+<% include include/footer.ejs%>

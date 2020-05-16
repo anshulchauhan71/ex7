@@ -1,0 +1,833 @@
+
+<!DOCTYPE html>
+<html class="indexpage">
+<head>
+	
+<!-- Primary Meta Tags -->
+<title>thelivro - Make Your Best Home ,Home Design, Decorating and Remodeling Ideas and Inspiration, Kitchen and Bathroom Design</title>
+<meta name="title" content="thelivro - Make Your Best Home ,Home Design, Decorating and Remodeling Ideas and Inspiration, Kitchen and Bathroom Design">
+<meta name="description" content="thelivro is the new way to research house and Interior design ideas. Hire Top rated professionals near you">
+<meta itemprop="name" content="thelivro - Make Your Best Home" />
+<meta property="article:section" content="thelivro" />
+<!-- Open Graph / Facebook -->
+<!--
+<meta property="og:type" content="website">
+<meta property="og:url" content="">
+<meta property="og:title" content="Find trusted service providers, compare prices or quotes and hire the best">
+<meta property="og:description" content="Browse beautiful home design ideas, useful how-to articles and easy-to-follow recipes to help you make your best home. Our expert advice makes creating the home you've always wanted easy and fun.">
+
+ Twitter 
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="#">
+<meta property="twitter:title" content="Meta Tags — Preview, Edit and Generate">
+<meta property="twitter:description" content="With Meta Tags you can edit and experiment with your content then preview how your webpage will look on Google, Facebook, Twitter and more!">
+-->
+<meta property="twitter:image" content="">
+   <% include include/head.ejs %>
+	 
+</head>    
+<body>
+    
+      <% include include/header.ejs %>
+      <% include include/menu.ejs %>
+    <div class="mob_top">
+<div class="container hMax2">
+<div class="main_container">
+
+	<div class="mob_top_left">
+
+	<h1> Find top-rated, certified pros for your projects
+
+</h1>
+
+    <div class="t2">@ <strong> 10k</strong> + Professionals</div>
+
+<!--   	<div class="t3">200+ Models  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 100+ Design Templates</div> -->
+
+<!--    <div class="t4">Pick Your Phone</div>-->
+
+    <div class="select">
+
+	 
+
+
+               
+                <ul class="nav nav-tabs srch_navtab" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Services</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Cost Compare</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" href="/designs" >Designs</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        
+        <div class="form_srch">
+       
+         <div class="searchHomeL  mt-2 mb-0">
+                   <form method="post" id="GetListing" action="/professional-search">
+            <div class="row">
+                     <div class="col-md-5">
+                           <div class="autocomplete" id="locationAuto" >
+
+                             <input type="text" class="form-control srchCC" id="locationgets" name="locationSrch" placeholder="Search by city Or Pin code" autocomplete="off">
+                         </div>
+                       
+                     </div>
+                     <div class="col-md-5">
+                         <select class="form-control srchCC" name="categorySrch"  id="categorygets"  autocomplete="off" required>
+                             <option value="">What are you looking for?</option>
+                             <%categoriesr.forEach((categoriesri)=> { %>
+                            <option value="<%=categoriesri.category_name%>" ><%=categoriesri.category_name%></option>
+                                <%})%>
+                         </select>
+                     
+                     </div>
+                     <div class="col-md-2"><button class="btn srchBBn" type="submit">Search</button>
+                     </div>
+                  </div></form>
+               </div>
+        
+        </div>
+    
+    </div>
+    
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      
+      
+       <div class="form_srch">
+       
+         <div class="searchHomeL  mt-2 mb-0">
+                   <form method="post" id="GetListingprice" action="/cost-Search">
+            <div class="row">
+                     <div class="col-md-5">
+                            <div class="autocomplete" >
+                             <input type="text" class="form-control srchCC locationgets" id="locationgets2" name="locationSrch" list="location-datalist" placeholder="Search by city Or Pin code" autocomplete="off">
+                         </div>
+                     </div>
+                     <div class="col-md-5">
+                         <select class="form-control srchCC" name="categorySrch"  id="categorygets"  autocomplete="off" required>
+                              <option value="">What are you looking for?</option>
+                             <option value="bedroom">Bedroom Services</option>
+                                     <option value="flooring">Flooring Services</option>
+                                     <option value="bathroom">Bathroom Services</option>
+                                     <option value="appliances">Appliances & Repair Services</option>
+                                     <option value="cleaning">Cleaning Services</option>
+                                     <option value="window">Window & Door Installation Services</option>
+                                     <option value="kitchen">Kitchen Services</option>
+                                     <option value="painters">Painters & Wallpaper Services </option>
+                                     <option value="design">Design & Decor Services</option>
+                                     <option value="electrical">Electrical Services</option>
+                                     <option value="landscape">Lawn, Landscape & Garden Services</option>
+                                  
+                                   </select>
+                     
+                     </div>
+                     <div class="col-md-2"><button class="btn srchBBn" type="submit">Search</button>
+                     </div>
+                  </div></form>
+               </div>
+        
+        </div>
+      
+    </div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><div class="form_srch">
+        <div class="row"><div class="col-md-2"></div><div class="col-md-9">
+                              <form><input type="text" placeholder="Enter an address or city..." class="form-srcs"><input type="submit" value="GO" class="btn-srch"></form></div></div></div></div>
+</div>
+            
+ <ul class="nav nav-tabs srch_navtab" id="myTab2" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#homemobile" role="tab" aria-controls="home" aria-selected="true">Services</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profilemobile" role="tab" aria-controls="profile" aria-selected="false">Cost Compare</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" href="/designs" >Designs</a>
+  </li>
+</ul>
+
+
+
+    </div>
+        
+        
+        <div class="tab-content" id="myTabContent2">
+ <div class="tab-pane fade show active" id="homemobile" role="tabpanel" aria-labelledby="contact-tab">
+        <div class="BoxInputSrchPopup" id="HomeSearch">
+            Search by Location or Category
+     </div>
+        
+        </div> <div class="tab-pane fade" id="profilemobile" role="tabpanel" aria-labelledby="contact-tab">
+        <div class="BoxInputSrchPopup"  id="profileSearch">
+            Search by Location or Category
+     </div>
+        
+        </div>
+        </div>
+    <div class="choose">
+
+    	<ul>	
+
+    		<li><span class="num">1</span><span class="text">Find anything</span></li>
+
+        	<li><span class="num">2</span><span class="text">Post Your business</span></li>
+
+            <li><span class="num">3</span><span class="text">Post Your prices</span></li>
+
+        </ul>
+
+    </div>
+
+	</div>
+
+</div>
+
+</div>
+</div>
+   <div id="SearchM" class="modal fade" role="dialog" aria-modal="true" >
+   <div class="modal-dialog sharebbQ">
+      <div class="modal-content">
+         <div class="modal-header">
+        
+            <button type="button" class="closeQQ" data-dismiss="modal">×</button>
+         </div>
+         <div class="modal-body">
+                   <form method="post" id="GetListing" action="/professional-search">
+            <div class="row">
+                     <div class="col-md-5">
+                           <div class="autocomplete" >
+
+                             <input type="text" class="form-control srchCC" id="locationgetsmobile" name="locationSrch" placeholder="Search by city Or Pin code" autocomplete="off">
+                         </div>
+                       
+                     </div>
+                     <div class="col-md-5">
+                         <select class="form-control srchCC" name="categorySrch"  id="categorygets"  autocomplete="off" required>
+                             <option value="">What are you looking for?</option>
+                             <%categoriesr.forEach((categoriesri)=> { %>
+                            <option value="<%=categoriesri.category_name%>" ><%=categoriesri.category_name%></option>
+                                <%})%>
+                         </select>
+                     
+                     </div>
+                     <div class="col-md-2 text-right"><button class="btn srchBBn" type="submit">Search</button>
+                     </div>
+                  </div></form>
+           
+         </div>
+      </div>
+   </div>
+</div>
+ <div id="SearchM2" class="modal fade" role="dialog" aria-modal="true" >
+   <div class="modal-dialog sharebbQ">
+      <div class="modal-content">
+         <div class="modal-header">
+         
+            <button type="button" class="closeQQ" data-dismiss="modal">×</button>
+         </div>
+         <div class="modal-body">
+                    <form method="post" id="GetListingprice" action="/cost-Search">
+            <div class="row">
+                     <div class="col-md-5">
+                            <div class="autocomplete" >
+                             <input type="text" class="form-control srchCC locationgets" id="locationgetsmob2" name="locationSrch" list="location-datalist" placeholder="Search by city Or Pin code" autocomplete="off">
+                         </div>
+                     </div>
+                     <div class="col-md-5">
+                         <select class="form-control srchCC" name="categorySrch"  id="categorygets"  autocomplete="off" required>
+                              <option value="">What are you looking for?</option>
+                             <option value="bedroom">Bedroom Services</option>
+                                     <option value="flooring">Flooring Services</option>
+                                     <option value="bathroom">Bathroom Services</option>
+                                     <option value="appliances">Appliances & Repair Services</option>
+                                     <option value="cleaning">Cleaning Services</option>
+                                     <option value="window">Window & Door Installation Services</option>
+                                     <option value="kitchen">Kitchen Services</option>
+                                     <option value="painters">Painters & Wallpaper Services </option>
+                                     <option value="design">Design & Decor Services</option>
+                                     <option value="electrical">Electrical Services</option>
+                                     <option value="landscape">Lawn, Landscape & Garden Services</option>
+                                  
+                                   </select>
+                     
+                     </div>
+                     <div class="col-md-2 text-right"><button class="btn srchBBn" type="submit">Search</button>
+                     </div>
+                  </div></form>
+         </div>
+      </div>
+   </div>
+</div>
+
+    
+    <section class="topsectionD">     <div class="container hMax"> <div class="sliderRight">
+                <div class="findExperts"><h4>Find Professionals </h4></div>
+                <ul class="ulExpert">
+                    <div id="myCarousel2" class="carousel owl-carousel owl-theme owlnav2" data-ride="carousel">
+                  <li class="item">
+                  <a href="/directory/architects">
+                     <img   class="lazy" src="/images/placeholder.png" data-src="images/arche.jpg" >
+                      <div class="AddCAt2a"> <span>Architects </span></div>
+                  </a>
+                </li>
+               <li class="item">
+                  <a href="/directory/interior-designers-and-decorators">
+                     <img   class="lazy" src="/images/placeholder.png" data-src="images/homed.jpg" >
+                      <div class="AddCAt2a"><span> Interior Designers & Decorators</span> </div>
+                  </a>
+                </li>
+               <li>
+                  <a href="/directory/kitchen-designers-renovators">
+                     <img   class="lazy" src="/images/placeholder.png" data-src="images/kitchen.jpg" >
+                      <div class="AddCAt2a"><span> Kitchen Designers & Renovators</span></div>
+                  </a>
+                </li>
+               <li class="item">
+                  <a href="/directory/kitchen-bathroom-fixtures">
+                     <img   class="lazy" src="/images/placeholder.png" data-src="images/bath.jpg" >
+                      <div class="AddCAt2a"><span> Kitchen & Bathroom Fixtures</span> </div>
+                  </a>
+                </li>
+               <li class="item">
+                  <a href="/directory/tile-stone-and-countertops">
+                     <img   class="lazy" src="/images/placeholder.png" data-src="images/tile.jpg" >
+                      <div class="AddCAt2a"> <span> Tile, Stone & Countertops </span> </div>
+                  </a>
+                </li>
+                  <li>
+                  <a href="/directory/furniture-and-accessories">
+                     <img   class="lazy" src="/images/placeholder.png" data-src="images/furniture.jpg" >
+                      <div class="AddCAt2a"> <span>Furniture & Accessories </span> </div>
+                  </a>
+               </li>  <li class="item">
+                  <a href="/directory/painting-wallpaper">
+                     <img   class="lazy" src="/images/placeholder.png" data-src="images/painters.jpg" >
+                      <div class="AddCAt2a"> <span> Painters & Wallpaper </span> </div>
+                  </a>
+                </li>  <li class="item">
+                  <a href="/directory/tile-stone-and-countertops">
+                     <img   class="lazy" src="/images/placeholder.png" data-src="images/doors.jpg" >
+                      <div class="AddCAt2a"> <span> Doors Dealers </span> </div>
+                  </a>
+                </li>  <li class="item">
+                  <a href="/directory/carpenters">
+                     <img   class="lazy" src="/images/placeholder.png" data-src="images/carpentry.jpg" >
+                      <div class="AddCAt2a"> <span> Carpenters </span> </div>
+                  </a>
+                </li>  <li class="item">
+                  <a href="/directory/tile-stone-and-countertops">
+                     <img   class="lazy" src="/images/placeholder.png" data-src="images/electricians.jpg" >
+                      <div class="AddCAt2a"> <span> Electricians </span> </div>
+                  </a>
+                </li>
+                    </div>
+				</ul>
+                </div>  
+    
+        
+			
+        </div></section> 
+    <section class="topsectionD">
+       <div class="container hMax"> 
+   <div class="pricingHome">
+     
+           
+                <div class="pricingHomeLH"> Cost guides
+
+</div>
+               <p class="pricingHomeLP">Get an idea about how much a project should cost before you start
+
+
+
+</p>
+       <div class="row">
+           <div class="col-md-3 col-6 costCol9"><div class="colsEst"><a href="/cost-compare/painters"><img  class="lazy" src="/images/placeholder.png" data-src="/images/paincost.jpg"></a></div></div>
+           <div class="col-md-3 col-6 costCol9"><div class="colsEst"><a href="/cost-compare/kitchen"><img class="lazy" src="/images/placeholder.png" data-src="/images/kitchenp1.jpg"></a></div></div>    <div class="col-md-3 col-6 costCol9"><div class="colsEst"><a href="/cost-compare/bedroom"><img class="lazy" src="/images/placeholder.png" data-src="/images/bathcost.jpg"></a></div></div>
+           <div class="col-md-3 col-6 costCol9"><div class="colsEst"><a href="/cost-compare/bathroom"><img class="lazy" src="/images/placeholder.png" data-src="/images/floorinstall.jpg"></a></div></div>
+   
+       </div>
+           
+             <div class="ViewAllDesign"><a href="/cost-compare">Show more <i class="fa fa-angle-right"></i></a></div>
+       
+      </div>
+        </div>
+    </section>
+    
+    <section class="topsectionD">
+       <div class="container hMax">    <h2 class="head_linen1 heading2 col-xs-12">Explore images
+ </h2>
+       <div class="row">
+           		<div class="col-md-3 col-6">
+        <div class="swiper-wrapper">
+            <a href="/designs/bedroom">
+         <figure><img  class="lazy" src="/images/placeholder.png"  data-src="images/bed-890555_640.jpg" width="100%" ></figure>
+<div class="designsTT">
+Bedroom
+                </div></a>   </div></div><div class="col-md-3 col-6">
+        <div class="swiper-wrapper">
+          <a href="/designs/home"><figure><img  class="lazy" src="/images/placeholder.png"  data-src="images/architecture-1477103_640.jpg" width="100%" ></figure>
+<div class="designsTT">
+Home Design
+              </div> </a>  </div></div><div class="col-md-3 col-6">
+        <div class="swiper-wrapper">
+         <a href="/designs/kitchen-designs"> <figure><img  class="lazy" src="/images/placeholder.png"  data-src="images/kitchen-1416383_640.jpg" width="100%" ></figure>
+<div class="designsTT">
+Kitchen Designs
+             </div> </a>  </div></div><div class="col-md-3 col-6">
+        <div class="swiper-wrapper">
+         <a href="/designs/living-Room"> <figure><img  class="lazy" src="/images/placeholder.png"  data-src="images/apartment-4246371_640.jpg" width="100%" ></figure>
+<div class="designsTT">
+Living Room
+             </div>  </a> </div></div>
+           </div>
+           <div class="ViewAllDesign"><a href="/designs">Show more <i class="fa fa-angle-right"></i></a></div>
+        </div>
+    
+    </section>
+ 
+        
+    <div class="clearfix"></div>  
+    
+    <section class="topsectionD"> <div class="container hMax">
+      <div class="sliderRight">
+                <div class="findExperts"><h4>Shop By Category</h4></div>
+                <ul class="ulExpert">
+                    <div id="myCarouselshop2" class="carousel owl-carousel owl-theme owlnav2" data-ride="carousel">
+                  <li class="item">
+                  <a href="/shop/furniture">
+                     <img   class="lazy" src="/images/placeholder.png" data-src="images/shofa.png" >
+                      <div class="AddCAt2a"> <span>Furniture </span></div>
+                  </a>
+                </li>
+               <li class="item">
+                  <a href="/shop/outdoor">
+                     <img   class="lazy" src="/images/placeholder.png" data-src="images/Outdoor.jpg" >
+                      <div class="AddCAt2a"><span> Outdoor</span> </div>
+                  </a>
+                </li>
+               <li>
+                  <a href="/shop/lighting">
+                     <img  class="lazy" src="/images/placeholder.png"  data-src="images/light.png" >
+                      <div class="AddCAt2a"><span>Lighting</span></div>
+                  </a>
+                </li>
+               <li class="item">
+                  <a href="/shop/home-decor">
+                     <img class="lazy" src="/images/placeholder.png"  data-src="images/wooden-wall-decor.jpg" >
+                      <div class="AddCAt2a"><span> Home decor</span> </div>
+                  </a>
+                </li>
+               <li class="item">
+                  <a href="/shop/kitchen-dining">
+                     <img  class="lazy" src="/images/placeholder.png"  data-src="images/dining.jpg" >
+                      <div class="AddCAt2a"> <span>Kitchen & Dining </span> </div>
+                  </a>
+                </li>
+                  <li>
+                  <a href="/shop/bathroom">
+                     <img  class="lazy" src="/images/placeholder.png"  data-src="images/bathroom.jpg" >
+                      <div class="AddCAt2a"> <span>Bathroom products </span> </div>
+                  </a>
+               </li>  <li class="item">
+                  <a href="/shop/living">
+                     <img   class="lazy" src="/images/placeholder.png" data-src="images/living.jpg" >
+                      <div class="AddCAt2a"> <span>Living </span> </div>
+                  </a>
+                </li>  <li class="item">
+                  <a href="/shop/bedroom">
+                     <img   class="lazy" src="/images/placeholder.png" data-src="images/bedroom.jpg" >
+                      <div class="AddCAt2a"> <span> Bedroom </span> </div>
+                  </a>
+                </li>  <li class="item">
+                  <a href="/shop/plants">
+                     <img  class="lazy" src="/images/placeholder.png"  data-src="images/Plants.jpg" >
+                      <div class="AddCAt2a"> <span> Plants </span> </div>
+                  </a>
+                </li>  <li class="item">
+                  <a href="/shop/seeds">
+                     <img  class="lazy" src="/images/placeholder.png"  data-src="images/seeds.png" >
+                      <div class="AddCAt2a"> <span> Seeds </span> </div>
+                  </a>
+                </li><li class="item">
+                  <a href="/shop/soil-fertilizer">
+                     <img  class="lazy" src="/images/placeholder.png"  data-src="images/fertilizer.jpg" >
+                      <div class="AddCAt2a"> <span> Soil & Fertilizer </span> </div>
+                  </a>
+                </li><li class="item">
+                  <a href="/shop/pots-planters">
+                     <img  class="lazy" src="/images/placeholder.png"  data-src="images/pots.jpg" >
+                      <div class="AddCAt2a"> <span> pots & planters </span> </div>
+                  </a>
+                </li>
+                    </div>
+				</ul>
+                </div>  
+    </div>
+    </section>
+ 
+ 
+
+    
+    
+    <section class="topsectionD">
+       <div class="container hMax">
+       
+           <h2 class="head_linen1 heading2 col-xs-12">Top Articles
+ </h2>
+          <div class="row">
+          
+              <%topnews.forEach((topnews)=>{  %>
+           <div class="col-lg-3 col-md-4 col-6 pp-10">
+           
+     <% var stringtitle = topnews.news_title; var replacesting = stringtitle.replace(/\s/g,"-") %>
+                <div class="bd_snewst-new">
+                    
+                    <a href="/post/<%= topnews.news_category%>/<%= topnews.id%>/<%= replacesting %>">
+                  
+                      <div class="bd-cpbox"><img class="lazy" src="/images/placeholder.png" data-src="/images/post/<%= topnews.news_image%>?width=500&height=320"  >
+                        
+                         <div class="Categorytag" data-cat="<%= topnews.news_category%>"></div>
+                        </div>
+                  
+                   
+                      <div class="bd-cpboxC"><% var newTitle = new String(topnews.news_title) 
+                            if(newTitle.length > 70 ) {  var Slicetext = newTitle.slice(0,70);
+                          %> <%=Slicetext+'...'%>  <%} else {%> <%= topnews.news_title%> <%}%></div>
+                          
+               
+                      </a>
+                     <% if(topnews.user) {  var strinuser = topnews.user; var replaceuser = strinuser.replace(/\s/g,"-") %>
+                    <%}%>
+                     <div class="authorcp">
+                    <a href="#" class="author-width"></a> <div class="a-cpname"> <% if(topnews.user==null) { %>by thelivro team <%} else{ %><a href="/authors/<%= topnews.postBy%>/<%= replaceuser %>">By <%= topnews.user %></a> <%}%>   </div>
+                    </div>
+                   
+                </div>
+              </div>     
+                  
+        <% })%>
+        
+            </div>
+          
+        </div>
+       
+    
+    </section>
+  
+
+             
+             
+  
+    
+    <section class="topsectionD">
+       <div class="container hMax">
+       
+           <h2 class="head_linen1 heading2 col-xs-12">Home & Outdoors
+ </h2>
+          <div class="row">
+          
+              <%trevelfood.forEach((trevelfood)=>{  %>
+           <div class="col-lg-3 col-md-4 col-6 pp-10">
+           
+     <% var stringtitle = trevelfood.news_title; var replacesting = stringtitle.replace(/\s/g,"-") %>
+                <div class="bd_snewst-new">
+                    
+                    <a href="/post/<%= trevelfood.news_category%>/<%= trevelfood.id%>/<%= replacesting %>">
+                  
+                      
+                  <div class="bd-cpbox"><img class="lazy" src="/images/placeholder.png" data-src="/images/post/<%= trevelfood.news_image%>?width=500&height=320"  >
+                        
+                         <div class="Categorytag" data-cat="<%= trevelfood.news_category%>"></div>
+                        </div>
+                  
+                    
+                      <div class="bd-cpboxC"><% var newTitle = new String(trevelfood.news_title) 
+                            if(newTitle.length > 70 ) {  var Slicetext = newTitle.slice(0,70);
+                          %> <%=Slicetext+'...'%>  <%} else {%> <%= trevelfood.news_title%> <%}%></div>
+                          
+               
+                      </a>
+                    <% if(trevelfood.user) {  var strinuser = trevelfood.user; var replaceuser = strinuser.replace(/\s/g,"-") %>
+                    <%}%>
+                     <div class="authorcp">
+                   <div class="a-cpname"> <% if(trevelfood.user==null) { %>By thelivro team <%} else{ %><a href="/authors/<%= trevelfood.postBy%>/<%= replaceuser %>">by <%= trevelfood.user %></a> <%}%>   </div>
+                    </div>
+                
+                </div>
+              </div>     
+                  
+        <% })%>
+        
+            </div>
+          
+        </div>
+       
+    
+    </section>
+  
+    
+    <div class="clearfix"></div>
+   
+
+         <section class="topsectionD">
+		 <div class="container hMax"><h2 class="head_linen1 heading4 col-xs-12"> Our User Reviews
+
+
+ </h2> <div class="row">
+		 <div class="left-col">
+		 <div class="recomm-experts">
+		 <div class="reviews-wrap"><div class="review-list">
+		 <ul id="reviewslist">
+		 
+		 
+		 <li><div class="reviews-left"><h4>Ajay kumar</h4>
+              <div class="ratingaa">
+                                            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
+                                            </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
+                                            </i><i class=" price-text-color2 fa fa-star"></i>
+                        
+                                        </div>
+		<address>Delhi</address><hr>
+                                              
+                      
+		 <p>My commercial office is very superb cleaning company staff very super management very nice,</p>
+		</div>
+		</li>
+		 <li><div class="reviews-left"><h4>Rahul Pal</h4>
+              <div class="ratingaa">
+                                            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
+                                            </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
+                                            </i><i class=" price-text-color fa fa-star"></i>
+                        
+                                        </div>
+		<address>Meerut</address><hr>
+		 <p>My commercial office is very superb cleaning company staff very super management very nice,</p>
+		</div>
+		</li> <li><div class="reviews-left"><h4>Deepak singh</h4>     <div class="ratingaa">
+                                            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
+                                            </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
+                                            </i><i class=" price-text-color fa fa-star"></i>
+                        
+                                        </div>
+		<address>Mumbai</address><hr>
+		 <p>My commercial office is very superb cleaning company staff very super management very nice,</p>
+		</div>
+		</li> <li><div class="reviews-left"><h4>Gaurav Gupta</h4>     <div class="ratingaa">
+                                            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
+                                            </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
+                                            </i><i class=" price-text-color fa fa-star"></i>
+                        
+                                        </div>
+		 <address>Jaipur</address><hr>
+		 <p>My commercial office is very superb cleaning company staff very super management very nice,</p>
+		</div>
+		</li>
+		
+		 </ul>
+		 
+		
+		
+             </div></div></div></div></div></div></section>
+
+  
+<div  class="sc-cvbbAY hteNID"><p class="sc-hCSkms">Are you a Home Pro?</p><p class="sc-cMs">Are you a home service pro? Connect with new customers, now.</p><a class="sc-jWBwVs" href="<% if(req.session.loggedin){ %>/for-business<%} else{%>/sign-up?business=register<%}%>">Get Started</a></div>
+             
+             
+             
+             
+             
+                <% include include/footer.ejs %>
+    
+    
+             <script src="/js/search.js"></script>
+             
+             
+     <script>
+     
+     
+           $('#myCarouselgal23').owlCarousel({
+    loop:true,
+    margin:20,stagePadding: 0,
+              navText: [
+        '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+        '<i class="fa fa-angle-right" aria-hidden="true"></i>'
+    ],
+            dots:false,
+    responsiveClass:true,
+    responsive:{
+        0:{
+            items:1,
+            nav:true
+        },
+        600:{
+            items:3,
+            nav:true
+        },
+        1000:{
+            items:4,
+            nav:true,
+            loop:true
+        }
+    }
+});    
+           $('#myCarousel23').owlCarousel({
+    loop:true,
+    margin:10,
+              navText: [
+        '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+        '<i class="fa fa-angle-right" aria-hidden="true"></i>'
+    ],
+            dots:false,
+    responsiveClass:true,
+    responsive:{
+        0:{
+            items:1,
+            nav:true
+        },
+        600:{
+            items:3,
+            nav:false
+        },
+        1000:{
+            items:6,
+            nav:true,
+            loop:false
+        }
+    }
+});
+         $('#myCarousel2').owlCarousel({
+    loop:true,    stagePadding: 30,
+
+    margin:5,
+              navText: [
+        '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+        '<i class="fa fa-angle-right" aria-hidden="true"></i>'
+    ],
+            dots:false,
+    responsiveClass:true,
+    responsive:{
+        0:{
+            items:2,
+            nav:true
+        },
+        600:{
+            items:2,
+            nav:false
+        },
+        1000:{
+            items:6,
+            nav:true,
+            loop:false
+        }
+    }
+});$('#myCarouselshop2').owlCarousel({
+    loop:true,    stagePadding: 30,
+
+    margin:5,
+              navText: [
+        '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+        '<i class="fa fa-angle-right" aria-hidden="true"></i>'
+    ],
+            dots:false,
+    responsiveClass:true,
+    responsive:{
+        0:{
+            items:2,
+            nav:true
+        },
+        600:{
+            items:2,
+            nav:false
+        },
+        1000:{
+            items:7,
+            nav:true,
+            loop:false
+        }
+    }
+});
+       $('#myCarouselgal').owlCarousel({
+    loop:true,
+    margin:10,
+              navText: [
+        '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+        '<i class="fa fa-angle-right" aria-hidden="true"></i>'
+    ],
+            dots:false,
+    responsiveClass:true,
+    responsive:{
+        0:{
+            items:1,
+            nav:true
+        },
+        600:{
+            items:3,
+            nav:false
+        },
+        1000:{
+            items:4,
+            nav:true,
+            loop:false
+        }
+    }
+});    
+         $('#myCarouselprice').owlCarousel({
+    loop:true,
+    margin:10,
+              navText: [
+        '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+        '<i class="fa fa-angle-right" aria-hidden="true"></i>'
+    ],
+            dots:false,
+    responsiveClass:true,
+    responsive:{
+        0:{
+            items:1,
+            nav:true
+        },
+        600:{
+            items:3,
+            nav:false
+        },
+        1000:{
+            items:6,
+            nav:true,
+            loop:false
+        }
+    }
+})  
+        $('.owl-carousel2').owlCarousel({
+    loop:true,
+    margin:10,
+              navText: [
+        '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+        '<i class="fa fa-angle-right" aria-hidden="true"></i>'
+    ],
+            dots:false,
+    responsiveClass:true,
+    responsive:{
+        0:{
+            items:1,
+            nav:true
+        },
+        600:{
+            items:3,
+            nav:false
+        },
+        1000:{
+            items:8,
+            nav:true,
+            loop:false
+        }
+    }
+})
+    </script>
+    
+				</body>
+								</html>

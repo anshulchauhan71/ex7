@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="indexpage">
+   <head>
+       <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+	<meta name="description" content="Find the best local restaurants, bars, shops, cafes, hotels, gyms, spas and more, from That’s Beijing, your authoritative guide to what’s happening in Beijing, China.">
+	<meta name="keywords" content="thats Beijing, Beijing, china, dining, nightlife, galleries, arts, guides, restaurants, bars, party, gig, thatsBeijing, thatsmags, thatsonline, directory, listing, venues, community, health">
+	
+      <title>Restaurants, Dentists, Bars, Beauty Salons, Doctors - trendsxp</title>
+      <% include include/head.ejs %>
+    
+   </head>
+   <body>
+       
+      <% include include/header.ejs %>
+          <% include include/menu.ejs %>
+    
+      <div class="CostingComparesec">
+      <div class="CostingCompare">
+       
+      <div class="container">
+           <div class="CostHeading"><%=Dcategory%> Prices </div>
+              <div class="CostHeading2">Save money by comparing prices.
+</div>
+    
+      <div class="row">
+       <div class="col-md-12">
+            <div class="FormDe45P">
+                   <div class="searchPL2">
+                 
+                                  <form method="post" id="GetListingprice" action="/cost-Search">
+            <div class="row">
+                     <div class="col-md-5">
+                          <div class="autocomplete" >
+                             <input type="text" class="form-control srchCC" id="locationgets" name="locationSrch" list="location-datalist" value="<%=locationR?locationR:req.query.pincode%>" placeholder="Search by city Or Pin code" >
+
+                         </div>
+                        
+                     </div>
+                
+                     <div class="col-md-5 p-0">
+                         <select class="form-control srchCC" name="categorySrch"  id="categorygets"  autocomplete="off">
+                             <option value="bedroom" <%=Dcategory=='bedroom'?'selected':'' %>>Bedroom Services</option>
+                                     <option value="flooring" <%=Dcategory=='flooring'?'selected':'' %>>Flooring Services</option>
+                                     <option value="bathroom" <%=Dcategory=='bathroom'?'selected':'' %>>Bathroom Services</option>
+                                     <option value="appliances" <%=Dcategory=='appliances'?'selected':'' %>>Appliances & Repair Services</option>
+                                     <option value="cleaning" <%=Dcategory=='cleaning'?'selected':'' %>>Cleaning Services</option>
+                                     <option value="window" <%=Dcategory=='window'?'selected':'' %>>Window & Door Installation Services</option>
+                                     <option value="kitchen" <%=Dcategory=='kitchen'?'selected':'' %>>Kitchen Services</option>
+                                     <option value="painters" <%=Dcategory=='painters'?'selected':'' %>>Painters & Wallpaper Services </option>
+                                     <option value="design" <%=Dcategory=='design'?'selected':'' %>>Design & Decor Services</option>
+                                     <option value="electrical" <%=Dcategory=='electrical'?'selected':'' %>>Electrical Services</option>
+                                     <option value="landscape" <%=Dcategory=='landscape'?'selected':'' %>>Lawn, Landscape & Garden Services</option>
+                                  
+                                   </select>
+                     
+                     </div>
+                <div class="col-md-2"><button class="btn srchBBn2P" type="submit">Search</button>
+                     </div>
+                  </div></form>
+      
+                     </div>
+                        </div>
+       <div class="gsc_row" id="HideA">
+   <div class="gsc_col-md-12 gsc_col-lg-12 gsc_col-sm-12 gsc_col-xs-12">
+      <div class="gsc_row">
+         <div class="gsc_col-md-12 gsc_col-sm-12">
+            <div class="contentLoader">
+               <div class="animated-background " style="height:126"> </div>
+               <div class="animated-backgroundlarge firstRow" style="height:10px;margin-bottom:10px"> </div>
+               <div class="animated-backgroundlarge secondRow" style="height:10px;width:80%;margin-bottom:10px"> </div>
+               <div class="animated-backgroundlarge secondRow" style="height:10px;width:70%"> </div>
+            </div>
+         </div>
+         <div class="gsc_col-md-12 gsc_col-sm-12">
+            <div class="contentLoader">
+               <div class="animated-background " style="height:126"> </div>
+               <div class="animated-backgroundlarge firstRow" style="height:10px;margin-bottom:10px"> </div>
+               <div class="animated-backgroundlarge secondRow" style="height:10px;width:80%;margin-bottom:10px"> </div>
+               <div class="animated-backgroundlarge secondRow" style="height:10px;width:70%"> </div>
+            </div>
+         </div>
+         <div class="gsc_col-md-12 gsc_col-sm-12">
+            <div class="contentLoader">
+               <div class="animated-background " style="height:126"> </div>
+               <div class="animated-backgroundlarge firstRow" style="height:10px;margin-bottom:10px"> </div>
+               <div class="animated-backgroundlarge secondRow" style="height:10px;width:80%;margin-bottom:10px"> </div>
+               <div class="animated-backgroundlarge secondRow" style="height:10px;width:70%"> </div>
+            </div>
+         </div>
+         <div class="gsc_col-md-12 gsc_col-sm-12">
+            <div class="contentLoader">
+               <div class="animated-background " style="height:126"> </div>
+               <div class="animated-backgroundlarge firstRow" style="height:10px;margin-bottom:10px"> </div>
+               <div class="animated-backgroundlarge secondRow" style="height:10px;width:80%;margin-bottom:10px"> </div>
+               <div class="animated-backgroundlarge secondRow" style="height:10px;width:70%"> </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+            <div class="homeCompair ShowA">
+                    
+                    
+       
+                <%if(resultpricing.length > 0){ %>
+                
+<%resultpricing.forEach((resultpricing)=>{ %>
+      <div class="pricecard card pl-2">
+         <div class="homedTable">
+            <div class="homebrandLogo">
+                 <%if(resultpricing.ads_logo){%>
+          <img src="/images/post/<%=resultpricing.ads_logo %>?width=500&height=350" title="logo">
+          <%}else{%> <img src="/images/post/placeholder2.jpg?width=500&height=350" title="logo"><%}%>
+                
+                
+               </div>
+            <div class="homeidvPlanD">
+               <div><%=resultpricing.company %><span class="homedisplay-b"><%=resultpricing.ads_city+' ,' %><%=resultpricing.ads_state %></span></div>
+              <%if(resultpricing.offer){%> <span class="homeplan-details">Offer:<%=resultpricing.offer %>%</span><%}%>
+                <span class="homeplan-services"><span>Services:</span> <%=resultpricing.services=='undefined'?'':resultpricing.services %></span>
+               
+            </div>
+            <div class="homebtngrp">
+             <%if(resultpricing.hourly !==''){ %><div class="homequoteBuybutton"><span class="homebuynowT y6">Contact Now</span><span class="homerupees-f16">₹ <%=resultpricing.hourly %></span>Per Hour</div><%}%>
+                  <%if(resultpricing.perday !==''){ %> <div class="homequoteBuybutton"><span class="homebuynowT y6">Contact Now</span><span class="homerupees-f16">₹ <%=resultpricing.perday %></span>Per day</div><%}%>
+             <%if(resultpricing.sqft !==''){ %> <div class="homequoteBuybutton"><span class="homebuynowT y6">Contact Now</span><span class="homerupees-f16">₹ <%=resultpricing.sqft %></span>Per sqft</div><%}%>
+          
+                
+                
+               <div class="homebtnelemnt bikebtnview">
+                   
+                    <%if(resultpricing.hourly==''){ %> <button class="homeinactive homequoteBuybutton" disabled><span class="homebuynowT">Contact Now</span>
+             <span class="homerupees-f16">NA</span>Per/Hour</button><%}else{%><%}%>
+                     <%if(resultpricing.perday==''){ %> <button class="homeinactive homequoteBuybutton" disabled><span class="homebuynowT">Contact Now</span><span class="homerupees-f16">NA</span>Per/day</button><%}else{%><%}%>
+             <%if(resultpricing.sqft==''){ %> <button class="homeinactive homequoteBuybutton" disabled><span class="homebuynowT">Contact Now</span>
+             <span class="homerupees-f16">NA</span>Per/sqft</button><%}else{%><%}%>
+           
+                   
+                   
+             
+            </div>
+         
+       
+      </div></div>
+   </div>
+                <%})} else{ %>
+                <div class="quotesListe ShowA">
+         <div class="NofoundResult">
+                    No Prices Found</div>
+                   <div class="NofoundResultbox"> 
+Sorry! No plans available with the current selection</div>
+
+                <%}%>
+
+                </div>
+           </div>
+          
+          </div>
+       </div>
+       </div>
+       </div>
+       </div>
+       
+      <div class="sc-cvbbAY hteNID"><p class="sc-hCSkms">Are you a Home Pro?</p><p class="sc-cMs">Are you a home service pro? Connect with new customers, now.</p><a class="sc-jWBwVs" href="<% if(req.session.loggedin){ %>/for-business<%} else{%>/sign-up?business=register<%}%>">Get Started</a></div>
+       
+       
+      <% include include/footer.ejs %>
+                    <script src="/js/search.js"></script>
+
+   </body>
+</html>

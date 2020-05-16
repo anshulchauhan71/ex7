@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html class="indexpage">
+<head>
+	
+	<title>Addmission24</title>
+   <% include ../include/head.ejs %>
+	<script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+
+</head>    
+<body>
+ 
+  <body id="page-top">
+      <% include ../include/user-header.ejs %>
+          <div class="single-channel-page" id="content-wrapper">
+          
+            <div class="single-channel-nav">
+               <nav class="navbar navbar-expand-lg navbar-light">
+                  <a class="channel-brand" href="#">Jammuna Parasad <span title="" data-placement="top" data-toggle="tooltip" data-original-title="Verified"><i class="fa fa-check-circle text-success"></i></span></a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                     <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                           <a class="nav-link" href="#">Videos <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="#">Playlist</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="#">Channels</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="#">Discussion</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           Donate
+                           </a>
+                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="#">Action</a>
+                              <a class="dropdown-item" href="#">Another action</a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="#">Something else here</a>
+                           </div>
+                        </li>
+                     </ul>
+                
+                  </div>
+               </nav>
+            </div>
+              <section class="userdashbord">
+            <div class="container">
+                    <div class="row">
+                  <div class="col-lg-12">
+                     <div class="osahan-form">
+                         
+                         <form action="" enctype="multipart/form-data" method="post">
+                            
+                        <div class="row">
+                           <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label for="e1">Event Title</label>
+                                 <input type="text" name="title1" placeholder="Contrary to popular belief, Lorem Ipsum (2019) is not." id="e1" class="form-control">
+                              </div>
+                              
+                           </div>
+                           <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label for="e2">Event Type 
+</label>
+                                 <input type="text" name="title1" placeholder="Contrary to popular belief, Lorem Ipsum (2019) is not." id="e1" class="form-control">
+                              </div>
+                           </div>
+                           
+                             <div class="col-lg-4">
+                              <div class="form-group">
+                                 <label for="e2">Organiseby </label>
+                                  <input type="text" name="featureimage"  id="e1" class="form-control">
+                              </div>
+                           </div>   <div class="col-lg-4">
+                              <div class="form-group">
+                                 <label for="e3">Category</label>
+                                 <select id="category" class="form-control" name="category">
+                                     <option value="">Select</option>
+                                     
+                                 </select>
+                              </div>
+                           
+                           </div> <div class="col-lg-4">
+                              <div class="form-group">
+                                 <label for="e3">Event Date</label>
+                                 <input type="text" name="title2" placeholder="Contrary to popular belief, Lorem Ipsum (2019) is not." id="e1" class="form-control">
+                              </div>
+                           </div> 
+                            
+                            <script>
+                                $("#category").change(function(){
+                                                 
+                                    var getvalue = $(this).val();
+                                    
+                                    $.ajax({
+                                        
+                                        type:'GET',
+                                        url:'/category/'+getvalue,
+                                        success:function(getsubcategory){
+                                            
+                                            $("#subcategory").html(getsubcategory.subcategory)
+                                        }
+                                        
+                                        
+                                    })
+                                })
+                            </script>
+                           <div class="col-lg-3">
+                              <div class="form-group">
+                                 <label for="e3">Start time</label>
+                                <input type="text" placeholder="" name="author" id="e1" class="form-control">
+                              </div>
+                           </div> 
+                           <div class="col-lg-3">
+                              <div class="form-group">
+                                 <label for="e4">Start Date</label>
+                                  <input type="text" placeholder="" name="author" id="e1" class="form-control">
+                              </div>
+                           </div> <div class="col-lg-3">
+                              <div class="form-group">
+                                 <label for="e4">Event Photo 
+</label>
+                                  <input type="file" placeholder="" id="e1" name="author_image" class="form-control">
+                              </div>
+                           </div>
+                           <div class="col-lg-3">
+                              <div class="form-group">
+                                 <label for="e4">Venue Name 
+</label>
+                                  <input type="text" placeholder="" id="e1" name="author_image" class="form-control">
+                              </div>
+                           </div>
+                           <div class="col-lg-3">
+                              <div class="form-group">
+                                 <label for="e6">Phone Number</label>
+                                 <input type="text" placeholder="For Seo" id="e7" name="keyword" class="form-control">
+                              </div>
+                           </div>
+                    
+                      
+                           <div class="col-lg-3">
+                              <div class="form-group">
+                                 <label for="e7">Event URL</label>
+                                   <input type="text" placeholder="For Seo" id="e7" name="keyword" class="form-control">
+                              </div>
+                           </div>
+
+                           <div class="col-lg-3">
+                              <div class="form-group">
+                                 <label for="e9">Email</label>
+                                  <input type="text" placeholder="For Seo" id="e7" name="keyword" class="form-control">
+                              </div>
+                           </div>
+                      <div class="col-lg-3">
+                              <div class="form-group">
+                                 <label for="e9">Address </label>
+                                  <textarea class="form-control"></textarea>
+                              </div>
+                           </div>
+                      <div class="col-lg-12">
+                              <div class="form-group">
+                                 <label for="e2">Description</label>
+                               <textarea name="editor1" name="description"></textarea>
+                <script>
+                        CKEDITOR.replace( 'editor1' );
+                </script>
+                              </div>
+                           </div>
+                        </div><div class="osahan-area text-center mt-3">
+                        <button class="btn btn-outline-primary" type="submit">Submit </button>
+                     </div>
+                         </form>
+                      </div>
+                     
+                     <hr>
+                    
+                  </div>
+               </div>
+                  </div>
+                
+                  </section>
+               </div>
+            </div>
+            <!-- /.container-fluid -->
+            <!-- Sticky Footer -->
+       
+         </div>
+         <!-- /.content-wrapper -->
+      </div>
+  
+
+    
+
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Datemask dd/mm/yyyy
+    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+    //Datemask2 mm/dd/yyyy
+    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+    //Money Euro
+    $('[data-mask]').inputmask()
+
+    //Date range picker
+    $('#reservation').daterangepicker()
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, locale: { format: 'MM/DD/YYYY hh:mm A' }})
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+      {
+        ranges   : {
+          'Today'       : [moment(), moment()],
+          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        startDate: moment().subtract(29, 'days'),
+        endDate  : moment()
+      },
+      function (start, end) {
+        $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+      }
+    )
+
+    //Date picker
+    $('#datepicker').datepicker({
+      autoclose: true
+    })
+
+    //iCheck for checkbox and radio inputs
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+      checkboxClass: 'icheckbox_minimal-blue',
+      radioClass   : 'iradio_minimal-blue'
+    })
+    //Red color scheme for iCheck
+    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+      checkboxClass: 'icheckbox_minimal-red',
+      radioClass   : 'iradio_minimal-red'
+    })
+    //Flat red color scheme for iCheck
+    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+      checkboxClass: 'icheckbox_flat-green',
+      radioClass   : 'iradio_flat-green'
+    })
+
+    //Colorpicker
+    $('.my-colorpicker1').colorpicker()
+    //color picker with addon
+    $('.my-colorpicker2').colorpicker()
+
+    //Timepicker
+    $('.timepicker').timepicker({
+      showInputs: false
+    })
+  })
+</script>
+					
+								</body>
+								</html>
+

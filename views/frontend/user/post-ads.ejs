@@ -1,0 +1,351 @@
+        <!DOCTYPE html>
+<html class="indexpage">
+<head>
+	
+	<title></title>
+   <% include ../include/head.ejs %>
+<link rel="stylesheet" href="/css/froala_editor.css">
+   <link rel="stylesheet" href="/css/froala_style.css">
+   <link rel="stylesheet" href="/css/plugins/colors.css">
+   <link rel="stylesheet" href="/css/plugins/char_counter.css">
+   <script type="text/javascript" src="/js/froala_editor.min.js"></script>
+  <script type="text/javascript" src="/js/plugins/align.min.js"></script>
+  <script type="text/javascript" src="/js/plugins/char_counter.min.js"></script>
+  <script type="text/javascript" src="/js/plugins/colors.min.js"></script>
+ <script type="text/javascript" src="/js/plugins/font_size.min.js"></script>
+</head>    
+
+ 
+  <body id="page-usertop">
+      <% include ../include/user-header.ejs %>
+          <div class="single-channel-page" id="content-wrapper">
+              <section class="userdashbordd">
+            <div class="container">
+                    <div class="ads_heads">
+                         <div class="row"><div class="col-sm-12">
+                         
+                           
+                         
+                       <form method="post" enctype="multipart/form-data" >
+                  <div class="post_ads">
+                     <div class="row">
+                        <div class="col-lg-8">
+                            <div class="row Bpart_0 mt-0">
+                        <div class="col-sm-12">
+    <h1 class="wizard-titlep">Post a free Business</h1>
+   
+</div> </div>
+                           <div class="Bpart_0 mt-0 row">
+                              <div class="col-lg-12">
+                                 <h3 class="busTitle">Your  Information
+                                 </h3>
+                              </div>
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label for="e4">Contact Person  * </label>
+                                    <input type="text" name="ads_contact"  value="<%= req.session.Username %>" class="form-control" >
+                                      <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='ads_contact'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                
+                                 </div>
+                              </div>
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label for="e4">Mobile*</label>
+                                    <input type="text"  name="ads_mobile" value="<%= req.session.user_mobile %>" class="form-control">
+                                      <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='ads_mobile'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                 </div>
+                              </div>
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label for="e4">Email* </label>
+                                    <input type="text"  name="ads_email" value="<%= req.session.email %>" class="form-control">
+                                      <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='ads_email'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="Bpart_0 row">
+                              <div class="col-lg-12">
+                                 <h3 class="busTitle">Business Information
+                                 </h3>
+                              </div>
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+              
+                                    <label for="e1"> Category*
+                                    </label> 
+                                    <select id="Ccategory" class="form-control" name="category"  >
+                                             <%if(category){ %>  <option value="<%=category%>"><%=category%></option> <%} else{%>
+                                     <option value="">Select</option><%}%>
+                                       <% categories_s.forEach((selectads)=> { %>
+                                       <option value="<%= selectads.category_name %>"><%= selectads.category_name %>
+                                       </option>
+                                       <% }) %>
+                                    </select>
+                                    <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='category'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                 </div>
+                              </div>
+                                 <div class="col-lg-12">
+                              
+   <h6> Services Provided
+                                    </h6>
+                                   <div class="sericeoffer"><div id="services"><p class="selectSe">Please Select Category.</p></div></div>
+                                      <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='service'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                               </div>
+                              <div class="col-lg-12">
+                                 <div class="form-group">
+                                    <label for="e2">Business Name
+                                    *</label>
+                                    <input type="text" name="ads_title" placeholder="Ex. Sales Executive"  class="form-control" value="<%= ads_title%>">
+                                    <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='ads_title'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                 </div>
+                 
+<!--
+                                 <% if(message != '') { %>
+                                 <p class="text-danger"><%= message%></p>
+                                 <% }%>
+-->
+                              </div>
+                              <div class="col-lg-8">
+                                 <div class="form-group">
+                                    <label for="e1">Featured image</label>
+                                    <div class="comapny_logo_pre">
+                                       <div class="comapny_logo_img"> <img src="<%if(ads_logo){%>/images/post/<%= ads_logo%><%}else{%>/images/profile.jpg<%}%>" alt="" id="image_publicer">  </div>
+                                        <input type="hidden"  value="<%= ads_logo%>" name="ads_updatelogo">
+                                       <div class="custom-file">
+                                          <input type="file" class="custom-file-input"   id="customFile" onchange="readURL(this);" name="ads_logo" accept="" required>
+                                          <label class="custom-file-label" for="customFile"><i class="fa fa-cloud-upload" aria-hidden="true"></i>             Upload Featured Image </label>
+                                            <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='ads_logo'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-lg-12">
+                                 <div class="form-group">
+                                    <label for="e2">Description of your Business *</label>
+                                    <textarea name="ads_description" id="edit" rows="2"><%= ads_description%></textarea>
+                                    <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='ads_description'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                 </div>
+                              </div>
+                           </div>
+                          
+                           <div class="Bpart_0 row">
+                              <div class="col-lg-12">
+                                 <h3 class="busTitle">Location details
+                                 </h3>
+                              </div>
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label>Country*</label>
+                                    <select id="ads_countryname" class="form-control" name="ads_country" >
+                                           <%if(ads_country){ %>  <option value="<%=ads_country%>"><%=ads_country%></option> <%} else{%>
+                                     <option value="">Select</option><%}%>
+                                       <% countryads.forEach((countryads)=> { %>
+                                       <option value="<%= countryads.name%>"  data-id="<%= countryads.id%>"><%= countryads.name%></option>
+                                       <%})%>
+                                    </select>
+                                      <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='ads_country'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                 </div>
+                              </div>
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label >State*</label>
+                                    <select id="ads_statename" class="form-control" name="ads_state" >
+                                        <%if(ads_state){ %>  <option value="<%=ads_state%>"><%=ads_state%></option> <%} else{%>
+                                     <option value="">Select</option><%}%>
+                                    </select>
+                                     <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='ads_state'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                 </div>
+                              </div>
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label for="e3">City*</label>
+                                    <select id="ads_cityname" class="form-control" name="ads_city" >
+                                        <%if(ads_city){ %>  <option value="<%=ads_city%>"><%=ads_city%></option> <%} else{%>
+                                     <option value="">Select</option>
+                                     <%}%>
+                                     </select>
+                                       
+                                       <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='ads_city'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                 </div>
+                              </div>
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label for="e3">Address</label>
+                                    <textarea type="text" class="form-control" name="ads_address" id="searchTextField" ><%= ads_address%></textarea>
+                                    <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='ads_address'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="clearfix"></div>
+                           <div class="Bpart_0 row">
+                              <div class="col-md-12">
+                                 <h3 class="busTitle">Options
+                                 </h3>
+                              </div>
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label for="e9">Charges (if applicable)</label>
+                                    <input type="text"   name="ads_price" class="form-control" value="<%= ads_price%>">
+                                 </div>
+                              </div>
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label for="e9"> Web Site:
+                                    </label>
+                                    <input type="text"  name="ads_website" class="form-control" value="<%= ads_website%>" placeholder="http://www.Company.com">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="Bpart_0 row">
+                              <div class="col-md-12">
+                                 <h3 class="busTitle">Social Info</h3>
+                              </div>
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label for="e4">Facebook </label>
+                                    <input type="text" placeholder="www.facebook.com" name="facebook" class="form-control"  value="<%= ads_facebook%>" >
+                                 </div>
+                              </div>
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label for="e4">Instagram </label>
+                                    <input type="text" placeholder="www.instagram.com" name="instagram" class="form-control"  value="<%= ads_instagram%>" >
+                                 </div>
+                              </div>
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label for="e6">Linkedin</label>
+                                    <input type="text" placeholder="www.linkedin.com" name="linkedin" class="form-control"  value="<%= ads_linkedin%>" >
+                                 </div>
+                              </div>
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label for="e6">Twitter</label>
+                                    <input type="text" placeholder="www.twitter.com" name="twitter" class="form-control"  value="<%= ads_twitter%>" >
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                         <div class="col-lg-4"> <div class="add_bussness">
+                              <div class="col-md-12">
+                                 <p class="add_01b">Add pictures  *</p>
+                                 <p class="add_012">Up to 5 (5 is ideal) </p>
+                                 <p class="profile_instruction">2MB max in jpeg, png or gif</p>
+                                 <div  id="imgSrc" class="imageUploadgalery"></div>
+                                 <% errors.forEach((errors)=>{ 
+                                    if(errors.param=='ads_media'){ %>
+                                 <span class="err_msg">  <%= errors.msg %></span>
+                                 <% }})%>
+                                 <div class="avatar-upload">
+                                    <div class="avatar-edit">
+                                       <input type="file" id="imageUploadc" name="ads_media"  multiple >
+                                       <label for="imageUploadc"> <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                       Upload Pictures</label>
+                                    </div>
+                                    <% if(imgempty != '') { %>
+                                    <p class="err_msg"><%= imgempty %></p>
+                                    <%}%>
+                                 </div>
+                                 <div>  </div>
+                              </div>
+                           </div></div>
+                        <script>
+                             function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#image_publicer')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+                           $(function() {
+                           // Multiple images preview in browser
+                           var imagesPreview = function(input, placeToInsertImagePreview) {
+                           
+                           if (input.files) {
+                           var filesAmount = input.files.length;
+                           
+                           for (i = 0; i < filesAmount; i++) {
+                             var reader = new FileReader();
+                           
+                             reader.onload = function(event) {
+                                 $($.parseHTML('<img class="thumbnail-preview">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                             }
+                           
+                             reader.readAsDataURL(input.files[i]);
+                           }
+                           }
+                           
+                           };
+                           
+                           $("#imageUploadc").change(function(){
+                           imagesPreview(this, '#imgSrc');
+                           });
+                           });
+                           
+                           
+                           
+                           
+                           
+                        </script>
+                     </div>
+                  </div>
+                  <div class="osahan-area  butnc col-md-8">
+                     <button class="btn btn-outline-primary" type="submit">Submit </button>
+                  </div>
+               </form>
+                 
+               </div> </div>
+                  </div>
+                  </div>
+                
+                  </section>
+               </div> </div>
+          
+   <% include ../include/user-footer.ejs %>
+
+           
+					
+								</body>
+								</html>
+

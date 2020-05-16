@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html class="indexpage">
+<head>
+ <% detailresult.forEach((detailresult)=> { %>
+    <meta name="description" content="<%= detailresult.metadescription%>">
+	<meta name="keywords" content="<%= detailresult.metakeyword%>">
+    <meta property="og:title" content="<%= detailresult.news_title%>"/>
+	<meta property="og:description" content="<%= detailresult.metadescription%>"/>
+	<meta property="og:image" content="<%= detailresult.news_image%>">
+	<meta property="og:url" content="<%= req.protocol + '://' + req.get('host') + req.originalUrl %>">
+	<meta property="og:type" content="article"/>
+	<title><%= detailresult.news_title%></title>
+    
+    <%});%>
+   <% include include/head.ejs %>
+	
+</head>    
+<body>
+    
+      <% include include/header.ejs %>
+    
+       <% include include/menu.ejs %>
+    
+    
+    
+    
+    
+    <section class="designsectionD">
+       
+  <div class="Dcontainer">
+     
+    <div class="designBox">
+<% detailresult.forEach((detailresult)=> { %>
+<div class="row">
+
+<div class="col-md-6">
+    <% GalleySelectR.slice(0, 1).forEach((Galleyitem,index)=>{ var itemCount= 1; %>
+<img  class="lazy" src="/images/post/placeholder.png?width=500&height=340" data-src="/images/post/<%= Galleyitem.image_path%>?width=1000&height=600" alt="<%= detailresult.news_category%>" onclick="openModal();currentSlide(<%=index+itemCount%>)" >
+    <%})%>
+<div class="galleryImage">
+  
+    <% GalleySelectR.slice(1, 100).forEach((Galleyitem,index)=>{ 
+      
+
+
+         var itemCount= 2;
+   
+        %>
+    <div class="column">
+    <img class="lazy" src="/images/post/placeholder.png?width=60&height=60" data-src="/images/post/<%= Galleyitem.image_path%>?width=60&height=60" alt="<%= detailresult.shopname%>"onclick="openModal();currentSlide(<%=index+itemCount%>)" class="hover-shadow">
+  </div>
+  <%})%>
+    
+    </div>
+    </div>
+    
+     <div id="designmodal" class="modal modalfullscreen">
+  <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+
+    <div class="mySlides2"> 
+        <div class="row">
+    
+    <div class="col-md-8">    <% GalleySelectR.forEach((Galleyitem,index)=>{ var itemCount= 1;%>  <div class="numbertext"> <i class="fa fa-camera" aria-hidden="true"></i>
+ Photos <%=GalleySelectR.length%>/<%=index+itemCount%> </div>
+    <div class="mysideOp mySlides">
+           
+
+      <img class="lazy" src="/images/placeholder.png" data-src="/images/post/<%= Galleyitem.image_path%>" alt="<%= detailresult.shopname%>">
+    </div> <%})%> <a class="prevdesign" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="nextdesign" onclick="plusSlides(1)">&#10095;</a>
+
+  </div>
+        <div class="col-md-4">
+        <div class="queryForms"> <div class="PostBYdesign pt-0">
+                                    <div class="designCompy_img">
+                                        <img class="lazy" src="/images/placeholder.png" data-src="/images/post/<%= detailresult.ads_logo%>?width=50&height=50" alt="<%= detailresult.ads_title%>">
+                                    </div>
+                                    <div class="designCompy_content">
+                                        <div class="nameCC2">Get Quotes to <%= detailresult.ads_title%></div>
+                                        <p class="mb-0"><%= detailresult.ads_city%><%= ' , '+detailresult.ads_state%></p>
+                                      
+                                    </div>
+                                </div>
+           <form action="" method="post" id="messageForm" >
+       
+                       <div class="form-group rele">
+                          <input type="hidden" name="user_id" value="<%= detailresult.userid%>">
+                          <input type="hidden" name="post_id" value="<%= detailresult.id%>">
+                           <input type="text" class="form-control ppe-l0Q" name="user_name" placeholder="Full Name">
+                              <span class="errormsgd" id="user_name"></span>
+                        </div>
+                       
+                        <div class="form-group rele">
+                       
+                           <input type="text" class="form-control ppe-l0Q" name="user_email" placeholder="Email Address(optional)">
+                            <span class="errormsgd" id="user_email"></span>
+                        </div>
+                           <div class="form-group rele">
+                         
+                           <input type="text" class="form-control ppe-l0Q" name="user_mobile" placeholder="Mobile Number">
+                                 <span class="errormsgd" id="user_mobile"></span> 
+                        </div>
+                        <div class="form-group rele">
+                          
+                            <textarea class="form-control ppe-l0Q" name="user_message" placeholder="Message"></textarea>     
+                       <span class="errormsgd" id="user_message"></span>
+                        </div>
+                        <div class="mt-4">
+                           <div class="row">
+                              <div class="col-12">
+                                 <button type="submit" class="btn btnlogin">Submit</button>
+                              </div>
+                           </div>
+                        </div>
+          <div class="col-md-12">
+           <div id="fmailmsg"></div>
+           <div id="sucessmsg"></div>
+          </div>
+                     </form> <div class="moreGallry"> <div class="moreAtxt">View More photos from this Album
+            </div>
+            <% GalleySelectR.forEach((Galleyitem,index)=>{ var itemCount= 1;%>
+           
+        <div class="column">
+      <img  class="lazy" src="/images/placeholder.png" data-src="/images/post/<%= Galleyitem.image_path%>?width=55&height=55" alt="<%= detailresult.ads_title%>" onclick="currentSlide(<%=index+itemCount%>)" alt="Nature">
+            
+    </div><%})%>
+        </div>
+        </div>
+        </div>
+        
+        </div></div>
+
+   
+
+    <!-- Next/previous controls -->
+   
+
+    <!-- Thumbnail image controls -->
+    
+  </div>
+</div>
+
+    
+    <script>
+// Open the Modal
+function openModal() {
+  $("#designmodal").modal('show');
+}
+
+// Close the Modal
+function closeModal() {
+ 
+      $("#designmodal").modal('hide');
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
+    <div class="col-md-6 pl-0" >
+    <div class="postDesings">
+    <div class="PostBYdesign">
+                                    <div class="designCompy_img">
+                                        <img class="lazy" src="/images/placeholder.png" data-src="/images/post/<%= detailresult.ads_logo%>?width=50&height=50" alt="<%= detailresult.shopname%>">
+                                    </div>
+                                    <div class="designCompy_content">
+                                        <h4><%= detailresult.shopname%></h4>
+                                        <p><%= detailresult.ads_city%><%= ' , '+detailresult.ads_state%></p>
+                                      
+                                    </div>
+                                </div>
+    
+    <h1 class="designCompy_title"><%= detailresult.ads_title%></h1>
+        <h2 class="designCompy_cat"><%= detailresult.ads_category%></h2>
+        <div class="adsdesign_website"> <a href="<%= detailresult.ads_website%>" target="_blank" rel="nofollow"><%= detailresult.ads_website%></a> </div>
+      <div class="adsdesign_descript">  <% if(detailresult.ads_des.length > 240 ) { %>
+                        
+                        
+                        
+                        <div class="slide-about" >
+                        <div class="slide-toggle  slide-toggle--collapsed" >
+                          
+                            <p><%= detailresult.ads_des%></p>
+                            
+                            <span class="mask--gradient" ></span>
+                            
+                            </div><button class="btn btn-aboutmore" id="readmoreabout"><span>Read more</span> <i class="fa fa-angle-down"></i></button>
+                         </div>
+                        
+                            <%}else { %>
+                            
+                            
+                             <p><%= detailresult.ads_des%></p>
+                            
+                            <%}%></div><div class="ShareDesingOn">Share this design?</div>
+         <div class="share-artpol designpic">
+             
+<a href="javascript:void(0);" onclick="window.open('http://www.facebook.com/sharer.php?u=<%= req.protocol + '://' + req.get('host') + req.originalUrl %>;title=<%= detailresult.news_title%>', 'sharer', 'toolbar=0,status=0,width=580,height=325');" rel="nofollow"><i class="fa fa-facebook"></i></a>
+
+<a class="twitter" href="javascript:void(0);"  onclick="window.open('https://twitter.com/intent/tweet?url=<%= req.protocol + '://' + req.get('host') + req.originalUrl %>/&amp;text=<%= detailresult.news_title%>', 'sharer', 'toolbar=0,status=0,width=580,height=325');" rel="nofollow" target="_blank"><i class="fa fa-twitter"></i></a>
+<a class="instragm" href="javascript:void(0);" onclick="window.open('http://pinterest.com/pin/create/button/?url=<%= req.protocol + '://' + req.get('host') + req.originalUrl %>/&amp;description=<%= detailresult.news_title%>', 'sharer', 'toolbar=0,status=0,width=580,height=325');" rel="nofollow" target="_blank"><i class="fa fa-pinterest"></i></a>
+
+<a class="pinterest" href="javascript:void(0);" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&amp;url=<%= req.protocol + '://' + req.get('host') + req.originalUrl %>/&amp;title=<%= detailresult.news_title%>', 'sharer', 'toolbar=0,status=0,width=580,height=325');" rel="nofollow" target="_blank"><i class="fa fa-linkedin"></i></a>
+
+</div>
+        <div class="ContactDesign"><a href="javascript:void(0)"  data-toggle="modal" data-target="#enqueryM" class="packdetContact">Get Quotes</a></div>
+   
+    </div>
+    
+    
+    </div>
+    
+    </div>  
+        
+        
+        <div id="enqueryM" class="modal fade " role="dialog" aria-modal="true">
+  <div class="modal-dialog sharebbQ">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="Req_autoapi">  <div class="PostBYdesign pt-0">
+                                    <div class="designCompy_img">
+                                        <img class="lazy" src="/images/placeholder.png" data-src="/images/post/<%= detailresult.ads_logo%>?width=50&height=50" alt="<%= detailresult.shopname%>">
+                                    </div>
+                                    <div class="designCompy_content">
+                                        <div class="nameCC2">Get Quotes to<%= detailresult.shopname%></div>
+                                        <p class="mb-0"><%= detailresult.ads_city%><%= ' , '+detailresult.ads_state%></p>
+                                      
+                                    </div>
+                                </div>
+</div><button type="button" class="closeQQ" data-dismiss="modal">×</button>
+    
+      </div>
+      <div class="modal-body">
+      <form action="" method="post" id="messageForm" >
+       
+                       <div class="form-group rele">
+                          <input type="hidden" name="user_id" value="<%= detailresult.userid%>">
+                          <input type="hidden" name="post_id" value="<%= detailresult.id%>">
+                           <input type="text" class="form-control ppe-l0Q" name="user_name" placeholder="Full Name">
+                              <span class="errormsgd" id="user_name"></span>
+                        </div>
+                       
+                        <div class="form-group rele">
+                       
+                           <input type="text" class="form-control ppe-l0Q" name="user_email" placeholder="Email Address(optional)">
+                            <span class="errormsgd" id="user_email"></span>
+                        </div>
+                           <div class="form-group rele">
+                         
+                           <input type="text" class="form-control ppe-l0Q" name="user_mobile" placeholder="Mobile Number">
+                                 <span class="errormsgd" id="user_mobile"></span> 
+                        </div>
+                        <div class="form-group rele">
+                          
+                            <textarea class="form-control ppe-l0Q" name="user_message" placeholder="Message"></textarea>     
+                       <span class="errormsgd" id="user_message"></span>
+                        </div>
+                        <div class="mt-4">
+                           <div class="row">
+                              <div class="col-12">
+                                 <button type="submit" class="btn btnlogin">Submit</button>
+                              </div>
+                           </div>
+                        </div>
+          <div class="col-md-12">
+           <div id="fmailmsg"></div>
+           <div id="sucessmsg"></div>
+          </div>
+                     </form>
+         </div>
+  </div>
+
+  </div>
+</div>
+    
+        <%})%>
+    </div>
+  </div>
+</section>
+    
+    
+   
+     
+     <section class="designsectionD">
+       <div class="Dcontainer"><ul class="FilterDesign pt-0">
+                    
+                                  
+           <div class="designRelated">Related keywords
+
+ 
+</div>
+                  <li><a href="/designs/bedroom">Bedroom</a></li>
+                   <li><a href="/designs/cladding-designs">Cladding Designs</a></li>
+                   <li><a href="/designs/dining-room">Dining Room</a></li>
+                   <li><a href="/designs/outdoor">Outdoor </a></li>
+                   <li><a href="/designs/office">Office Designs</a></li>
+                   <li><a href="/designs/door-design">Door Design</a></li>
+                   <li><a href="/designs/home">Home Designs</a></li>
+                   <li><a href="/designs/kitchen-designs">Kitchen Designs</a></li>
+                   <li><a href="/designs/bathroom-designs">Bathroom Designs</a></li>
+                   <li><a href="/designs/living-room">Living Room</a></li>
+                   <li><a href="/designs/tile-designs">Tile Designs</a></li>
+                   <li><a href="/designs/window-design">Window Design</a></li>
+                   <li><a href="/designs/railing-designs">Railing Designs</a></li>
+                     </ul>
+           <%if(Designsitem.length> 0){%>
+           			 <div class="designBox">
+                
+           <div class="designSimiler">Similar  Designs
+ 
+</div>
+                <div class="ListUrl12 row">
+                 	<%Designsitem.forEach((Designsitemw)=>{  %>
+      <div class="col-md-4 plr_0">
+      <div class="ad_design">
+
+
+<figure class=" img_figer img_scam">        
+     <% var stringtitle = Designsitemw.ads_title; var replacesting = stringtitle.replace(/\s/g,"-");
+    
+    %>
+     <a href="/designs/<%= Designsitemw.id%>/<%= replacesting %>">
+<img  class="lazy" src="/images/placeholder.png" data-src="/images/post/<%= Designsitemw.ads_logo%>?width=800&height=500" alt="<%= Designsitemw.news_category%>"  >
+    </a>
+</figure>  <a href="/designs/<%= Designsitemw.id%>/<%= replacesting %>">
+          <div class="design_title"><%= Designsitemw.ads_title%></div>
+          <div class="design_category"><%= Designsitemw.ads_category%></div>
+          <div class="design_company">By <%= Designsitemw.shopname%></div>
+          </a>
+
+</div>
+                 
+                 </div> 
+                        <%})%>
+                 </div>
+                </div>
+            <%}%>
+      
+   
+        </div>
+    
+    </section>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <% include include/footer.ejs %>
+    
+				</body>
+								</html>
+
+

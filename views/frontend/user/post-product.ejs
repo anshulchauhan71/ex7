@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html class="indexpage">
+<head>
+	
+	<title></title>
+   <% include ../include/head.ejs %>
+<link rel="stylesheet" href="/css/froala_editor.css">
+  
+</head>    
+
+ 
+  <body id="page-usertop">
+      <% include ../include/user-header.ejs %>
+          <div class="single-channel-page" id="content-wrapper">
+              <section class="userdashbordd">
+            <div class="container">
+                    <div class="ads_heads">
+                         <div class="row"><div class="col-sm-12">
+                         
+                           
+                         
+                        <form method="post" enctype="multipart/form-data" >
+                           
+                            
+                        <div class="post_ads row">
+                              <div class="col-lg-8">
+                           <div class="Bpart_0 row">
+                              <div class="col-lg-12">
+                                 <h3 class="busTitle">Project Information
+                                 </h3>
+                              </div>
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+                                    
+                                    <label for="e1">Project Category
+                                    </label> 
+                                    <select id="bcategory" class="form-control" name="category"  >
+                                             <%if(category){ %>  <option value="<%=category%>"><%=category%></option> <%} else{%>
+                                      <option value="">Select</option><%}%>
+                                     <option value="Bedroom">Bedroom</option>
+                                     <option value="Cladding Designs">Cladding Designs</option>
+                                     <option value="Dining Room">Dining Room</option>
+                                     <option value="Outdoor">Outdoor</option>
+                                     <option value="Office">Office</option>
+                                     <option value="Door Design">Door Design</option>
+                                     <option value="Home">Home </option>
+                                     <option value="Kitchen Designs">Kitchen Designs</option>
+                                     <option value="Bathroom Designs">Bathroom Designs</option>
+                                     <option value="Living Room">Living Room</option>
+                                     <option value="Tile Designs">Tile Designs</option>
+                                     <option value="Window Design">Window Design</option>
+                                     <option value="Railing Designs">Railing Designs</option>
+            
+                                    </select>
+                                    <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='category'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                 </div>
+                              </div>
+                            
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label for="e2">Company  Name
+                                    *</label>
+                                    <input type="text" name="companyname" placeholder="Ex. Rahul Contractor"  class="form-control" value="<%= companyname%>">
+                                    <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='companyname'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                 </div>
+                   <% if(message != '') { %>
+                                 <p class="text-danger"><%= message%></p>
+                                 <% }%>
+
+                              </div>  <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label for="e2">Project Title
+                                    *</label>
+                                    <input type="text" name="ads_title" placeholder="Ex. New home deigns "  class="form-control" value="<%= ads_title%>">
+                                    <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='ads_title'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                 </div>
+                 
+
+                               
+
+                              </div>
+                              <div class="col-lg-8">
+                                 <div class="form-group">
+                                    <label for="e1">Company Logo</label>
+                                    <div class="comapny_logo_pre">
+                                       <div class="comapny_logo_img"> <img src="<%if(ads_logo){%>/images/post/<%= ads_logo%><%}else{%>/images/profile.jpg<%}%>" alt="" id="image_publicer">  </div>
+                                        <input type="hidden"  value="<%= ads_logo%>" name="ads_updatelogo">
+                                       <div class="custom-file">
+                                          <input type="file" class="custom-file-input"   id="customFile" onchange="readURL(this);" name="ads_logo" accept="" >
+                                          <label class="custom-file-label" for="customFile"><i class="fa fa-cloud-upload" aria-hidden="true"></i>             Upload Featured Image </label>
+                                            <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='ads_logo'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-lg-12">
+                                 <div class="form-group">
+                                    <label for="e2">Description of your  Project  *</label>
+                                    <textarea name="ads_description" class="form-control"  id="edit" rows="5"><%= ads_description%></textarea>
+                                    <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='ads_description'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="Bpart_0 row">
+                              <div class="col-md-12">
+                                 <p class="add_01b">Add pictures  *</p>
+                                 <p class="add_012">Up to 5 (5 is ideal) </p>
+                                 <p class="profile_instruction">2MB max in jpeg, png or gif</p>
+                                 <div  id="imgSrc" class="imageUploadgalery"></div>
+                                 <% errors.forEach((errors)=>{ 
+                                    if(errors.param=='ads_media'){ %>
+                                 <span class="err_msg">  <%= errors.msg %></span>
+                                 <% }})%>
+                                 <div class="avatar-upload">
+                                    <div class="avatar-edit">
+                                       <input type="file" id="imageUploadc" name="ads_media"  multiple >
+                                       <label for="imageUploadc"> <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                                       Upload Pictures</label>
+                                    </div>
+                                    <% if(imageSlt != '') { %>
+                                    <p class="err_msgNew"><%= imageSlt %></p>
+                                    <%}%>
+                                 </div>
+                                 <div>  </div>
+                              </div>
+                           </div>
+                                      <div class="Bpart_0 row">
+                              <div class="col-lg-12">
+                                  <h3 class="busTitle"><span>Location details</span>
+                                 </h3>
+                              </div>
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label>State*</label>
+                                    <select id="ads_statename" class="form-control" name="ads_state" >
+                                           <%if(ads_state){ %>  <option value="<%=ads_state%>"><%=ads_state%></option> <%} else{%>
+                                     <option value="">Select</option><%}%>
+                                       <% countryads.forEach((countryads)=> { %>
+                                       <option value="<%= countryads.state%>"  data-id="<%= countryads.id%>"><%= countryads.state%></option>
+                                       <%})%>
+                                    </select>
+                                      <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='ads_state'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                 </div>
+                              </div>
+                         
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label for="e3">City*</label>
+                                    <select id="ads_cityname" class="form-control" name="ads_city" >
+                                        <%if(ads_city){ %>  <option value="<%=ads_city%>"><%=ads_city%></option> <%} else{%>
+                                     <option value="">Select</option>
+                                     <%}%>
+                                     </select>
+                                       
+                                       <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='ads_city'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                 </div>
+                              </div>
+                         
+                           </div>
+                
+                           <div class="clearfix"></div>
+                           <div class="Bpart_0 row">
+                              <div class="col-md-12">
+                                 <h3 class="busTitle">Options
+                                 </h3>
+                              </div><div class="col-lg-2">
+                              <div class="form-group">
+                                 <label for="e9">Currency</label>
+                                     <select name="currency_id" class="form-control"> <option value="INR" selected="selected">Rs</option><option value="PHP" >₱</option><option value="USD">US&nbsp;$</option></select>
+                                   <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='currency_id'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                              </div> 
+                              </div>
+                              <div class="col-lg-5">
+                                 <div class="form-group">
+                                    <label for="e9"> Project Cost
+</label>
+                                    <input type="text"   name="ads_price" class="form-control" value="<%= ads_price%>">
+                                       <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='ads_price'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                 </div>
+                              </div>  <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label for="e4">Project Year
+ </label>
+                                    <input type="text" placeholder="Ex.2017" name="yearproject" class="form-control"  value="<%= yearproject%>" >
+                                 </div>
+                              </div>
+                              <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label for="e9"> Link to Website 
+                                    </label>
+                                    <input type="text"  name="ads_website" class="form-control" value="<%= ads_website%>" placeholder="http://www.company.com">
+                                      <% errors.forEach((errors)=>{ 
+                                       if(errors.param=='ads_website'){ %>
+                                    <span class="err_msg">  <%= errors.msg %></span>
+                                    <% }})%>
+                                
+                                 </div>
+                              </div>
+                           </div>
+                         
+                        </div>
+                  
+                              <script>
+                      function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.comapny_logo_img img')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+      
+                                  
+              
+              $(function() {
+    // Multiple images preview in browser
+    var imagesPreview = function(input, placeToInsertImagePreview) {
+
+        if (input.files) {
+            var filesAmount = input.files.length;
+
+            for (i = 0; i < filesAmount; i++) {
+                var reader = new FileReader();
+
+                reader.onload = function(event) {
+                    $($.parseHTML('<img class="thumbnail-preview">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                }
+
+                reader.readAsDataURL(input.files[i]);
+            }
+        }
+
+    };
+
+    $("#imageUploadc").change(function(){
+        imagesPreview(this, '#imgSrc');
+    });
+});
+              
+              
+          
+              
+             
+          </script>
+                            <div class="col-lg-4">
+                            
+                      
+                            </div>
+                        </div><div class="osahan-area  butnc col-md-8">
+                        <button class="btn btn-outline-primary" type="submit">Submit </button>
+                     </div>
+                         </form>
+                         
+               </div> </div>
+                  </div>
+                  </div>
+                
+                  </section>
+               </div> </div>
+          
+ <% include ../include/user-footer.ejs %>
+
+       		
+								</body>
+								</html>
+

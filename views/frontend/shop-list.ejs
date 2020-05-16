@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title></title>
+       
+      <% include include/head.ejs %>
+       
+   </head>
+   <body>
+      <% include include/header.ejs %>  
+          <% include include/menu.ejs %>
+    
+ <div class="clearfix"></div>
+       <section class="shopingList">
+       <div class="container shopcontainer">
+       
+  <div class="col-md-12 p-0">
+  <div class="home-text">
+<a href="/"> Home  <span class="angl-icon"> /</span> </a>
+      <a href="/shop"> Shop  <span class="angl-icon"> /</span> </a><span> <%= category%></span>
+  </div>
+      <h1 class="title_listed text-cape mt-2 ml-0 mb-4"><%= category%>
+</h1>
+ 
+     
+     
+      
+ </div> 
+  
+  <div class="website_listbox ">
+      <div class="row mt-4  ">
+          <div class="col-md-3 filtersrownew">
+          <div class="list-sidebar">
+          <div class="rowside1">
+          <h4 class="slide-list1 mt-0">Filters <span class="slide-slide"><i class="fa fa-angle-down" aria-hidden="true"></i></span></h4>
+            
+              <div class="inlb-bk"><a href="/shop/furniture" class="btn <%= category=='furniture'?'activefilter':'' %>"> furniture</a></div>
+        <div class="inlb-bk"><a href="/shop/outdoor" class="btn <%= category=='outdoor'?'activefilter':'' %>"> outdoor</a></div>
+        <div class="inlb-bk"><a href="/shop/lighting" class="btn <%= category=='lighting'?'activefilter':'' %>"> lighting</a></div>
+        <div class="inlb-bk"><a href="/shop/home-decor" class="btn <%= category=='home-decor'?'activefilter':'' %>"> home decor</a></div>
+        <div class="inlb-bk"><a href="/shop/kitchen-dining" class="btn <%= category=='kitchen-dining'?'activefilter':'' %>">kitchen & dining</a></div>
+        <div class="inlb-bk"><a href="/shop/bathroom" class="btn <%= category=='bathroom'?'activefilter':'' %>"> bathroom</a></div>
+        <div class="inlb-bk"><a href="/shop/living" class="btn <%= category=='living'?'activefilter':'' %>">living</a></div>
+        <div class="inlb-bk"><a href="/shop/bedroom" class="btn <%= category=='bedroom'?'activefilter':'' %>">bedroom</a></div>
+        <div class="inlb-bk"><a href="/shop/plants" class="btn <%= category=='plants'?'activefilter':'' %>">plants</a></div>
+        <div class="inlb-bk"><a href="/shop/seeds" class="btn <%= category=='seeds'?'activefilter':'' %>"> seeds</a></div>
+        <div class="inlb-bk"><a href="/shop/soil-fertilizer" class="btn <%= category=='soil-fertilizer'?'activefilter':'' %>"> Soil & Fertilizer</a></div>
+     
+        <div class="inlb-bk"><a href="/shop/pots-planters" class="btn <%= category=='pots-planters'?'activefilter':'' %>"> pots & planters</a></div>
+            </div>
+          </div>
+          </div>
+     
+    <div class="deals_produscts2 col-md-9">
+                <%if(homeproducts.length > 0) { %>
+
+     <div class="row">
+          <%homeproducts.forEach((homeitem)=>{ %>
+        <div class="col-md-3 ListShoping item">
+        <div class="coliop">
+          <div class="img">
+            <div class="image"><a href="<%= homeitem.url %>" rel="nofollow" target="_blank"><img  class="lazy pt-0" src="/images/post/placeholder.png?width=500&height=380" <%if(homeitem.logo === "undefined"){%><%}else{%>data-src="/images/post/<%= homeitem.logo %>?width=500&height=380" <%}%> ></a></div>
+          </div>
+          <a href="<%= homeitem.url %>" rel="nofollow" target="_blank"><div class="product_name1"> <%= homeitem.title %></div>
+          <div class="price">
+           <%if(homeitem.offerprice){%><div class="main_price">Rs. <%= homeitem.offerprice %></div><%}%>
+            <div class="price_after_dis">Rs <%= homeitem.price %></div>
+            <div class="percentage"><%= homeitem.offer %>% Off</div>
+          </div>
+          </a>
+          <div class="storenameshop"><%= homeitem.store %></div>
+        </div>
+        </div>
+      <%})%>
+        </div>
+     <%}else{%><div class="quotesListe" ><div class="NofoundResult">No Products Found</div><div class="NofoundResultbox">Sorry! No Product available with the current selection</div></div><%}%></div>
+  </div></div>
+</div>
+       </section>
+    
+      <% include include/footer.ejs %>
+   </body>
+</html>

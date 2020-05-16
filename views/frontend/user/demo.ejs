@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/css/index.css?x26402">
+
+    <title>Multer Demo</title>
+</head>
+
+<body>
+    
+    <form action="/user/demo/<%= req.session.userId %>"  method="post">
+                           
+                        <div class="row">
+                          <div class="col-lg-8 row rowfm">  <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label for="e1">Your Name</label>
+                                 <input type="text" name="username" placeholder="Ex. John"  class="form-control">
+                                
+                              </div>
+                              
+                              
+                           </div>
+                           <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label for="e2">Profile Title </label>
+                                <input type="text" name="profiletitle" placeholder="Ex. Sales Executive"  class="form-control">
+                                  
+                               
+                              </div>
+                           </div>
+                           
+                               <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label for="e3">About Me</label>
+                               
+                                  <textarea class="form-control" name="aboutme"></textarea>
+                              </div>
+                           
+                           </div>
+                            <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label for="e3">My Website</label>
+                                  <input type="text" name="website" placeholder="www.google.com"  class="form-control">
+                               
+                              </div>
+                           
+                           </div> 
+                            
+                         
+                           <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label >Email </label>
+                                  <input type="text" placeholder="Email Id" name="emailid"  value="<%= Userdata.email %>"class="form-control"  readonly>
+                                  <a href="#" class="emailedit">Edit</a>
+                              </div>
+                           </div>
+                           <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label >Mobile </label>
+                                  <input type="text" placeholder="Mobile No" name="mobileno" value="<%= Userdata.phone %>"  class="form-control" >
+                              </div>
+                           </div>
+                            
+                           <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label for="e6">Gender</label>
+                                 <select id="e9" class="form-control" name="gender" >
+                                    <option value=''>Select</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                  
+                                 </select>
+                                
+                              </div>
+                           </div>
+                           
+                           <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label for="e7">Date of Birth</label>
+                                     <input type="date" placeholder="Mobile No" name="dob"  class="form-control">
+                              </div>
+                           </div>
+
+                           <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label for="e9">Location</label>
+                                      <input type="text" placeholder="Ex. Toronto" name="location"  class="form-control">
+                              </div> 
+                              </div> 
+                              
+                            <div class="col-md-12">
+                                <h5>Social Info</h5>
+                            </div>
+                            <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label >Facebook </label>
+                                  <input type="text" placeholder="www.Facebook.com" name="facebook"  class="form-control">
+                              </div>
+                           </div>
+                           <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label >Instagram </label>
+                                  <input type="text" placeholder="www.Instagram.com" name="instagram"  class="form-control">
+                              </div>
+                           </div>
+                            
+                           <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label for="e6">Linkedin</label>
+                             <input type="text" placeholder="www.Linkedin.com" name="linkedin"  class="form-control">
+                              </div>
+                           </div>  <div class="col-lg-6">
+                              <div class="form-group">
+                                 <label for="e6">Twitter</label>
+                             <input type="text" placeholder="www.Twitter.com" name="twitter"  class="form-control">
+                              </div>
+                           </div>
+                     </div> <div class="col-lg-4 md23l">
+                                  
+                          <div class="add_bussness">
+                              <p class="add_01">Profile picture </p>
+ <p class="profile_instruction">Add pictures (10MB max in jpeg, png or gif)</p>
+                                  <div class="avatar-upload">
+        <div class="avatar-edit">
+          
+            <label  class="chageprofile" data-toggle="modal" data-target="#imageupload"  >Upload profile</label>
+        </div>
+        <div class="avatar-preview">
+             
+            <div id="imagePreview" >
+                
+                 <img src="<%- Userdata.image ? '/user/'+Userdata.image : '/images/profile.jpg'%>" id="user_photoframe"  >
+            </div>
+        </div>
+    </div>  
+                                  <div>  </div>
+                                    <div class="chagepassword mt-4">
+                                  
+                                      <a href="javascript:void(0)" data-toggle="modal" data-target="#changepassword"  > Change Password</a>
+                                  </div>
+                                    <div class="deactivate">
+                                  
+                                      <a href="#" >Deactivate  Account  </a>
+                                  </div>
+                                
+                              </div>  
+                              
+                              
+                              
+                            </div>
+                        </div>  <div class="osahan-area text-center mt-3">
+                        <button class="btn btn-outline-primary" type="submit">Update Profile </button>
+                     </div>
+                         </form>
+   <!--   <div class="container">
+        <div class="row justify-content-center">
+             <div class="col"></div> 
+
+            <div class="col-xs">
+                <h1 class="text-center mt-5">Upload Files</h1>
+                <form method="post" enctype="multipart/form-data">
+                    <div class="text-center">
+                      
+                    </div>
+                    <div class="form-group upload-area">
+                        <label for="exampleFormControlFile1">Click Here To upload Files</label>
+                        <input type="file" name="mediafile" class="form-control-file">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                    </div>
+                </form>
+            </div>
+           <div class="col"></div> 
+        </div>
+
+    </div>-->
+    <script src="//stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>   
+<!--
+<div id="meidalinkff" class="modal fade " role="dialog">
+  <div class="modal-dialog">
+
+     Modal content
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+       
+      </div>
+      <div class="modal-body">
+        <p>Upload Photo</p>
+          <div>
+            <form  method="post" enctype="multipart/form-data" id="submitmediax">
+                
+                <div class="medialink">
+          <label>
+           
+          <input type="file" class="form-control" id="filemediass" name="mediafile"  style="display:none">
+              <span class="mediafilw" > <i class="fa fa-camera" aria-hidden="true"></i> <span id="filename_is">Upload Media</span></span>
+              </label>
+              <button class="btn" type="submit">Submit</button>
+                </div>
+         </form>
+          <div id="imgSrclink"></div>
+          
+          <script>
+              
+          
+              
+            
+                  $(document).ready(function(){  
+                        $(".fr-desktop").append('<div class="fr-popup fr-desktop image_p"> <form  method="post" enctype="multipart/form-data" id="submitmedia"><div class="medialink"><label><input type="file" class="form-control" id="filemedia" name="mediafile"  style="display:none"><span class="mediafilw" > <i class="fa fa-camera" aria-hidden="true"></i> <span id="filename_is">Upload Media</span></span></label><button class="btn btnsubmit" type="submit">Submit</button></div></form></div>');
+$(".fr-newline").append('<div class="insertimage-0"><button id="insertImage-1"  type="button" class="fr-command fr-btn" data-cmd="insertImage" data-popup="true" data-title="Insert Image (Ctrl+P)"><svg class="fr-svg" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.2,11l3.8,5H6l3-3.9l2.1,2.7L14,11H14.2z M8.5,11c0.8,0,1.5-0.7,1.5-1.5S9.3,8,8.5,8S7,8.7,7,9.5C7,10.3,7.7,11,8.5,11z   M22,6v12c0,1.1-0.9,2-2,2H4c-1.1,0-2-0.9-2-2V6c0-1.1,0.9-2,2-2h16C21.1,4,22,4.9,22,6z M20,8.8V6H4v12h16V8.8z"></path></svg><span class="fr-sr-only">Insert Image</span></button></div>').addClass('fr-btn-grp fr-float-left');
+                      
+                        $("#insertImage-1").click(function(){
+              $(".image_p").addClass('fr-active');
+              
+              
+          });
+             
+             
+        $('#filemedia').change(function(e){
+            var fileName = e.target.files[0].name;
+              
+         $("#filename_is").html(fileName);
+        });
+              
+              
+          $("#submitmedia").submit(function(event){
+                   event.preventDefault();    
+              
+              var Dataform  = new FormData(this);
+              $.ajax({
+                     type:'POST',
+                  url:'/user/demo',
+                  contentType:false,
+                  processData:false,
+                  data:Dataform,
+                  success:function(response){
+                      var Imagedata = '<img src='+response.filepathname+'>';
+                     
+                      
+                      $(".fr-view").append(Imagedata);
+                      
+                      
+
+                           $("#filename_is").html("Upload Media");
+                  }
+                  
+              })
+                                 
+                                 })  });
+              
+             
+          </script>
+      </div>
+  
+          
+    </div>
+      </div>
+
+  </div>
+</div>
+            -->

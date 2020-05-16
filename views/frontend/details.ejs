@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html class="indexpage">
+<head>
+ <% detailresult.forEach((detailresult)=> { %>
+    <meta name="description" content="<%= detailresult.metadescription%>">
+	<meta name="keywords" content="<%= detailresult.metakeyword%>">
+    <meta property="og:title" content="<%= detailresult.news_title%>"/>
+	<meta property="og:description" content="<%= detailresult.metadescription%>"/>
+	<meta property="og:image" content="<%= detailresult.news_image%>">
+	<meta property="og:url" content="<%= req.protocol + '://' + req.get('host') + req.originalUrl %>">
+	<meta property="og:type" content="article"/>
+	<title><%= detailresult.news_title%></title>
+    
+    <%});%>
+   <% include include/head.ejs %>
+	
+</head>    
+<body>
+    
+      <% include include/header.ejs %>
+    
+       <% include include/menu.ejs %>
+    
+    
+    
+    
+    
+    <section class="nd_bolysec">
+       
+  <div class="Dcontainer">
+     
+    <div class="row">
+      <div class="col-md-8 col-sm-8 col-xs-12 detailsMobile">
+     <% detailresult.forEach((detailresult)=> { %>
+                    <div class="details_news">
+                        <h2 class="category_title"><%= detailresult.news_category%></h2>
+                    <h1 class="deatils_h1"><%= detailresult.news_title%>
+</h1>
+                    
+                                
+                            
+<div class="mrgmdetail">
+
+  <% if(detailresult.user) {  var strinuser = detailresult.user; var replaceuser = strinuser.replace(/\s/g,"-") %>
+                    <%}%>
+                  
+    
+    
+ <div class="author">
+ <div class="a-name pt-1"> By <% if(detailresult.user==null && detailresult.postBy==null) { %>trendsxp team  <%} else{ %><a href="/authors/<%= detailresult.postBy %>/<%= replaceuser %>" > <%= detailresult.user %></a> <%}%>  
+     
+     
+         
+         
+
+
+
+     <%    var Updatetime = new Date(detailresult.news_date);
+     var month = new Array();
+  month[0] = "January";
+  month[1] = "February";
+  month[2] = "March";
+  month[3] = "April";
+  month[4] = "May";
+  month[5] = "June";
+  month[6] = "July";
+  month[7] = "August";
+  month[8] = "September";
+  month[9] = "October";
+  month[10] = "November";
+  month[11] = "December";
+         
+           var GetMonth = month[Updatetime.getMonth()];
+     let year = Updatetime.getFullYear(); 
+     let getdate = Updatetime.getDate();
+      var GetDay = Updatetime.getDay();
+     %>
+      
+     
+     <span class="updatetime"> Posted: <span class="time-red">   <%= getdate+' '+GetMonth +', '+ year %></span> </span>  </div>
+                    </div>
+  
+    
+<div class="share-artpol">
+<a href="javascript:void(0);" onclick="window.open('http://www.facebook.com/sharer.php?u=<%= req.protocol + '://' + req.get('host') + req.originalUrl %>;title=<%= detailresult.news_title%>', 'sharer', 'toolbar=0,status=0,width=580,height=325');" rel="nofollow"><i class="fa fa-facebook"></i></a>
+
+<a class="twitter" href="javascript:void(0);"  onclick="window.open('https://twitter.com/intent/tweet?url=<%= req.protocol + '://' + req.get('host') + req.originalUrl %>/&amp;text=<%= detailresult.news_title%>', 'sharer', 'toolbar=0,status=0,width=580,height=325');" rel="nofollow" target="_blank"><i class="fa fa-twitter"></i></a>
+<a class="instragm" href="javascript:void(0);" onclick="window.open('http://pinterest.com/pin/create/button/?url=<%= req.protocol + '://' + req.get('host') + req.originalUrl %>/&amp;description=<%= detailresult.news_title%>', 'sharer', 'toolbar=0,status=0,width=580,height=325');" rel="nofollow" target="_blank"><i class="fa fa-pinterest"></i></a>
+
+<a class="pinterest" href="javascript:void(0);" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&amp;url=<%= req.protocol + '://' + req.get('host') + req.originalUrl %>/&amp;title=<%= detailresult.news_title%>', 'sharer', 'toolbar=0,status=0,width=580,height=325');" rel="nofollow" target="_blank"><i class="fa fa-linkedin"></i></a>
+
+</div>
+</div>
+ <div class="bd-nesing_new"><img src="/images/post/<%= detailresult.news_image%>?width=700&height=400
+" alt="<%= detailresult.news_title%>" ></div>
+                       
+                        <div class="details_des">       <%- detailresult.news_des%></div>
+                    
+                        
+                       
+                      </div>
+<!--
+             <div class="commentSec" <% if(req.session.loggedin){ %>   <%} else {%>  data-toggle="modal" data-target="#register_api" <%}%>>
+                        
+                        <div class="postcomment">
+                            
+                            <div class="iconPost">
+                            
+
+<svg version="1.1" id="Capa_1" height="30px" width="30px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" >
+<g>
+	
+		<path fill="#a3a3a3" d="M256,0C114.844,0,0,114.844,0,256s114.844,256,256,256s256-114.844,256-256S397.156,0,256,0z M256,74.667
+			c67.635,0,122.667,55.031,122.667,122.667S323.635,320,256,320s-122.667-55.031-122.667-122.667S188.365,74.667,256,74.667z
+			 M256,469.333c-69.707,0-131.52-33.755-170.473-85.615c42.676-20.534,103.621-42.385,170.473-42.385
+			c66.857,0,127.807,21.854,170.474,42.383C387.521,435.577,325.708,469.333,256,469.333z"/>
+	</g>
+
+</svg>
+
+                            </div>
+                            
+                            <div class="PostHead">Please Post Your Comments
+</div>
+                            <div class="PostButton">
+                                <span> Post  Comment</span>
+
+                            </div>
+                            </div>
+                        </div>
+-->
+                   <% })%>
+                 
+           
+            
+          </div>
+       
+        
+        
+        
+        
+        
+        
+        
+         
+        <%if(readMore.length < 0){%>
+     
+      <div class="col-md-4 col-sm-4 col-xs-12 ">
+          
+        
+          <div class="toptrends dt0">
+
+ <h3 class="sec0headN">Read 
+ next</h3> 
+
+   <%Relatednews.forEach((Relatednews)=>{  %>
+<div class="toptrendslist">
+
+   
+        <div class="row">
+            <div class="col-4 pr-2">
+               
+                    <img class="lazy" src="/images/placeholder.png" data-src="/images/post/<%= Relatednews.news_image%>?width=200&height=160" alt="<%=Relatednews.news_title%>" >
+                   
+               
+            </div>
+            <div class="col-8 pl-0 pr-2">
+                 
+    
+   
+    <div class="time-category"> <%= Relatednews.news_category%></div> 
+
+<h5 class="trends_links"> 
+     
+ <% var stringtitle = Relatednews.news_title; var replacesting = stringtitle.replace(/\s/g,"-") %>
+    <a href="/post/<%= Relatednews.news_category%>/<%= Relatednews.id%>/<%= replacesting %>">
+<% var newTitle = new String(Relatednews.news_title) 
+                            if(newTitle.length > 80 ) {  var Slicetext = newTitle.slice(0,80);
+                          %> <%=Slicetext+'...'%>  <%} else {%> <%= Relatednews.news_title%> <%}%>
+    </a>
+</h5>
+</div></div></div><%});%>
+</div>
+          
+          
+       
+      
+       
+        
+        
+       
+        
+        
+        
+        
+      </div>
+      <%}%>
+      
+    </div>
+    
+  </div>
+</section>
+    
+    
+    <section class="specialnews cl041">
+       <div class="container">
+       <div class="main-news-dt">
+           <h2 class="head_linen1 heading2 col-xs-12"><span>Related News</span>
+ </h2>
+           <div class="row">
+          
+              <%readMore.forEach((readMore)=>{  %>
+           <div class="col-lg-3 col-md-4 pp-10">
+           
+     <% var stringtitle = readMore.news_title; var replacesting = stringtitle.replace(/\s/g,"-") %>
+                <div class="bd_snewst-new detailpagertld">
+                    
+                    <a href="/post/<%= readMore.news_category%>/<%= readMore.id%>/<%= replacesting %>">
+                  
+                      <div class="bd-nesingtf"><img class="lazy" src="/images/placeholder.png" data-src="/images/post/<%= readMore.news_image%>?width=500&height=280"  ></div>
+                  
+                    <div class="col-12 pp-10">
+                        <p class="tabent">#<%= readMore.news_category%></p>
+                      <p class="nd_imgpt_pin-new"><% var newTitle = new String(readMore.news_title) 
+                            if(newTitle.length > 40 ) {  var Slicetext = newTitle.slice(0,70);
+                          %> <%=Slicetext+'...'%>  <%} else {%> <%= readMore.news_title%> <%}%></p>
+                          </div>
+               
+                      </a>
+                    
+                       <% if(readMore.user) {  var strinuser = readMore.user; var replaceuser = strinuser.replace(/\s/g,"-") %>
+                    <%}%>
+                     <div class="author">
+                    <a href="#" class="author-width"></a> <div class="a-name"> <% if(readMore.user==null) { %>By trendsxp team <%} else{ %><a href="/authors/<%= readMore.postBy %>/<%= replaceuser %>">By <%= readMore.user %></a> <%}%>   </div>
+                    </div>
+                   
+                    <div class="sharelink">
+                    
+                        <span class="sharebtn">
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="17" viewBox="0 0 16 18">
+    <path fill="#7c7c7c" fill-rule="evenodd" stroke="#232D3A" stroke-width=".2" d="M12.2 16.059a1.877 1.877 0 0 1-1.867-1.883c0-1.037.838-1.882 1.867-1.882 1.03 0 1.867.845 1.867 1.882A1.877 1.877 0 0 1 12.2 16.06m-7.933-4.706A2.346 2.346 0 0 1 1.933 9a2.346 2.346 0 0 1 2.334-2.353A2.346 2.346 0 0 1 6.6 9a2.346 2.346 0 0 1-2.333 2.353M12.2 1.94c1.03 0 1.867.845 1.867 1.883A1.877 1.877 0 0 1 12.2 5.706a1.877 1.877 0 0 1-1.867-1.882c0-1.038.838-1.883 1.867-1.883m0 9.434c-.751 0-1.434.299-1.938.784l-2.994-1.863c.17-.398.265-.836.265-1.296 0-.46-.095-.898-.265-1.296l2.994-1.863a2.784 2.784 0 0 0 1.938.784A2.81 2.81 0 0 0 15 3.812 2.81 2.81 0 0 0 12.2 1a2.81 2.81 0 0 0-2.8 2.813c0 .457.11.89.304 1.272l-2.925 1.82A3.256 3.256 0 0 0 4.267 5.72 3.278 3.278 0 0 0 1 9a3.278 3.278 0 0 0 3.267 3.281c1.009 0 1.912-.462 2.512-1.186l2.925 1.82a2.805 2.805 0 0 0-.304 1.273A2.81 2.81 0 0 0 12.2 17a2.81 2.81 0 0 0 2.8-2.813 2.81 2.81 0 0 0-2.8-2.812"/>
+</svg>
+</span>
+                     
+                    </div>
+                </div>
+              </div>     
+                  
+        <% })%>
+        
+            </div>
+          
+        </div>
+       
+        </div>
+    </section>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <% include include/footer.ejs %>
+    
+				</body>
+								</html>
+
+

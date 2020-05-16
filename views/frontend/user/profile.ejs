@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html class="indexpage">
+<head>
+	
+	<title></title>
+   <% include ../include/head.ejs %>
+	<script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+
+</head>    
+
+ 
+  <body id="page-usertop">
+      <% include ../include/user-header.ejs %>
+          <div class="single-channel-page" id="content-wrapper">
+              <section class="userdashbord">
+            <div class="container">
+                    <div class="row">
+                  <div class="col-lg-12">
+                      
+            <% Userdata.forEach((Userdata)=>{  %>
+                      
+                          <% var username = Userdata.name;
+                           
+                           username = username.replace(" ", "-");
+%><h1 class="submittile mb-2"><span>My Profile   </span></h1>
+                     <div class="osahan-fos profileOS">
+                          
+                <div class="panel panel-xl">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="profile-header-main">
+                
+                <div class="avatar avatar-normal has-aura text-center">
+                    
+                    <img class="avatar img-responsive" src="<%- Userdata.image ? '/user/profile/'+Userdata.image : '/images/profile.jpg'%>" id="user_photoframe"  >
+                  </div>
+                <div class="profile-contact">
+                    <div class="profile-main-top">
+                        <h2 class="nameprofile"><%= Userdata.name %></h2>
+                        <div class="speciality">
+                            
+                            <dl class="profile-info-row"><dt><i class="fa fa-check" aria-hidden="true"></i>
+
+ Desination: </dt> <%if(Userdata.profile_title) {  %><dd> <%= Userdata.profile_title %> </dd><% } else { %> <a href="/user/edit/<%= username %><%= Userdata.id %>" class="Nodata" class="Nodata">+Add Profile Title</a><%}%> 
+                   
+                       
+                       
+                </dl>
+                            
+                             </div>
+                        
+                       
+                    </div> <div class="speciality"> <dl class="profile-info-row"><dt><i class="fa fa-envelope-o" aria-hidden="true"></i>
+ Email id: </dt>
+                    <dd>
+                      <%= Userdata.email %>   
+                       
+                </dl></div>
+                  
+                    <div class="speciality"><dl class="profile-info-row"><dt><i class="fa fa-user-o" aria-hidden="true"></i>
+                        AboutMe:</dt> <%if(Userdata.aboutme) {  %> <dd>
+                        
+                        <% if(Userdata.aboutme.length > 50)   {   var Slicetext = Userdata.aboutme.slice(0,50); %>
+                        
+                        
+                        <%=Slicetext+'....'%>
+                           <%}else { %>
+                        <%= Userdata.aboutme %>
+                        
+                        
+                        
+                        </dd><%} } else { %> <a href="/user/edit/<%= username %><%= Userdata.id %>" class="Nodata">+Add About Me </a><%}%></dl></div>
+                    
+<!--                    <a class="profile-agency" href="#"><i class="hi hi-agency" title="Works at"></i> JustCoded</a>-->
+                   
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="profile-header-info">
+                <dl class="profile-info-row"><dt><i class="fa fa-link" aria-hidden="true"></i>
+ Website:</dt>
+                    <dd>
+                      
+                          <%if(Userdata.website) { %><%= Userdata.website %> <%} else { %> <a href="/user/edit/<%= username %><%= Userdata.id %>" class="Nodata">+Add Website  </a><%}%> </dd> 
+                       
+                </dl><dl class="profile-info-row"><dt><i class="fa fa-mobile" aria-hidden="true"></i>
+ Phone Number:</dt>
+                        <dd> <%if(Userdata.phone) { %><%= Userdata.phone %> <%} else { %> <a href="/user/edit/<%= username %><%= Userdata.id %>" class="Nodata">+Edit Phone Number  </a><%}%> </dd>
+                        
+                     
+                </dl>
+                <dl class="profile-info-row"><dt><i class="fa fa-venus-mars" aria-hidden="true"></i>
+ Gender:</dt>
+                    <dd> <%if(Userdata.gender) { %><%= Userdata.gender %> <%} else { %> <a href="/user/edit/<%= username %><%= Userdata.id %>" class="Nodata">+Add Gender  </a><%}%> </dd>
+                    
+                    
+                </dl>
+                
+                <dl class="profile-info-row"><dt><i class="fa fa-map-marker" aria-hidden="true"></i>
+ Location:</dt>
+                  
+                     <dd><%if(Userdata.location) { %><%= Userdata.location %> <%} else { %> <a href="/user/edit/<%= username %><%= Userdata.id %>" class="Nodata">+Add Location </a><%}%> </dd>
+                </dl>
+            </div>
+       
+        </div>
+        
+        <div class="col-md-12">
+        
+        <div class="social_ins">
+            <dl class="profile-info-row"><dt class="socialf fb"><i class="fa fa-facebook"></i> Facebook</dt>
+                  
+                     <dd><%if(Userdata.facebook) { %><%= Userdata.facebook %> <%} else { %> <a href="/user/edit/<%= username %><%= Userdata.id %>" class="Nodata">+Add Facebook </a><%}%> </dd>
+                    </dl>
+                   <dl class="profile-info-row"><dt class="socialf ln"><i class="fa fa-linkedin"></i>  Linkedin</dt>
+                  
+                       <dd><%if(Userdata.linkedin) { %><%= Userdata.linkedin %> <%} else { %> <a href="/user/edit/<%= username %><%= Userdata.id %>" class="Nodata">+Add Linkedin </a><%}%> </dd>
+                   </dl>
+                   <dl class="profile-info-row"><dt class="socialf tw"><i class="fa fa-twitter"></i>  Twitter</dt>
+                  
+                         <dd><%if(Userdata.twitter) { %><%= Userdata.twitter %> <%} else { %> <a href="/user/edit/<%= username %><%= Userdata.id %>" class="Nodata">+Add Twitter </a><%}%> </dd>
+                    </dl>
+                   <dl class="profile-info-row"><dt class="socialf insta"><i class="fa fa-instagram"></i>  Instagram</dt>
+                  
+                       <dd><%if(Userdata.instagram) { %><%= Userdata.instagram %> <%} else { %> <a href="/user/edit/<%= username %><%= Userdata.id %>" class="Nodata">+Add Instagram </a><%}%> </dd>
+                </dl></div>
+        <div class="d-flex flex-column flex-wrap flex-md-row align-items-center justify-content-between">
+                       <div class="profile-button-actions my-15 text-center">
+                       
+                           <a class="ajax-dialog btn btn-floating btn-100 btn-success margin-left-5" rel="nofollow"  href="/user/edit/<%= username %><%= Userdata.id %> "><span>Edit Profile</span></a>
+            
+            
+            </div>
+                        <div class="profile-link-actions"></div>
+                    </div>
+    </div></div>
+</div>           </div>
+                     <%})%>
+                   
+                    
+                  </div>
+                       
+               </div>
+                  </div>
+                
+                  </section>
+               </div>
+               </div>
+       
+    
+
+
+ <% include ../include/user-footer.ejs %>
+
+								</body>
+								</html>
+

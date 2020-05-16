@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html class="indexpage">
+<head>
+	
+	<title>Addmission24</title>
+   <% include ../include/head.ejs %>
+	
+</head>    
+
+    
+
+    
+  <body id="page-usertop">
+      <% include ../include/user-header.ejs %>
+        <div class="single-channel-page" id="content-wrapper">
+              <section class="userdashbord">
+            <div class="container">
+                    <div class="ads_heads">
+                        <div class="row rowdashboard">
+                        <div class="col-sm-8 col-7">
+
+    <h1 class="wizard-title">Your Articles
+</h1>
+ 
+</div> <div class="col-md-4 col-5">
+                        <div class="main-title">
+                           <div class="btn-group float-right right-action">
+                               <% if(Getuserarticle.length > 0 ) { %> 
+                                <a class="nav-link addnew" href="/user/post-article">
+                   <i class="fa fa-plus"></i>
+               <span>Add Article </span>
+               </a> 
+                        <%} else {  %>  <%}%>   
+                           </div>
+                       
+                        </div>
+                     </div> </div>  
+                   <div id="section-classifieds" class="section-classifieds">
+		<div class="container-list">
+			<% if(Getuserarticle.length > 0 ) { %>
+            <div class="row">
+                    
+                
+                <% Getuserarticle.forEach((Getuserarticle)=>{ %>
+                
+                
+                
+                <div class="mrg-mnrt col-md-6">
+<div class="pad-Article">
+
+
+
+
+<div class="secnd-slide">  
+    
+     
+                             <img class="img-fluid" src="/user/resize/<%=Getuserarticle.news_image %>" alt="" width="100%">
+    </div>
+
+    
+    <div class="contentmd">
+    
+    <h4 class="b_ads_title0">
+      
+         
+                <%  var String2 = new String(Getuserarticle.news_title)%>
+                                     <%  if(String2.length > 60 ) { 
+                                           
+                                          var resultslice = String2.slice(0,60);
+                                          var resulttext = resultslice + '.....';
+                                         
+                                         %> 
+                                     <%= resulttext%>
+                                     
+                                     <%}  else { %>
+                                     <%= String2 %>
+                                     <%} %>
+            
+        
+        
+</h4>
+  
+ 
+    
+     <h4 class="page-67">  <%  
+                                            var htmlText=Getuserarticle.news_des;
+                                            var noHTML = /(<([^>]+)>)/ig; 
+                                            var clean = htmlText.replace(noHTML, '');
+                                            var desstring = clean;  %>
+                                     <%  if(desstring.length > 60 ) { 
+                                           
+                                          var resultslice = desstring.slice(0,60);
+                                          var resulttext = resultslice + '.....';
+                                         
+                                         %> 
+                                     <%= resulttext%>
+                                     
+                                     <%}  else { %>
+                                     <%= desstring %>
+                                     <%} %> 
+	 </h4>
+      
+            <% var stringtitle =  Getuserarticle.news_title; var replacesting = stringtitle.replace(/\s/g,"-") %>
+ <a href="/post/<%= Getuserarticle.news_category %>/<%= Getuserarticle.id%>/<%= replacesting%>" target="_blank"><h4 class="location_ads"><span class="ads_type"> <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+
+     <%= Getuserarticle.news_category %>   </span></h4></a>
+    
+    
+   
+    
+    
+    
+    
+
+     <div class="video-view">
+                               <% var d_ate = new Date(Getuserarticle.news_date); 
+                                  
+                                  var day = d_ate.getDay();
+                                  var date = d_ate.getDate();
+                                  var year = d_ate.getFullYear();
+                                  
+                                  var month = new Array();
+                                  month[0] = "Jan";
+                                  month[1] = "Feb";
+                                  month[2] = "Mar";
+                                  month[3] = "Apr";
+                                  month[4] = "May";
+                                  month[5] = "Jun";
+                                  month[6] = "Jul";
+                                  month[7] = "Aug";
+                                  month[8] = "Sep";
+                                  month[9] = "Oct";
+                                  month[10] = "Nov";
+                                  month[11] = "Dec";
+                                     
+                                  var month_p = month[d_ate.getMonth()]
+                                                                  %>
+                                  
+                                    
+                               <i class="fa fa-calendar"></i> <%= date + ' ' + month_p +' '+ year %>
+                              </div>
+ 
+    
+                    
+                 
+                 
+                 
+                 
+                 
+                    <div class="actions_from"><div class="video-card-image">
+                          
+                              <a href="/user/edit-article/<%=Getuserarticle.id %>" class="edit_p0"> <i class="fa fa-pencil" aria-hidden="true"></i>
+</a>
+                             <a href="/user/articledelete/<%=Getuserarticle.id %>" class="timeicon" onclick="return confirm('Do you really want to delete?');"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                           </div></div>
+                 </div> 
+   
+  
+       
+    
+    
+    </div>
+    </div>
+                
+                
+                    <%})%>
+                     
+                  </div>
+			
+	
+            
+            <% } else { %>
+			<div id="classifiedsList" >
+				<div class="nodatafound">
+                    <div class="nodataimg text-center">
+                    <img src="/images/nodata.png">
+                    </div>
+                <p  class="alrt0">You have not added any blog yet.
+
+
+                    </p>
+                    <p class="slstct_9">Let go of what you don't use anymore
+
+                    </p>
+                
+                <ul class="nodtafound">
+             
+          
+            <li class="nav-item">
+               <a class="nav-link" href="/user/post-article">
+                   <i class="fa fa-plus"></i>
+               <span>Article Stories/Blog </span>
+               </a>
+            </li>
+              
+           
+                </ul></div>
+   
+			</div>
+            
+            <%} %>
+			</div>
+	</div>     
+                        
+                     </div>
+                  </div>
+                
+                  </section>
+               </div>
+             </div>
+		 <% include ../include/user-footer.ejs %>
+
+								</body>
+								</html>
+

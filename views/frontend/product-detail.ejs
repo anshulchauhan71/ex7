@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<%bussinessDetails.forEach((detailsitem,index)=> {  var itemCount = 1; %>
+
+	
+<title><%= detailsitem.ads_title%></title>  
+<meta name="description" content="<%= detailsitem.metadescription%>">
+<meta name="keywords" content="<%= detailsitem.metakeyword%>">
+ <% include include/head.ejs %>
+	
+</head>    
+<body>
+    
+      <% include include/header.ejs %>
+    
+       <% include include/menu.ejs %>
+    
+    
+    
+ 
+    
+    <section class="lst-section">
+
+
+
+
+
+
+
+<div class="deialsPP">
+<div class="container">
+
+<!--
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><a href="/directory">Directory</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= detailsitem.ads_title%></li>
+  </ol>
+</nav>
+-->
+<div class="pp-cont">
+
+
+
+
+
+
+
+<div class="pad-slider-detail">
+
+<div class="row">
+
+
+<div class="col-md-12 DmobileScreen" >
+<div class="professionaldesign">
+   <% bussinessMedia.slice(0, 1).forEach((bussinessMedia,index)=>{%>  
+     <div class="business-card-image" <%if(detailsitem.coverphoto){%>style="background-image:url('/images/post/<%= detailsitem.coverphoto%>')"<%}else{%>style="background-image:url('/images/post/<%= bussinessMedia.image_path%>')"<%}%>>
+
+       <%})%>
+
+     <button class="BtnPhotoCount" onclick="openModal();currentSlide(<%=index+itemCount%>)">See all <%=bussinessMedia.length%> Photos</button> 
+    
+     <div class="Oninfo">    <div class="visitphoneno">
+                <%if(detailsitem.ads_mobile) { %> 
+      <i class="fa fa-phone" aria-hidden="true"></i> (+91)
+ <%=detailsitem.ads_mobile%>
+               <%}%>
+              </div>
+     
+        
+         <%if(detailsitem.ads_email) { %> 
+        
+        <div class="pp-mail"><i class="fa fa-envelope-o"></i>
+  <%=detailsitem.ads_email%></div>
+        <%}%></div>
+    </div>
+    
+     
+    
+   
+    
+    
+    <div class="sidedeatils">
+    <div class="business-card-logo" >
+        <img class="lazy" src="/images/post/placeholder.png?width=140&height=130" data-src="/images/post/<%= detailsitem.ads_logo%>?width=155&height=150">
+        </div>
+          <input type="hidden" value="<%= detailsitem.id%>" id="atagetid_de">
+     
+    <div class="business-card-details" >
+    <h1 class="pp-head"><%= detailsitem.ads_title%></h1>
+<div class="startratingD">
+    <div class="ratingsD" id="ratings51"></div>
+    <span class="rating_countD" id="count51">
+          </span>
+        </div>
+       
+    <p class="pp-location">
+
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" width='14px' height='15px'
+	 viewBox="0 0 512 512" >
+<g>
+	
+		<path  fill='#000' d="M256,0C156.748,0,76,80.748,76,180c0,33.534,9.289,66.26,26.869,94.652l142.885,230.257
+			c2.737,4.411,7.559,7.091,12.745,7.091c0.04,0,0.079,0,0.119,0c5.231-0.041,10.063-2.804,12.75-7.292L410.611,272.22
+			C427.221,244.428,436,212.539,436,180C436,80.748,355.252,0,256,0z M384.866,256.818L258.272,468.186l-129.905-209.34
+			C113.734,235.214,105.8,207.95,105.8,180c0-82.71,67.49-150.2,150.2-150.2S406.1,97.29,406.1,180
+			C406.1,207.121,398.689,233.688,384.866,256.818z"/>
+	
+</g>
+
+	<g>
+		<path fill='#000'  d="M256,90c-49.626,0-90,40.374-90,90c0,49.309,39.717,90,90,90c50.903,0,90-41.233,90-90C346,130.374,305.626,90,256,90z
+			 M256,240.2c-33.257,0-60.2-27.033-60.2-60.2c0-33.084,27.116-60.2,60.2-60.2s60.1,27.116,60.1,60.2
+			C316.1,212.683,289.784,240.2,256,240.2z"/>
+	</g>
+
+</svg>
+
+
+ <%= detailsitem.ads_city%> <%= ","+detailsitem.ads_country%> </p>
+       
+
+      
+ <div class="ContactNowD">
+      
+     
+        <button class="caps-D" data-toggle="modal" type="button" data-target="#enqueryM">
+Request a Quote</button>
+       </div>
+
+
+
+   
+    
+    
+
+    
+    
+ 
+    
+    </div>
+    
+    </div>
+    <% 
+                              
+                              
+                                  var strxx  = detailsitem.ads_subcategory;
+                                 var strings = strxx.split(",",5); 
+                             
+    var textprint = "";
+var i;
+                               
+                               if(detailsitem.ads_subcategory){%>
+                               <div class="page_ListSD2"><ul><%for(i =0; i < strings.length;i++){
+                                    textprint +='<li>'+strings[i]+'</li>';
+                                   %>
+                               <li><%=strings[i]%></li>
+                              
+                               <%}%>  <li class="lastMaincat"><%=detailsitem.ads_category%></li></ul>
+                                 </div>
+                               <%}%>
+    <div class="ContactDinfo">Contact Info:<span><%=detailsitem.ads_address%></span>
+    </div>
+    </div>
+    <div id="sharebusiness" class="modal fade " role="dialog" aria-modal="true" >
+  <div class="modal-dialog sharebb">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="title_autoapi">Share business</div><button type="button" class="close" data-dismiss="modal">&times;</button>
+    
+      </div>
+      <div class="modal-body">
+          <ul class="shareDialogButtons">
+    <li class="shareDialogButton" onclick="window.open('http://www.facebook.com/sharer.php?u=<%= req.protocol + '://' + req.get('host') + req.originalUrl %>;title=<%= detailsitem.ads_title%>', 'sharer', 'toolbar=0,status=0,width=580,height=325');" rel="nofollow" target="_blank">
+       
+        
+        <div class="fa  fa-facebook"></div><span>Facebook</span></li>
+    <li class="shareDialogButton" >
+        <div class="fa  fa-linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&amp;url=<%= req.protocol + '://' + req.get('host') + req.originalUrl %>/&amp;title=<%= detailsitem.ads_title%>', 'sharer', 'toolbar=0,status=0,width=580,height=325');" rel="nofollow" target="_blank"></div><span>Linkedin</span></li>
+    <li class="shareDialogButton" onclick="window.open('https://twitter.com/intent/tweet?url=<%= req.protocol + '://' + req.get('host') + req.originalUrl %>/&amp;text=<%= detailsitem.ads_title%>', 'sharer', 'toolbar=0,status=0,width=580,height=325');" rel="nofollow" target="_blank">
+        <div class="fa  fa-twitter"></div><span>Twitter</span></li>
+    <li class="shareDialogButton">
+        <div class="fa fa-envelope-o"></div><span>Email</span></li>
+ 
+</ul>
+         </div>
+  </div>
+
+  </div>
+</div>
+   
+    
+    <div class="row topbdr" > 
+    <div class="col-md-8 col-8 leftShift" > 
+    <div class="otherLinks">
+     
+        <div class="Sharebtn"  data-toggle="modal" data-target="#sharebusiness">
+       <i class="fa fa-share-alt" aria-hidden="true"></i>
+
+            Social Share 
+        </div>   <div class="visitwebsite">
+             <%if(detailsitem.ads_website) { %> 
+        
+  
+   
+   <a href="<%=detailsitem.ads_website%>"  target="_blank" rel="nofollow"  class="pp-contactno">
+<svg id="v2-icon-website" viewBox="0 0 32 32" width="18px" height="18px">
+    
+      <path fill="#fff" d="M29.453 21.89c1.618-3.728 1.618-7.961 0-11.689v-0.083c-2.345-5.338-7.623-8.785-13.454-8.785s-11.109 3.447-13.454 8.785v0.097c-1.617 3.719-1.617 7.943 0 11.662v0.096c2.345 5.338 7.623 8.785 13.454 8.785s11.109-3.447 13.454-8.785v-0.083zM3.042 16.087c0.005-1.584 0.299-3.154 0.868-4.632h4.135c-0.55 3.063-0.55 6.2 0 9.263h-4.135c-0.572-1.477-0.867-3.047-0.868-4.632zM9.438 16.087c-0.004-1.569 0.149-3.134 0.455-4.673h5.169v9.263h-5.169c-0.301-1.512-0.453-3.049-0.455-4.59zM16.854 3.267c1.999 0.579 3.722 3.005 4.728 6.355h-4.728v-6.355zM15.062 3.267v6.355h-4.728c1.006-3.35 2.729-5.776 4.728-6.355zM15.062 22.469v6.355c-1.999-0.579-3.722-3.005-4.728-6.355h4.728zM16.854 28.824v-6.355h4.728c-1.006 3.35-2.729 5.776-4.728 6.355zM16.854 20.677v-9.263h5.169c0.306 1.539 0.459 3.104 0.455 4.673 0.001 1.555-0.151 3.106-0.455 4.632l-5.169-0.041zM23.857 11.414h4.135c1.159 2.979 1.159 6.284 0 9.263h-4.135c0.259-1.516 0.384-3.052 0.372-4.59 0.016-1.566-0.108-3.13-0.372-4.673zM27.151 9.622h-3.694c-0.491-1.993-1.377-3.868-2.605-5.514 2.652 1.091 4.867 3.030 6.299 5.514zM11.065 4.094c-1.228 1.645-2.114 3.52-2.605 5.514h-3.694c1.433-2.484 3.648-4.423 6.299-5.514zM4.765 22.469h3.694c0.491 1.993 1.377 3.868 2.605 5.514-2.652-1.091-4.867-3.030-6.299-5.514zM20.852 27.983c1.228-1.645 2.114-3.52 2.605-5.514h3.694c-1.426 2.492-3.643 4.437-6.299 5.528v-0.014z"></path>
+    </svg>
+Visit Website
+ </a>
+
+  
+            
+       
+            <%}%></div>
+         
+        </div>
+    
+    </div>
+    <div class="col-md-4 col-4 rightSShift"> <%if(detailsitem.ads_facebook || detailsitem.ads_instagram || detailsitem.ads_linkedin || detailsitem.ads_twitter ) { %>  
+<div class="getONfacebook"> 
+        
+        <div class="Getallsocial">
+    <ul>
+        <%if(detailsitem.ads_facebook) { %> <li><a href="<%=detailsitem.ads_facebook%>" target="_blank" rel="nofollow">       <i class="fa fa-facebook"></i> </a></li>   <%}%>
+        <%if(detailsitem.ads_instagram) { %> <li><a href="<%=detailsitem.ads_instagram%>" target="_blank" rel="nofollow">   <i class="fa fa-instagram"></i> </a></li><%}%>
+        <%if(detailsitem.ads_linkedin) { %> <li><a href="<%=detailsitem.ads_linkedin%>" target="_blank" rel="nofollow">      <i class="fa fa-linkedin"></i> </a></li><%}%>
+        <%if(detailsitem.ads_twitter) { %> <li><a href="<%=detailsitem.ads_twitter%>" target="_blank" rel="nofollow">                     <i class="fa fa-twitter"></i> </a></li><%}%>
+       
+      
+            </ul>
+    </div>
+        </div><%}%></div>
+</div>
+</div>
+
+
+
+
+</div>
+</div>
+</div>
+
+    
+    
+     <div id="designmodal" class="modal modalfullscreen">
+  <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+
+    <div class="mySlides2"> 
+        <div class="row">
+    
+    <div class="col-md-8">    <% bussinessMedia.forEach((Galleyitem,index)=>{%>  
+    <div class="mysideOp mySlides">
+           
+<div class="numbertext"> <i class="fa fa-camera" aria-hidden="true"></i>
+ Photos <%=index+itemCount%>/<%=bussinessMedia.length%> </div>
+      <img class="lazy" src="/images/placeholder.png" data-src="/images/post/<%= Galleyitem.image_path%>" alt="<%= detailsitem.shopname%>">
+    </div> <%})%> <a class="prevdesign" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="nextdesign" onclick="plusSlides(1)">&#10095;</a>
+
+  </div>
+        <div class="col-md-4 mDisplayenq">
+        <div class="queryForms"> <div class="PostBYdesign pt-0">
+                                    <div class="designCompy_img">
+                                        <img class="lazy" src="/images/placeholder.png" data-src="/images/post/<%= detailsitem.ads_logo%>?width=50&height=50" alt="<%= detailsitem.ads_title%>">
+                                    </div>
+                                    <div class="designCompy_content">
+                                        <div class="nameCC2">Get Quotes to <%= detailsitem.ads_title%></div>
+                                        <p class="mb-0"><%= detailsitem.ads_city%><%= ' , '+detailsitem.ads_state%></p>
+                                      
+                                    </div>
+                                </div>
+           <form action="" method="post" id="messageForm" >
+       
+                       <div class="form-group rele">
+                          <input type="hidden" name="user_id" value="<%= detailsitem.userid%>">
+                          <input type="hidden" name="post_id" value="<%= detailsitem.id%>">
+                           <input type="text" class="form-control ppe-l0Q" name="user_name" placeholder="Full Name">
+                              <span class="errormsgd" id="user_name"></span>
+                        </div>
+                       
+                        <div class="form-group rele">
+                       
+                           <input type="text" class="form-control ppe-l0Q" name="user_email" placeholder="Email Address(optional)">
+                            <span class="errormsgd" id="user_email"></span>
+                        </div>
+                           <div class="form-group rele">
+                         
+                           <input type="text" class="form-control ppe-l0Q" name="user_mobile" placeholder="Mobile Number">
+                                 <span class="errormsgd" id="user_mobile"></span> 
+                        </div>
+                        <div class="form-group rele">
+                          
+                            <textarea class="form-control ppe-l0Q" name="user_message" placeholder="Message"></textarea>     
+                       <span class="errormsgd" id="user_message"></span>
+                        </div>
+                        <div class="mt-4">
+                           <div class="row">
+                              <div class="col-12">
+                                 <button type="submit" class="btn btnlogin">Submit</button>
+                              </div>
+                           </div>
+                        </div>
+          <div class="col-md-12">
+           <div id="fmailmsg"></div>
+           <div id="sucessmsg"></div>
+          </div>
+                     </form> <div class="moreGallry"> <div class="moreAtxt">View More photos from this Album
+            </div>
+            <% bussinessMedia.forEach((Galleyitem,index)=>{ %>
+           
+        <div class="column">
+      <img  class="lazy" src="/images/placeholder.png" data-src="/images/post/<%= Galleyitem.image_path%>?width=55&height=55" alt="<%= detailsitem.ads_title%>" onclick="currentSlide(<%=index+itemCount%>)" alt="Nature">
+            
+    </div><%})%>
+        </div>
+        </div>
+        </div>
+        
+        </div></div>
+
+   
+
+    <!-- Next/previous controls -->
+   
+
+    <!-- Thumbnail image controls -->
+    
+  </div>
+</div>
+    
+    <script>
+// Open the Modal
+function openModal() {
+  $("#designmodal").modal('show');
+}
+
+// Close the Modal
+function closeModal() {
+ 
+      $("#designmodal").modal('hide');
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
+   
+<div class="pp-aboutsec">
+<div class="containerxx">
+<div class="row">
+<div class="col-md-9 mobileP-0">
+
+<div class="pp-Babout">
+
+       <div class="desCription"><div class="Aboutthe09">About Us</div>
+<%- detailsitem.ads_des%>
+</div>
+    <div class="slide_images" id="imageGallry" >
+        <div class="Aboutthe09">Photos  (<%= bussinessMedia.length%>)</div>
+      <div class="outer">
+<div  class="owl-carousel owl-theme gallerybusiness">
+   
+    <% bussinessMedia.forEach((bussinessMedia,index)=>{ %>
+     
+   <div class="item" >
+  
+  <div class="imgslide" >
+      <img  class="lazy" src="/images/placeholder.png"  onclick="openModal(),currentSlide(<%=index+itemCount%>)" data-src="/images/post/<%= bussinessMedia.image_path%>?width=350&height=300"  >
+   
+  </div>
+
+  </div>
+ <%})%>
+  
+</div>
+
+</div>
+    </div>
+   
+<div class="ProjectsB">
+    <div class="Aboutthe09">Projects</div>
+     <div class="row">
+            	<%ProjectR.forEach((Designsitemw)=>{  %>
+      <div class="col-md-2 col-6 bbList">
+      <div class="ad_designL">
+
+
+<figure class="img_figer img_scam">        
+     <% var stringtitle = Designsitemw.ads_title; var replacesting = stringtitle.replace(/\s/g,"-");
+    
+    %>
+     <a href="/designs/<%= Designsitemw.id%>/<%= replacesting %>">
+<img  class="lazy" src="/images/placeholder.png" data-src="/images/post/<%= Designsitemw.ads_logo%>?width=800" alt="<%= Designsitemw.news_category%>"  >
+    </a>
+</figure>  <a href="/designs/<%= Designsitemw.id%>/<%= replacesting %>">
+         <div class="PostBYdesignL"><div class="designCompy_imgL"></div><div class="designCompy_contentL"><h4><%= Designsitemw.ads_title%></h4> <div class="design_categoryL pl-0"><%= Designsitemw.ads_city%>,<%= Designsitemw.ads_state%></div></div></div>
+         
+          
+          </a>
+
+</div>
+                 
+                 </div> 
+                        <%})%>
+                         
+
+            </div></div>
+    
+ 
+      
+    
+   
+          <div class="reviewD">
+           <div class="Aboutthe09"> Recommended Reviews
+
+                <div class="WriteRButton">
+                                <a href="/business/<%= req.params.id%>/review"><span> Write a  Review</span></a>
+
+                            </div>
+</div>
+       
+            
+           
+           <div class="reviews_list">
+            <% ReviewsR.forEach((ReviewsR)=>{  %>
+           <div class="reviwList">
+               <% var LengthChk = ReviewsR.ratingNo %>
+               <div class="userNameV"> <% var SliceName = ReviewsR.reviewname; var namePrint = SliceName.slice(0,1) %> <%=namePrint%></div>
+               <div class="RewvieData">
+               <div class="userReviewName"><%= ReviewsR.reviewname%></div>
+               <div class="userReviewStr RatingNo<%= ReviewsR.ratingNo%>"></div></div>
+               <div class="StartDes"><%= ReviewsR.review%></div>
+               </div>
+               <%}) %>
+           </div>
+
+                  <div class="commentSec" >
+                        
+                        <div class="postcomment">
+                            
+                            <div class="iconPost">
+                            
+
+<svg version="1.1" id="Capa_1" height="30px" width="30px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" >
+<g>
+	
+		<path fill="#a3a3a3" d="M256,0C114.844,0,0,114.844,0,256s114.844,256,256,256s256-114.844,256-256S397.156,0,256,0z M256,74.667
+			c67.635,0,122.667,55.031,122.667,122.667S323.635,320,256,320s-122.667-55.031-122.667-122.667S188.365,74.667,256,74.667z
+			 M256,469.333c-69.707,0-131.52-33.755-170.473-85.615c42.676-20.534,103.621-42.385,170.473-42.385
+			c66.857,0,127.807,21.854,170.474,42.383C387.521,435.577,325.708,469.333,256,469.333z"/>
+	</g>
+
+</svg>
+
+                            </div>
+                            
+                            <div class="PostHead"><%= ReviewsR.length ? ReviewsR.length : 0%> User Reviews
+
+</div>
+                            <div class="PostButton">
+                                <a href="/business/<%= req.params.id%>/review"><span> + Post Your  Review</span></a>
+
+                            </div>
+                            </div>
+                        </div>
+                 
+           
+       </div></div>
+
+   
+
+
+
+
+
+</div>
+    <div class="col-md-3 pl-0"><div class="detailQuote"> <svg id="icon-counselling-image" viewBox="0 0 144 47" width="150px"><g fill="none" fill-rule="evenodd"><path d="M72.5 4.3h4.3V1.5h-6.55v3.55h1.5a.75.75 0 0 1 .75-.75z" fill="#FFCC75"></path><path fill="#F2EBD9" d="M70.25 33.167h5.25V42.5h-5.25zm-6.75 0h5.25V42.5H63.5z"></path><path fill="#FFF" d="M63.5 44h12v1.5h-12zm-6.5-.75V29.5h-9.5v16h10.25V44a.75.75 0 0 1-.75-.75zm-5.833-7.833a.75.75 0 0 1-1.5 0v-3a.75.75 0 0 1 1.5 0v3zm3.666 0a.75.75 0 0 1-1.5 0v-3a.75.75 0 0 1 1.5 0v3zM91.5 45.5v-16H82v13.75a.75.75 0 0 1-.75.75v1.5H91.5zm-3.667-13.083a.75.75 0 0 1 1.5 0v3a.75.75 0 0 1-1.5 0v-3zm-3.666 0a.75.75 0 0 1 1.5 0v3a.75.75 0 0 1-1.5 0v-3z"></path><path d="M81.25 44a.75.75 0 0 1-.75-.75V19.4h-5.25a.75.75 0 0 1-.75-.75H73a.75.75 0 0 1-.75.75H58.5v23.85a.75.75 0 0 1-.75.75v1.5H62V32.417a.75.75 0 0 1 .75-.75h13.5a.75.75 0 0 1 .75.75V45.5h4.25V44zM69.5 29.167a3.637 3.637 0 0 1-3.633-3.634A3.638 3.638 0 0 1 69.5 21.9a3.637 3.637 0 0 1 3.633 3.633 3.638 3.638 0 0 1-3.633 3.634z" fill="#FFF"></path><path d="M69.5 23.4a2.136 2.136 0 0 0-2.133 2.133c0 1.177.957 2.134 2.133 2.134a2.136 2.136 0 0 0 2.133-2.134A2.136 2.136 0 0 0 69.5 23.4z" fill="#98D9D5"></path><path fill="#F2EBD9" d="M47.5 25.5H57V28h-9.5zm34.5 0h9.5V28H82z"></path><path d="M74.5 18.65a.75.75 0 0 1 .75-.75h3.844L69.5 10.307 59.906 17.9H72.25a.75.75 0 0 1 .75.75h1.5z" fill="#FF6E1D"></path><path d="M92.25 24H82v-5.35a.738.738 0 0 0-.005-.082c0-.007-.002-.013-.003-.02a.759.759 0 0 0-.01-.06l-.006-.023a.756.756 0 0 0-.016-.055l-.008-.023a.76.76 0 0 0-.06-.122l-.013-.022a.762.762 0 0 0-.033-.047l-.013-.018a.754.754 0 0 0-.053-.059l-.006-.005a.715.715 0 0 0-.054-.048l-.005-.004L70.25 8.987V1.5h6.55v2.8h-4.3a.75.75 0 0 0 0 1.5h5.05a.75.75 0 0 0 .75-.75V.75a.75.75 0 0 0-.75-.75H69.5a.75.75 0 0 0-.75.75v8.237l-11.466 9.075-.004.004a.762.762 0 0 0-.054.048l-.006.005a.754.754 0 0 0-.053.059l-.013.018a.762.762 0 0 0-.033.047l-.014.022a.772.772 0 0 0-.059.122l-.008.023a.729.729 0 0 0-.016.055l-.006.023a.751.751 0 0 0-.01.06c-.001.007-.003.013-.003.02a.763.763 0 0 0-.005.082V24H46.75a.75.75 0 0 0-.75.75v21.5c0 .414.336.75.75.75h45.5a.75.75 0 0 0 .75-.75v-21.5a.75.75 0 0 0-.75-.75zM63.5 45.5V44h12v1.5h-12zm12-12.333V42.5h-5.25v-9.333h5.25zM68.75 42.5H63.5v-9.333h5.25V42.5zM77 32.417a.75.75 0 0 0-.75-.75h-13.5a.75.75 0 0 0-.75.75V45.5H47.5v-16H57v13.75a.75.75 0 0 0 1.5 0V19.4h13.75a.75.75 0 0 0 0-1.5H59.906l9.594-7.593 9.594 7.593H75.25a.75.75 0 0 0 0 1.5h5.25v23.85a.75.75 0 0 0 1.5 0V29.5h9.5v16H77V32.417zM91.5 28H82v-2.5h9.5V28zM57 28h-9.5v-2.5H57V28z" fill="#082947"></path><path d="M50.417 31.667a.75.75 0 0 0-.75.75v3a.75.75 0 0 0 1.5 0v-3a.75.75 0 0 0-.75-.75zm3.666 0a.75.75 0 0 0-.75.75v3a.75.75 0 0 0 1.5 0v-3a.75.75 0 0 0-.75-.75zm34.5 4.5a.75.75 0 0 0 .75-.75v-3a.75.75 0 0 0-1.5 0v3c0 .414.336.75.75.75zm-3.666 0a.75.75 0 0 0 .75-.75v-3a.75.75 0 0 0-1.5 0v3c0 .414.335.75.75.75zM69.5 21.9a3.637 3.637 0 0 0-3.633 3.633 3.637 3.637 0 0 0 3.633 3.634 3.637 3.637 0 0 0 3.633-3.634A3.637 3.637 0 0 0 69.5 21.9zm0 5.767a2.136 2.136 0 0 1-2.133-2.134c0-1.176.957-2.133 2.133-2.133 1.176 0 2.133.957 2.133 2.133a2.136 2.136 0 0 1-2.133 2.134z" fill="#082947"></path><path d="M35.798 28.418c2.108-5.69 2.345-9.798 1.928-12.542-.487-3.207-3.458-5.645-6.576-5.086-3.664.657-3.755 4.689-3.755 4.689s-3.711-1.573-5.802 1.507c-1.779 2.62-.76 6.327 1.972 8.076 2.337 1.497 6.177 2.968 12.233 3.356z" fill="#F7F7F7"></path><path d="M5.053 37.714c4.014-1.76 6.267-3.697 7.484-5.29 1.421-1.863 1.197-4.63-.657-5.969-2.18-1.573-4.32.402-4.32.402S6.515 24.14 3.866 24.6c-2.254.39-3.668 2.78-3.207 5.076.395 1.966 1.557 4.698 4.394 8.04zM130.563 29.139c-3.064-5.239-4.01-9.242-4.077-12.018-.077-3.242 2.426-6.16 5.593-6.15 3.723.011 4.513 3.966 4.513 3.966s3.381-2.194 5.975.477c2.207 2.272 1.847 6.098-.54 8.296-2.041 1.88-5.567 3.995-11.464 5.429z" fill="#F5F5F5"></path><path d="M109.178 37.873c-3.374-2.799-5.005-5.282-5.735-7.15-.854-2.181.124-4.779 2.276-5.555 2.53-.912 4.042 1.577 4.042 1.577s1.753-2.324 4.173-1.152c2.06.996 2.76 3.682 1.683 5.763-.921 1.78-2.791 4.086-6.44 6.517z" fill="#F0F0F0"></path><path d="M98.277 14.912c-2.336-1.938-3.465-3.657-3.97-4.95-.591-1.51.086-3.308 1.575-3.846 1.751-.631 2.799 1.092 2.799 1.092s1.214-1.609 2.889-.798c1.425.69 1.91 2.55 1.165 3.99-.638 1.233-1.933 2.83-4.458 4.512zM27.277 44.912c-2.336-1.938-3.465-3.657-3.97-4.95-.591-1.51.086-3.308 1.575-3.846 1.751-.631 2.799 1.092 2.799 1.092s1.214-1.609 2.889-.798c1.425.69 1.91 2.55 1.165 3.99-.638 1.233-1.933 2.83-4.458 4.512zM50.277 13.912c-2.336-1.938-3.465-3.657-3.97-4.95-.591-1.51.086-3.308 1.575-3.846 1.751-.631 2.799 1.092 2.799 1.092S51.895 4.6 53.57 5.41c1.425.69 1.91 2.55 1.165 3.99-.638 1.233-1.933 2.83-4.458 4.512z" opacity=".632" fill="#F0F0F0"></path></g></svg><div class="RequestQ">INTERESTED IN THIS?
+</div><button class="caps-D" data-toggle="modal" type="button" data-target="#enqueryM">
+Request a Quote</button></div></div>
+</div>
+</div>
+</div></div>
+     <div id="enqueryM" class="modal fade " role="dialog" aria-modal="true">
+  <div class="modal-dialog sharebbQ">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="Req_autoapi">  <div class="PostBYdesign pt-0">
+                                    <div class="designCompy_img">
+                                        <img class="lazy" src="/images/placeholder.png" data-src="/images/post/<%= detailsitem.ads_logo%>?width=50&height=50" alt="<%= detailsitem.ads_title%>">
+                                    </div>
+                                    <div class="designCompy_content">
+                                        <div class="nameCC2">Get Quotes to <%= detailsitem.ads_title%></div>
+                                        <p class="mb-0"><%= detailsitem.ads_city%><%= ' , '+detailsitem.ads_state%></p>
+                                      
+                                    </div>
+                                </div>
+</div><button type="button" class="closeQQ" data-dismiss="modal">×</button>
+    
+      </div>
+      <div class="modal-body">
+      <form action="" method="post" id="messageForm" >
+       
+                       <div class="form-group rele">
+                          <input type="hidden" name="user_id" value="<%= detailsitem.userid%>">
+                          <input type="hidden" name="post_id" value="<%= detailsitem.id%>">
+                           <input type="text" class="form-control ppe-l0Q" name="user_name" placeholder="Full Name">
+                              <span class="errormsgd" id="user_name"></span>
+                        </div>
+                       
+                        <div class="form-group rele">
+                       
+                           <input type="text" class="form-control ppe-l0Q" name="user_email" placeholder="Email Address(optional)">
+                            <span class="errormsgd" id="user_email"></span>
+                        </div>
+                           <div class="form-group rele">
+                         
+                           <input type="text" class="form-control ppe-l0Q" name="user_mobile" placeholder="Mobile Number">
+                                 <span class="errormsgd" id="user_mobile"></span> 
+                        </div>
+                        <div class="form-group rele">
+                          
+                            <textarea class="form-control ppe-l0Q" name="user_message" placeholder="Message"></textarea>     
+                       <span class="errormsgd" id="user_message"></span>
+                        </div>
+                        <div class="mt-4">
+                           <div class="row">
+                              <div class="col-12">
+                                 <button type="submit" class="btn btnlogin">Submit</button>
+                              </div>
+                           </div>
+                        </div>
+          <div class="col-md-12">
+           <div id="fmailmsg"></div>
+           <div id="sucessmsg"></div>
+          </div>
+                     </form>
+         </div>
+  </div>
+
+  </div>
+</div>
+    
+
+<%})%>
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+</section>
+       
+    
+    <script>
+$('.gallerybusiness').owlCarousel({
+    
+    loop:false,
+    margin:10,
+    dots:false,
+    responsiveClass:true,
+    responsive:{
+        0:{
+            items:3,
+            nav:true
+        },
+        600:{
+            items:3,
+            nav:false
+        },
+        1000:{
+            items:6,
+            nav:true,
+            loop:false
+        }
+    }
+})
+
+    </script>
+    
+    
+    
+   <% include include/footer.ejs %>
+    
+    
+    
+				</body>
+								</html>
+
+<script>
+    

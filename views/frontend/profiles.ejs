@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>newsfooterom</title>
+   <% include include/head.ejs %>
+      
+    
+	
+</head>    
+<body>
+    
+      <% include include/header.ejs %>
+     <% include include/menu.ejs %>
+    
+    
+    <section class="authorsec">
+         <div class="container">
+    <div class="row">
+    <div class="col-md-9">
+    <div class="main-author">
+        <%authorDetails.forEach((authorDetails)=>{  %>
+    <div class="authorspfoile">
+		  			<div class="authorsDetailImg" >
+                        <%if(authorDetails.image) { %>
+				<img class="lazy" src="/images/placeholder.png" data-src="/user/profile/<%= authorDetails.image%>"  alt="<%= authorDetails.name%>" >
+                        
+                        <%} else { %><% var Slicetext = authorDetails.name.slice(0,1)%> <div class="AuthornoImg"><%= Slicetext %></div> <%}%>
+			</div>
+					<div class="authorsDetailCont">
+				<h1><%= authorDetails.name%></h1>
+				
+                        <h3> Articles  : <%= authorStory.length %> </h3>
+                   
+                      
+                                
+                                
+                          
+                            
+                       
+                       <%if(authorDetails.aboutme==null) { %>  <p> <%= authorDetails.name + ' has not yet completed their profile'%> </p> <%} else {%>
+                            
+                            
+                            
+                              <% if(authorDetails.aboutme.length > 200 ) { %>
+                        
+                        
+                        
+                        <div class="slide-about" >
+                        <div class="slide-toggle  slide-toggle--collapsed" >
+                          
+                            <p><%= authorDetails.aboutme%></p>
+                            
+                            <span class="mask--gradient" ></span>
+                            
+                            </div><button class="btn btn-aboutmore" id="readmoreabout"><span>Read more</span> <i class="fa fa-angle-down"></i></button>
+                         </div>
+                        
+                            <%}else { %>
+                            
+                            
+                             <p><%= authorDetails.aboutme%></p>
+                            
+                            <%} }%>
+                       
+      
+                        
+<!--
+                        
+                    <div class="followauthor">
+                        
+                        <div class="followers_user">0 Followers</div>
+                        <button  class="btn btn-follow"><i class="fa fa-user-o" aria-hidden="true"></i>
+ Follow</button></div>
+-->
+			</div>
+		
+        </div>
+      
+        <%});%>
+         
+          
+           <h2 class="main-authorstory">All Stories
+ </h2>  <% if(authorStory.length > 0){%>
+           <div class="row">
+          
+              <%authorStory.forEach((authorStory)=>{  %>
+           <div class="col-lg-4 col-md-4 pp-10">
+           
+     <% var stringtitle = authorStory.news_title; var replacesting = stringtitle.replace(/\s/g,"-") %>
+                <div class="bd_snewst-new detailpagertld">
+                    
+                    <a href="/post/<%= authorStory.news_category%>/<%= authorStory.id%>/<%= replacesting %>">
+                  
+                      <div class="bd-nesingtf"><img class="lazy" src="/images/placeholder.png" data-src="/images/post/<%= authorStory.news_image%>?width=350&height=200"  ></div>
+                  
+                    <div class="col-12 pp-10">
+                        <p class="tabent">#<%= authorStory.news_category%></p>
+                      <p class="nd_imgpt_pin-new"><% var newTitle = new String(authorStory.news_title) 
+                            if(newTitle.length > 40 ) {  var Slicetext = newTitle.slice(0,70);
+                          %> <%=Slicetext+'...'%>  <%} else {%> <%= authorStory.news_title%> <%}%></p>
+                          </div>
+               
+                      </a>
+                    
+                    <div class="author">
+                    <div class="a-name"> <% if(authorStory.user==null) { %>Trendsxp Team  <%} else{ %><a href="#"><%= authorStory.user %></a> <%}%>   </div>
+                    </div>
+                    <div class="sharelink">
+                    
+                        <span class="sharebtn">
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="17" viewBox="0 0 16 18">
+    <path fill="#7c7c7c" fill-rule="evenodd" stroke="#232D3A" stroke-width=".2" d="M12.2 16.059a1.877 1.877 0 0 1-1.867-1.883c0-1.037.838-1.882 1.867-1.882 1.03 0 1.867.845 1.867 1.882A1.877 1.877 0 0 1 12.2 16.06m-7.933-4.706A2.346 2.346 0 0 1 1.933 9a2.346 2.346 0 0 1 2.334-2.353A2.346 2.346 0 0 1 6.6 9a2.346 2.346 0 0 1-2.333 2.353M12.2 1.94c1.03 0 1.867.845 1.867 1.883A1.877 1.877 0 0 1 12.2 5.706a1.877 1.877 0 0 1-1.867-1.882c0-1.038.838-1.883 1.867-1.883m0 9.434c-.751 0-1.434.299-1.938.784l-2.994-1.863c.17-.398.265-.836.265-1.296 0-.46-.095-.898-.265-1.296l2.994-1.863a2.784 2.784 0 0 0 1.938.784A2.81 2.81 0 0 0 15 3.812 2.81 2.81 0 0 0 12.2 1a2.81 2.81 0 0 0-2.8 2.813c0 .457.11.89.304 1.272l-2.925 1.82A3.256 3.256 0 0 0 4.267 5.72 3.278 3.278 0 0 0 1 9a3.278 3.278 0 0 0 3.267 3.281c1.009 0 1.912-.462 2.512-1.186l2.925 1.82a2.805 2.805 0 0 0-.304 1.273A2.81 2.81 0 0 0 12.2 17a2.81 2.81 0 0 0 2.8-2.813 2.81 2.81 0 0 0-2.8-2.812"/>
+</svg>
+</span>
+                     
+                    </div>
+                </div>
+              </div>     
+                  
+        <% }) %>
+        
+            </div>
+           <%} else { %> <div class="noblogspot">You have not added any Article yet.
+
+        </div> <%}%>
+    
+    
+		</div>
+		</div>
+        <div class="col-md-3 col-sm-3 col-xs-12 p-0">
+      <div class="toptrends">
+<h3 class="sec0head">READ 
+ NEXT</h3>
+
+
+   <%topnews.forEach((topnews)=>{  %>
+<div class="toptrendslist">
+
+   
+        <div class="row">
+            <div class="col-3 pr-2">
+               
+                    <img class="lazy" src="/images/placeholder.png" data-src="/images/post/<%= topnews.news_image%>?width=200&height=180" alt="<%=topnews.news_title%>" >
+                   
+               
+            </div>
+            <div class="col-9 pl-0 pr-0">
+                 
+    
+   
+    <div class="time-category"> <%= topnews.news_category%></div> 
+
+<h5 class="trends_links"> 
+     
+ <% var stringtitle = topnews.news_title; var replacesting = stringtitle.replace(/\s/g,"-") %>
+    <a href="/post/<%= topnews.news_category%>/<%= topnews.id%>/<%= replacesting %>">
+<% var newTitle = new String(topnews.news_title) 
+                            if(newTitle.length > 40 ) {  var Slicetext = newTitle.slice(0,70);
+                          %> <%=Slicetext+'...'%>  <%} else {%> <%= topnews.news_title%> <%}%>
+    </a>
+</h5>
+</div></div></div><%});%>
+</div>
+
+
+
+
+      
+       
+        
+        
+       
+        
+        
+        
+        
+      </div>
+		</div>
+		</div>
+		</section>
+ 
+    
+ 
+  
+    
+      <% include include/footer.ejs %>
+    </body>
+</html>
+    
+    
+    

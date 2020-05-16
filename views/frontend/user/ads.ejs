@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html class="indexpage">
+<head>
+	
+	<title></title>
+   <% include ../include/head.ejs %>
+
+
+</head>    
+
+    
+
+    
+  <body id="page-usertop">
+      <% include ../include/user-header.ejs %>
+      
+        <div class="single-channel-page" id="content-wrapper">
+              <section class="userdashbord">
+            <div class="container">
+                    <div class="ads_heads">
+                        <div class="row rowdashboard">
+                        <div class="col-sm-12">
+                            <h1 class="gretting">Your Business Information
+
+                            </h1>
+  
+  
+  
+</div> </div>  
+                   <div id="section-classifieds" class="section-classifieds">
+		<div class="containers">
+			<div id="filterTabs">
+				<div class="row">
+					<div class="tabsWrapper col-md-12">
+					
+			
+<div class="row" id="myTabContent">
+  <div class="col-md-12" id="business" > 
+      <div class="listBn0" >
+        
+          
+      <% if(Getbusesult.length > 0 ){ %> 
+<div class="row">
+                    
+    
+    
+      
+    <div class="col-md-12">
+        
+<div class="pad-Business" style="max-height: 100%;    overflow: hidden;">
+<% Getbusesult.forEach((Getbusesult,index)=>{  %>
+    
+    
+    <div class="professionaldesign">
+  
+  <% bussinessMedia.slice(0, 1).forEach((bussinessMedia,index)=>{%>  
+ <div class="business-card-image" <%if(Getbusesult.coverphoto){%>style="background-image:url('/images/post/<%= Getbusesult.coverphoto%>')"<%}else{%>style="background-image:url('/images/post/<%= bussinessMedia.image_path%>')"<%}%>>
+       <%})%>
+
+     <button class="BtnPhotoCount"><%=bussinessMedia.length%> Photos</button> 
+     <button class="BtnCoverphoto" data-toggle="modal" data-target="#imageupload"><i class="fa fa-camera" aria-hidden="true"></i>
+Change Cover Photo</button> 
+    
+     <div class="Oninfo">    <div class="visitphoneno">
+                <%if(Getbusesult.ads_mobile) { %> 
+      <i class="fa fa-phone" aria-hidden="true"></i> (+91)
+ <%=Getbusesult.ads_mobile%>
+               <%}%>
+              </div>
+     
+        
+         <%if(Getbusesult.ads_email) { %> 
+        
+        <div class="pp-mail"><i class="fa fa-envelope-o"></i>
+  <%=Getbusesult.ads_email%></div>
+        <%}%></div>
+
+</div>
+    <div class="sidedeatils">
+    <div class="business-card-logo" >
+        <img src="/images/post/<%= Getbusesult.ads_logo%>?width=155&height=150">
+<!--
+          <button class="BtnCoverlogo" data-toggle="modal" data-target="#imageupload2"><i class="fa fa-camera" aria-hidden="true"></i>
+</button> 
+-->
+        </div>
+          <input type="hidden" value="<%= Getbusesult.id%>" id="atagetid_de">
+     
+    <div class="business-card-details" >
+    <h1 class="pp-head"><%= Getbusesult.ads_title%></h1>
+<div class="startratingD">
+    <div class="ratingsD" id="ratings51"></div>
+    <span class="rating_countD" id="count51">
+          </span>
+        </div>
+       
+    <p class="pp-location">
+
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" width='14px' height='15px'
+	 viewBox="0 0 512 512" >
+<g>
+	
+		<path  fill='#000' d="M256,0C156.748,0,76,80.748,76,180c0,33.534,9.289,66.26,26.869,94.652l142.885,230.257
+			c2.737,4.411,7.559,7.091,12.745,7.091c0.04,0,0.079,0,0.119,0c5.231-0.041,10.063-2.804,12.75-7.292L410.611,272.22
+			C427.221,244.428,436,212.539,436,180C436,80.748,355.252,0,256,0z M384.866,256.818L258.272,468.186l-129.905-209.34
+			C113.734,235.214,105.8,207.95,105.8,180c0-82.71,67.49-150.2,150.2-150.2S406.1,97.29,406.1,180
+			C406.1,207.121,398.689,233.688,384.866,256.818z"/>
+	
+</g>
+
+	<g>
+		<path fill='#000'  d="M256,90c-49.626,0-90,40.374-90,90c0,49.309,39.717,90,90,90c50.903,0,90-41.233,90-90C346,130.374,305.626,90,256,90z
+			 M256,240.2c-33.257,0-60.2-27.033-60.2-60.2c0-33.084,27.116-60.2,60.2-60.2s60.1,27.116,60.1,60.2
+			C316.1,212.683,289.784,240.2,256,240.2z"/>
+	</g>
+
+</svg>
+
+
+ <%= Getbusesult.ads_city%> <%= ","+Getbusesult.ads_country%> </p>
+       
+
+      
+ <div class="ContactNowD">
+      
+     
+         <div class="actions_fromB0"><div class="video-card-B0">
+                          
+                              <a href="/user/busniess-edit/<%= Getbusesult.id  %>" class="edit_pB0">  Edit Now
+</a>
+                             <a href="/user/delete/<%= Getbusesult.id  %>"  class="timeiconB" onclick="return confirm('Do you really want to delete?');"> Delete</a>
+                           </div></div>
+       </div>
+
+
+
+   
+    
+    
+
+    
+    
+ 
+    
+    </div>
+    
+    </div>
+    </div>
+
+
+<!--
+<div class="secnd-slides">  
+    
+     
+                             <img class="img-fluid" src="/images/post/<%=Getbusesult.image_path %>?width=500&height=180" alt="" width="100%">
+    </div>
+-->
+
+    
+    <div class="contentmdB0" ><div class="ContactDinfo pl-0">Category: <span><%=Getbusesult.ads_category %></span></div>
+      <% 
+                              
+                              
+                                  var strxx  = Getbusesult.ads_subcategory;
+                                 var strings = strxx.split(",",5); 
+                             
+    var textprint = "";
+var i;
+                               
+                               if(Getbusesult.ads_subcategory){%>
+                               <div class="page_ListSD2 pl-0 pt-1"><ul><li class="lastMaincat">Services: </li><%for(i =0; i < strings.length;i++){
+                                    textprint +='<li>'+strings[i]+'</li>';
+                                   %> 
+                               <li><%=strings[i]%></li>
+                              
+                               <%}%> </ul>
+                                 </div>
+                               <%}%><div class="ContactDinfo pl-0 pt-1">Contact Info:<span><%=Getbusesult.ads_address %></span></div>
+                
+                 <div class="Descxs"><div class="des0B"> Description
+                     </div>
+             <h4 class="page-BD67"> <% var htmlText=Getbusesult.ads_des;
+                                            var noHTML = /(<([^>]+)>)/ig; 
+                                            var clean = htmlText.replace(noHTML, '');
+                                             
+                                                var desstring = clean;
+         %>  <%=clean%></h4>
+        
+        </div>
+  <% if(ReviewsR.length > 0 ){ %> 
+                              <% ReviewsR.forEach((ReviewsR)=>{  %>
+                              <div class="reviwList">
+                                 <% var LengthChk = ReviewsR.ratingNo %>
+                                 <div class="userNameV"> <% var SliceName = ReviewsR.reviewname; var namePrint = SliceName.slice(0,1) %> <%=namePrint%></div>
+                                 <div class="RewvieData">
+                                    <div class="userReviewName"><%= ReviewsR.reviewname%></div>
+                                    <div class="userReviewStr RatingNo<%= ReviewsR.ratingNo%>"></div>
+                                 </div>
+                                 <div class="StartDes2"><%= ReviewsR.review%></div>
+                              </div>
+                              <%}) } else {  %><div class="commentSec">
+                        
+                        <div class="postcomment">
+                            
+                            <div class="iconPost">
+                            
+
+<svg version="1.1" id="Capa_1" height="30px" width="30px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512">
+<g>
+	
+		<path fill="#a3a3a3" d="M256,0C114.844,0,0,114.844,0,256s114.844,256,256,256s256-114.844,256-256S397.156,0,256,0z M256,74.667
+			c67.635,0,122.667,55.031,122.667,122.667S323.635,320,256,320s-122.667-55.031-122.667-122.667S188.365,74.667,256,74.667z
+			 M256,469.333c-69.707,0-131.52-33.755-170.473-85.615c42.676-20.534,103.621-42.385,170.473-42.385
+			c66.857,0,127.807,21.854,170.474,42.383C387.521,435.577,325.708,469.333,256,469.333z"></path>
+	</g>
+
+</svg>
+
+                            </div>
+                            
+                            <div class="PostHead">Sorry your business have no reviews.
+
+</div>
+                         
+                            </div>
+                        </div> <%}%>
+                           </div>
+                 
+                 
+                   
+                 </div> 
+   
+  
+
+       
+    
+    
+    </div>
+    </div>
+                     
+                         <% }) %>   
+                  </div>
+			 <%} else { %>
+			<div id="classifiedsList" >
+				<div class="nodatafound">
+                    <div class="nodataimg text-center">
+                    <img src="/images/nodata.png">
+                    </div>
+                <p  class="alrt0">You have not added any Business yet.
+
+
+                    </p>
+                    <p class="slstct_9">Let go of what you don't use anymore
+
+                    </p>
+                
+                <ul class="nodtafound">
+             
+          
+            <li class="nav-item">
+               <a class="nav-link" href="/for-business">
+                   <i class="fa fa-plus"></i>
+               <span>Add New Business</span>
+               </a>
+            </li>
+              
+           
+                </ul></div>
+   
+			</div><% } %>
+    
+    
+    </div>
+    </div>
+
+    
+				</div>
+				</div>
+			</div>
+		
+				</div>
+				</div>
+	</div>     
+                        
+                     </div>
+                  </div>
+                
+                  </section>
+             
+         </div> <div id="imageupload" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    
+      </div>
+      <div class="modal-body">
+        <div class="login-main-left" >
+                    
+                     <form action="" method="post" id="profile_photos" enctype="multipart/form-data">
+                       <div class="form-group">
+                           <label>Upload Cover Photo</label>
+                           <input type="file" class="form-control" name="user_profile" id="file_upload">
+                           <span class="message_errer" id="user_profile" style="position:static"></span>
+                             <span class=" message_errer" id="Profile_err" style="position:static;color:green"></span>
+                      
+                        </div>
+                       
+                       
+                        <div class="mt-3">
+                           <div class="row">
+                              <div class="col-12">
+                                 
+                                 <button type="submit"   class="btn btn-outline-primary btn-block btn-lg btnlogin" id="changeP">Submit</button>
+                              </div>
+                           </div>
+                        </div>
+                     </form>
+                   
+                  </div>
+        </div>
+      </div>
+                          </div>
+           
+      </div>
+               <script>
+         $("#profile_photos").submit(function(event){
+                          
+                       event.preventDefault();                       
+                       
+                          var formData = new FormData(this);
+                          $.ajax({
+                              type:'POST',
+                              url:'/user/cover_photo',                              
+                              contentType: false,
+                              processData: false,
+                              data:formData,
+                              success:function(profile_msg){
+                              
+                                  if(profile_msg.errors){
+                                    
+                                   
+                                         
+                                          $("#user_profile").html(profile_msg.errors);
+                                    
+                                      
+                                  }
+                              
+                                  else{
+                                      
+                                      $("#imageupload").modal("hide");
+                                    
+                                    location.reload();
+                                                       swal({
+ 
+  text: profile_msg.Profile_result,
+  icon: "success",
+}); 
+                                      
+                                  }
+                              
+                          }
+                          })
+                      })
+    </script>   
+  
+				
+								</body>
+   <% include ../include/user-footer.ejs %>
+
+
+								</html>
+

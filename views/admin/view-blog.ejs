@@ -1,0 +1,91 @@
+<% include include/header.ejs%>
+<% include include/sidebar.ejs%>
+
+<div class="content-wrapper">
+   
+    <section class="content-header">
+      <h1>
+     Category 
+       
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Add Category</a></li>
+      
+      </ol>
+    </section>
+    <section class="content">
+      <div class="row"> 
+      <div class="col-xs-12">
+          <div class="box">
+              <div class="box-header">
+                  <h3 class="box-title">Add Category
+                  </h3>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                  <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                    
+                      <div class="row">
+                          <div class="col-sm-12">
+                              <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                                  <thead>
+                                      <tr role="row">
+                                          <th class="sorting">Blog  Image</th>
+                                          <th class="sorting" >Blog Title</th>
+                                          <th class="sorting">Blog Subtitle </th>
+                                          
+                                          <th class="sorting">Author</th>
+                                          <th class="sorting">Description</th>
+                                          <th class="sorting">Action</th>
+                                     
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                    
+                                   
+                                    
+    <% bloglist.forEach((blist) => { %>
+                                      <tr role="row" class="odd">
+                                          <td> <img src="/images/<%=blist.b_image %>" style="width:50px"> </td>
+                                          <td class=""><%= blist.b_title %></td>
+                                          <td class=""><%= blist.s_title %></td>
+                                          <td class=""><%= blist.b_author %></td>
+                                          <td class=""> <% var htmlText=blist.b_des;
+                                            var noHTML = /(<([^>]+)>)/ig; 
+                                            var clean = htmlText.replace(noHTML, '');
+                                            %>
+                                          <%-  clean %> </td>
+                                          
+                                         
+                                          <td>
+                                            <a href="/admin/edit-blog/<%= blist.id %>"  rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                            <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                        </td>
+                                      </tr>
+                                    <% }) %>
+                                     
+                                  </tbody>
+                              
+                              </table>
+                          </div>
+                   
+                  </div>
+              </div>
+              <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+  
+     
+          <!-- /.box -->
+      </div>
+      <!-- /.col -->
+  </div>
+</div>
+          
+            </section>
+
+    </div>
+
+
+<% include include/footer.ejs%>

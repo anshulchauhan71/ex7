@@ -1,0 +1,364 @@
+<% include include/header.ejs%>
+<% include include/sidebar.ejs%>
+
+<div class="content-wrapper">
+   
+    <section class="content-header">
+      <h1>
+     Add News 
+       
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">  Add News </a></li>
+      
+      </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+        
+          <div class="col-md-1">
+              </div>
+          <div class="col-md-10">
+                <div class="box box-primary">
+                        <div class="box-header with-border">
+                          <h3 class="box-title"> Add News </h3>
+                        </div>
+                        <% if (message != '') { %>
+                          <p class="text-center text-danger"><%= message %></p>
+                      <% } %> 
+                          <form class="add-player-form" action="" method="post" enctype="multipart/form-data" >
+                          <div class="box-body">
+                            <div class="form-group col-md-4">
+                              <label  >News Title</label>
+                              <input type="text" class="form-control" name="newstitle"  required >
+                            </div>
+                             <div class="form-group col-md-4">
+                              <label  >News Sub Title</label>
+                              <input type="text" class="form-control" name="subtitle"  >
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label  >Select Category</label>
+                                <select class="form-control" id="category" name="category"><option>Select</option><% categorylist.forEach((category) => { %> <option value="<%= category.category_name %>"> <%= category.category_name %></option> <%});%></select>
+                              </div>
+                                <div class="form-group col-md-4">
+                                <label  >Select Sub Category</label>
+                                <select class="form-control" id="subcategory" name="subcategory"><option>Select</option></select>
+                              </div>
+                              <div class="form-group col-md-4">
+                                <label  >Select Country</label>
+                                <select class="form-control" id="counteryid"  name="country"><option>Select</option> <% countrylist.forEach((countrylist)=> { %>  <option value="<%= countrylist.country_name %>"><%= countrylist.country_name %> </option>  <% }); %> </select>
+                              </div>
+ <div class="form-group col-md-4">
+                                <label  >Select State</label>
+                                <select class="form-control" id="statejson"  name="state"><option>Select</option>   <% citylist.forEach((cityitem)=> { %> <option value="<%= cityitem.state %>"><%= cityitem.state %></option><%});%></select>
+                              </div>
+                              <div class="form-group col-md-4">
+                                <label  >Select City</label>
+                                <select class="form-control" id="cityjson" name="city"></select>
+                              </div>
+                              <div class="form-group col-md-4">
+                                <label>Publisher</label>
+                             <select class="form-control" name="publisher"><option value="">Select</option></select>
+                              </div>
+                            
+                            
+                            <div class="form-group col-md-4">
+                              <label for="exampleInputFile">News Image</label>
+                              <input type="file" name="nimage" id="exampleInputFile" class="form-control" >
+            
+                            
+                            </div> <div class="form-group col-md-4">
+                              <label for="exampleInputFile">Video Link</label>
+                              <input type="text" name="video" id="exampleInputFile" class="form-control" >
+            
+                            
+                            </div>
+                         <div class="form-group col-md-4">
+                          <label for="exampleInputFile">Tags </label>
+                          <select class="form-control select2" name="tags" multiple="multiple" data-placeholder="Select a Tags"
+                        style="width: 100%;">
+                 <% tagslist.forEach((tagslist)=>{ %>
+                              
+                              <option value="<%=  tagslist.tag_name%>"><%=  tagslist.tag_name%></option>
+                              <% })%>
+                </select>
+        
+                              </div>
+                            
+                              
+
+<!-- Modal -->
+
+                              
+                              <div class="form-group col-md-4 " >
+                                <label  style="display:block">Show on homepage</label>
+                               <label>
+                                <input type="radio" name="homepage"  value="1"  > Yes </label>
+                                <label>
+                                  <input type="radio" name="homepage" value="0" > No </label>
+                              </div> 
+                              <div class="clearfix"></div>
+                               <div class="form-group col-md-4 " >
+                                <label  style="display:block">Top News</label>
+                               <label>
+                                <input type="radio" name="top_news" value="1"> Yes </label>
+                                <label>
+                                  <input type="radio" name="top_news" value="0"> No </label>
+                              </div>  <div class="form-group col-md-4 " >
+                                <label  style="display:block">latest News</label>
+                               <label>
+                                <input type="radio" name="latest_news" value="1"> Yes </label>
+                                <label>
+                                  <input type="radio" name="latest_news" value="0"> No </label>
+                              </div> 
+                              <div class="form-group col-md-4 " >
+                                <label  style="display:block">Big  News</label>
+                               <label>
+                                <input type="radio" name="big_news" value="1"> Yes </label>
+                                <label>
+                                  <input type="radio" name="big_news" value="0"> No </label>
+                              </div> 
+                              <div class="clearfix"></div>
+                              <div class="form-group col-md-4">
+                              <label for="exampleInputFile">Meta Title</label>
+                              <input type="text" name="meta_title" id="exampleInputFile" class="form-control" >
+            
+                            
+                            </div><div class="form-group col-md-4">
+                              <label for="exampleInputFile">Meta Keywords</label>
+                              <input type="text" name="meta_keywords" id="exampleInputFile" class="form-control" >
+            
+                            
+                            </div><div class="form-group col-md-4">
+                              <label for="exampleInputFile">Meta Description</label>
+                            <textarea name="meta_desc" class="form-control"></textarea>
+                            
+                            </div>
+                              <div class="col-md-12">
+                              <div class="form-group col-md-4" style="padding:0;">
+                                  <button class="btn btn-info" type="button" id="mediaupload"  data-toggle="modal" data-target="#myModal"><i class="fa fa-camera" aria-hidden="true"></i>
+ Add Media</button>    
+            
+                            
+                            </div>
+                            </div>
+                              <div class="form-group col-md-12">
+                                <label  >Short  Description</label>
+                               
+                                <textarea  class="form-control" name="short" id="editor2"></textarea>
+                              </div>
+                            <div class="form-group col-md-12">
+                                <label  >Full Description</label>
+                               
+                                <textarea  class="form-control" name="long" id="editor1"></textarea>
+                              </div>
+                          </div>
+                          <!-- /.box-body -->
+            
+                          <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                          </div>
+                        </form>
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Upload Media</h4>
+      </div>
+      <div class="modal-body">
+        <p>Upload Photo</p>
+          <div style="display:flex">
+              <form method="post" enctype="multipart/form-data" id="submitmedia"><div class="medialink" style="    width: 414px;
+    display: flex;
+    border: 1px solid #dddddd;
+    padding: 4px;"><label style="display: block;
+    padding: 4px 8px;
+    width: 100%;"><input type="file" class="form-control" id="filemedia" name="mediafile" style="display:none"><span class="mediafilw"> <i class="fa fa-camera" aria-hidden="true"></i> <span id="filename_is">Upload Media</span></span></label><button class="btn btnsubmit" type="submit">Submit</button></div></form>
+          
+          
+          </div>
+          <div  id="imgSrc"></div>
+          <div  class="imagelinkpath"></div>
+          <script>
+              
+              
+              $(function() {
+    // Multiple images preview in browser
+    var imagesPreview = function(input, placeToInsertImagePreview) {
+
+        if (input.files) {
+            var filesAmount = input.files.length;
+
+            for (i = 0; i < filesAmount; i++) {
+                var reader = new FileReader();
+
+                reader.onload = function(event) {
+                    $($.parseHTML('<img class="thumbnail" width="90px" height="70px" style="display:inline-block;margin: 4px;">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                }
+
+                reader.readAsDataURL(input.files[i]);
+            }
+        }
+
+    };
+
+    $("#filemedia").change(function(){
+        imagesPreview(this, '#imgSrc');
+    });
+});
+              
+              
+          
+              
+             
+          </script>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+          
+    </div>
+
+  </div>
+</div>
+                      </div>
+            </div>
+            </div>
+            
+            </section>
+
+    </div>
+    <script>
+            CKEDITOR.replace( 'editor1' );
+            CKEDITOR.replace( 'editor2' );
+    </script>
+ <script>
+     $("#category").change(function(){
+         
+         var get_val = $(this).val();
+         
+         $.ajax({
+             
+            type:'GET',
+             url:'/adminxp/subcategory/'+get_val,
+             success:function(subcategory){
+                 
+              $("#subcategory").html(subcategory.getSubcat)
+                 
+                 
+             }
+         })
+     });
+     
+     $("#statejson").change(function(){
+         
+         var get_val = $("#statejson").val();
+         
+         $.ajax({
+             type:'GET',
+             url:'/adminxp/get-city/'+get_val,
+             success:function(cityresults){
+             
+             $("#cityjson").html(cityresults.get_city)
+             
+             
+         }
+         })
+     });
+       $("#submitmedia").submit(function(event){
+                   event.preventDefault();    
+              
+              var Dataform  = new FormData(this);
+              $.ajax({
+                     type:'POST',
+                  url:'/user/mediaUpload',
+                  contentType:false,
+                  processData:false,
+                  data:Dataform,
+                  success:function(response){
+                      var Imagedata = '<img src='+response.filepathname+'>';
+                     
+                      
+                      $(".imagelinkpath").append(response.filepathname);
+                      
+                      
+                  }
+                  
+              })
+                                 
+                                 }) 
+</script>
+  
+
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Datemask dd/mm/yyyy
+    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+    //Datemask2 mm/dd/yyyy
+    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+    //Money Euro
+    $('[data-mask]').inputmask()
+
+    //Date range picker
+    $('#reservation').daterangepicker()
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, locale: { format: 'MM/DD/YYYY hh:mm A' }})
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+      {
+        ranges   : {
+          'Today'       : [moment(), moment()],
+          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        startDate: moment().subtract(29, 'days'),
+        endDate  : moment()
+      },
+      function (start, end) {
+        $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+      }
+    )
+
+    //Date picker
+    $('#datepicker').datepicker({
+      autoclose: true
+    })
+
+    //iCheck for checkbox and radio inputs
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+      checkboxClass: 'icheckbox_minimal-blue',
+      radioClass   : 'iradio_minimal-blue'
+    })
+    //Red color scheme for iCheck
+    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+      checkboxClass: 'icheckbox_minimal-red',
+      radioClass   : 'iradio_minimal-red'
+    })
+    //Flat red color scheme for iCheck
+    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+      checkboxClass: 'icheckbox_flat-green',
+      radioClass   : 'iradio_flat-green'
+    })
+
+    //Colorpicker
+    $('.my-colorpicker1').colorpicker()
+    //color picker with addon
+    $('.my-colorpicker2').colorpicker()
+
+    //Timepicker
+    $('.timepicker').timepicker({
+      showInputs: false
+    })
+  })
+</script>
+<% include include/footer.ejs %>
