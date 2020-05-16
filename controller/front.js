@@ -9,10 +9,10 @@ var configconnect = require('../config/db');
 exports.Homepost = function(req,res){
 
      
-    let latestnews = "select * from news where latest_news = '1' and homepage = '1' order by id DESC LIMIT 4";
-    let bignews = "select * from news where big_news = '1' and homepage = '1' order by id DESC LIMIT 4";
-    let topnews = "select * from news where top_news = '1' and homepage = '1'  order by id DESC LIMIT 4";
-    let topnews2 = "select * from news where top_news = '1' and homepage = '1' order by id DESC LIMIT 1,2";
+    let latestnews = "select * from news where latest_news = '1' and homepage = '1' order by id DESC LIMIT 5";
+    let bignews = "select * from news where big_news = '1' and homepage = '1' order by id DESC LIMIT 1";
+    let topnews = "select * from news where top_news = '1' and homepage = '1'  order by id DESC LIMIT 2";
+    let topnews2 = "select * from news where top_news = '1' and homepage = '1' order by id DESC LIMIT 5";
     let lifestyle = "select * from news where news_category = 'lifestyle' and homepage = '1' order by id DESC LIMIT 4";
     let health = "select * from news where news_category = 'health' or news_category = 'wellness'  and homepage = '1' order by id DESC LIMIT 4";
     let Designs = "select * from designs  order by id DESC LIMIT 10";
@@ -32,9 +32,12 @@ exports.Homepost = function(req,res){
        res.render('frontend/index.ejs',{
            topnews:topnewsr,
            topnews2:topnewsr2,
-           bignews:bignews,categoriesr:categoriesname,
+           bignews:bignews,
+           bignewsR:bignews,
+           categoriesr:categoriesname,
            trevelfood:trevelfood,
            latestnews:latestnews,
+           smallnewsi:latestnews,
            lifestyle:lifestyler,
            health:health,
            Designsitem:Designsr,

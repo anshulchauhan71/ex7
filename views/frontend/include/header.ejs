@@ -7,7 +7,7 @@
         </div>
        
         <div class="desktop-menu">
-          <div class="header-search">  <a href="javascript:void(0)"  class="language_0"> ENG <i class="fa fa-angle-down"></i></a>
+          <div class="header-search"> 
             <div class="sitesrch">
                  <div class="autocomplete" >
                 <input type="text" placeholder="Search for anything" id="mastersearch" autocomplete="off"><span class="searchicon"><i class="fa fa-search"></i></span></div>
@@ -15,13 +15,12 @@
             </div>
            <div class="header-nav">
                <ul> 
-                
-              <li> <a href="<% if(req.session.loggedin){ %>/user/post-article<%} else{%>/sign-up?business=post<%}%>"   class="bussiness-list"> Write a post </a></li>
-           
+                     <li> <a href="javascript:void(0)"  class="language_0"> English <i class="fa fa-angle-down"></i></a></li>
+               
             
                  
                    
-              <% if(req.session.loggedin){ %>   <%} else {%> <li><a href="/sign-in"  class="logins">   Login | Sign Up  </a></li> <%}%>
+              <% if(req.session.loggedin){ %>   <%} else {%> <li><a href="#"  class="logins">   Sign in   </a></li> <%}%>
                    <% if(req.session.loggedin){ %><li> 
                    <div class="user_loginprofile"><div class="imaguser_l">
                   
@@ -55,36 +54,19 @@
               Post Article 
                </a>
             </li>
-              <li class="nav-item">
-               <a class="nav-link" href="/user/business">
-              
-               Bussiness 
-               </a>
-            </li>
-              
             <li class="nav-item">
-               <a class="nav-link" href="/user/designs">
-               
-               Projects
-               </a>
-            </li>
-
-            <li class="nav-item">
-               <a class="nav-link" href="/user/share">
-               
-                Profile Link
-               </a>
-            </li>   <li class="nav-item">
                <a class="nav-link" href="/user/logout">
                
                <svg width="15" height="16" viewBox="0 0 16 17" xmlns="http://www.w3.org/2000/svg"><g stroke="#888294" stroke-width="1.4" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><path d="M10.966 3.308a6.843 6.843 0 1 1-6.209 0M7.857 1.031v8.344"></path></g></svg> 
  Logout
                </a>
             </li>
-                       </ul></div></li><%} else {%><li> <a href="<% if(req.session.loggedin){ %>/for-business<%} else{%>/sign-up?business=register<%}%>"   class="join">  For Business </a></li><%}%>
+                       </ul></div></li><%} else {%><%}%>
                    
-                
-               
+                    <li><a href="#" class="social-list"><i class="fa fa-facebook"></i></a></li>
+                   <li><a href="#" class="social-list"><i class="fa fa-twitter"></i></a></li>
+                   <li><a href="#" class="social-list"><i class="fa fa-instagram"></i></a></li>
+          
                </ul>
         </div>
         </div>
@@ -96,10 +78,10 @@
 <div class="mobile_icons">
 
     <div class="baricon"></div>
-    <div class="logomobile"><a class="active" aria-current="true" href="/"><img class="logo" src="/images/logo2.png" alt="trendsxp Logo"></a></div>
+    <div class="logomobile"><a class="active" aria-current="true" href="/"><img class="logo" src="/images/mlogo.png" alt="trendsxp Logo"></a></div>
     <div class="MobileBusiness">
         
-          <% if(req.session.loggedin){ %>  <a href="/user/message" class="chkMessage"><img src="/images/mail.png"></a> <%} else{%>   <a href="/sign-up?business=register">Post Business <span>Free</span></a><%}%>       
+          <% if(req.session.loggedin){ %>  <a href="/user/message" class="chkMessage"><img src="/images/mail.png"></a> <%} else{%>   <a href="#">Post Article <span>Free</span></a><%}%>       
       </div>
     <div class="Accountmobile">
         <% if(req.session.loggedin){ %> <div class="userCklogin"> <img src="<%- req.session.profilepic ? '/user/profile/'+req.session.profilepic:'/images/user_profile.png'%>"></div> 
@@ -130,38 +112,7 @@
                <span> Articles/Blog </span>
                </a>
             </li>
-              <li class="nav-item">
-               <a class="nav-link" href="/user/business">
-               <img src="/images/megaphone.png">
-               <span> Business  </span>
-               </a>
-            </li>
-              
-            <li class="nav-item">
-               <a class="nav-link" href="/user/designs">
-               <img src="/images/sell-product.png">
-               <span> Projects</span>
-               </a>
-            </li>
-
-         <li class="nav-item">
-               <a class="nav-link" href="/user/pricing">
-               <img src="/images/india.png">
-               <span>Pricing </span>
-               </a>
-            </li> 
- <li class="nav-item">
-               <a class="nav-link" href="/user/message">
-               <img src="/images/mail.png">
-               <span>Message </span>
-               </a>
-            </li> 
-            <li class="nav-item">
-               <a class="nav-link" href="/user/share">
-               <img src="/images/share.png">
-               <span> Profile Link</span>
-               </a>
-            </li>   <li class="nav-item">
+      <li class="nav-item">
                <a class="nav-link" href="/user/followers">
                <img src="/images/like.png">
                <span>Followers</span>
@@ -183,8 +134,7 @@
        </div>
     
     <div class="LoginSignUpmob">
-        <div class="signU0"><a href="/sign-up">Sign Up</a></div>
-        <div class="msgMMl">Already a member of thelivro? </div>
+       
          <div class="LoginU0"><a href="/sign-in">Log In</a></div>
     </div> <div class="MenuOverlay2"></div>
     </div>
@@ -213,7 +163,7 @@
     
     <div class="SearchMobile">  <div class="autocomplete" >
         <label>
-    <input type="text" class="BoxInputSrchM" id="HomeSearchall" placeholder="Search by Location or Category">
+    <input type="text" class="BoxInputSrchM" id="HomeSearchall" placeholder="Search">
         </label>
     </div>
     </div>
@@ -230,7 +180,7 @@
                   
                   </div> <div class="TopLoginSide2"> <%=req.session.Username%> </div><%} else{%><a href="/sign-in">
         <div class="topLoginImage"></div>
-    <div id="login-register" class="TopLoginSide">Login/Register <i class="fa fa-caret-down"></i></div>
+    <div id="login-register" class="TopLoginSide">Login <i class="fa fa-caret-down"></i></div>
     </a><%}%>
                  
      
@@ -286,34 +236,7 @@
                 </div>
               </div>
                 </li>
-                <li><a  href="/directory">Professionals</a></li>
-             
-                <li><a  href="/cost-compare">Cost Compare</a></li>
-               
-<!--                <li><a  href="/project-calculators">Project Calculators</a></li>-->
-                <li class="dropdownMob"><a  href="#" >Idea & Designs <i class="fa fa-angle-down"></i></a>
-                 <div class="megamenu width5">
-                     <ul class="wstliststy06">
-                          <li><a href="/designs/bedroom">Bedroom</a></li>
-                   <li><a href="/designs/cladding-designs">Cladding Designs</a></li>
-                   <li><a href="/designs/dining-room">Dining Room</a></li>
-                   <li><a href="/designs/outdoor">Outdoor </a></li>
-                   <li><a href="/designs/office">Office Designs</a></li>
-                   <li><a href="/designs/door-design">Door Design</a></li>
-                   <li><a href="/designs/home">Home Designs</a></li>
-                   <li><a href="/designs/kitchen-designs">Kitchen Designs</a></li>
-                   <li><a href="/designs/bathroom-designs">Bathroom Designs</a></li>
-                   <li><a href="/designs/living-room">Living Room</a></li>
-                   <li><a href="/designs/tile-designs">Tile Designs</a></li>
-                   <li><a href="/designs/window-design">Window Design</a></li>
-                   <li><a href="/designs/railing-designs">Railing Designs</a></li>
-                     
-                     </ul>
-                       </div>
-                </li>
-                <li><a  href="/shop">Shop</a></li>
-                <li><a  href="/website">Website</a></li>
-              
+           
                  <li><a  href="/farming">agriculture & gardening</a></li>
             </ul>
             

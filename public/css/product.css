@@ -701,14 +701,15 @@ section.userdashbordd {
     padding: 11px 0;
     text-align: right;
 }
-.swiper-wrapper img{height: 190px;}
+
 .designsTT{
-  position: absolute;
-    bottom: 13px;
+     position: absolute;
+    bottom: 10px;
     left: 6px;
-    font-size: 22px;
+    line-height: 20px;
+    font-size: 18px;
     text-align: center;
-    font-weight: 600;
+    font-weight: 500;
     margin: 0;
     width: 100%;
     color: #fff;
@@ -1912,12 +1913,14 @@ background-position: 95% 36%;
     height: 128px;
     width: 100%;
 }
-.hMax{    max-width: 92%;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.02);
-    background: #fff;
+.hMax{
+    /* max-width: 92%; */
+    /* box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.02); */
+    /* background: #fff; */
     border-radius: 4px;
     overflow: hidden;
-    padding: 0px 20px;}
+    padding: 0px 20px;
+    }
 #navigation ul li a:hover, #navigation ul li a:focus, #navigation ul li a:active {color: #fff;}
 #navigation ul li a:hover:after, #navigation ul li a:focus:after, #navigation ul li a:active:after {-webkit-transform:scaleX(1);transform: scaleX(1);}
 .AddCAtL2H {
